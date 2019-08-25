@@ -2,7 +2,16 @@
     "db_name": "mydatabase",
     "db_file": "data/mydatabase.db",
     "version": 2,
-    "maps": {},
+    "maps": {
+        "admin/data.json": {
+            "to_table": [
+                {
+                    "node": "posts",
+                    "table": "posts"
+                }
+            ]
+        }
+    },
     "tables": {
         "json": {
             "cols": [
@@ -21,7 +30,7 @@
                 ["content", "TEXT"]
             ],
             "indexes": [
-                ...
+                "CREATE UNIQUE INDEX post_id ON posts(id)"
             ],
             "schema_changed": 1
         }

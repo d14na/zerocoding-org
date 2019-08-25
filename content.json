@@ -2,16 +2,28 @@
  "address": "1CoDiNGYdEQX3PmP32K3pbZnrHJ2nWxXun",
  "address_index": 14886911,
  "background-color": "#FFF",
- "description": "A full-stack integrated development environment (IDE) for building and managing decentralized applications (DApps) on the Zeronet.",
+ "description": "Learn to BUIDL for the decentralized web.",
  "favicon": "images/favicon.png",
  "files": {
   "LICENSE": {
-   "sha512": "772987556efbdb6ceba6af1b23597c76f2db3bf5d1a0b74f158046134954db0e",
-   "size": 1062
+   "sha512": "07e10eae2453d38ede752dacd017533e4d6c1ae62661746ddcfdd4c34e519a50",
+   "size": 1067
   },
   "README.md": {
    "sha512": "5c571a18f88c632bbc9180d7ddd53df6139753b41d7bf3b32cba62b4c6e53409",
    "size": 169
+  },
+  "data/admin/data.json": {
+   "sha512": "249259711ae4cda1c94b0f52e6a31e3ee447a8aaea178fb3b937465c031c9732",
+   "size": 283
+  },
+  "dbschema.json": {
+   "sha512": "cb11d85817ef77b6628036ccd0ba93b0518c8c9107ad5fa4a9d8fac49033fa6b",
+   "size": 1012
+  },
+  "favicon.ico": {
+   "sha512": "0a549da19f714b8de25530c43476e2670b11311d3ed8c21380d423b918efbe51",
+   "size": 4286
   },
   "images/favicon.png": {
    "sha512": "6e8c1822f110e46f444ffc527d64d0b6905e0e904e595943ef3dfe5085c15aeb",
@@ -22,8 +34,8 @@
    "size": 15500
   },
   "index.html": {
-   "sha512": "ed6bb39d5c5ffea3bda1c0d1b70db70c90da89935962d711350b814263f812d8",
-   "size": 5503
+   "sha512": "574705bdcffbf5d34ddb55cb793bddf7ee28554e78a768e886b91e99778afe4f",
+   "size": 5483
   },
   "js/ZeroFrame.js": {
    "sha512": "42125c7aa72496455e044e3fd940e0f05db86824c781381edb7a70f71a5f0882",
@@ -36,6 +48,26 @@
   "js/marked.min.js": {
    "sha512": "6fca751c5f3c851fffe6a8fbf7798d47fd7b0e2be85356ae9aae47f5876ad5a0",
    "size": 21525
+  },
+  "libs/buffer.js": {
+   "sha512": "95676ea8b2f83c4703d844d156f12e334c8779dea73a64d42c5a8d799fc3aa26",
+   "size": 52779
+  },
+  "libs/jquery.min.js": {
+   "sha512": "f8da8f95b6ed33542a88af19028e18ae3d9ce25350a06bfc3fbf433ed2b38fef",
+   "size": 86927
+  },
+  "libs/marked.min.js": {
+   "sha512": "6fca751c5f3c851fffe6a8fbf7798d47fd7b0e2be85356ae9aae47f5876ad5a0",
+   "size": 21525
+  },
+  "libs/zerolib.js": {
+   "sha512": "4e8b503a79926ac201af8b8f22c14d7e50121b20b1a490c1e8a2d9a38928065d",
+   "size": 6440
+  },
+  "libs/zerolib.min.js": {
+   "sha512": "0c83023e66172ca819c48a0eaddb5672f0a22d6e3d4c2f41cfa4b6f4021ce90f",
+   "size": 2522
   },
   "the-truth-about-zeronet/01-zites.md": {
    "sha512": "00ed0bb54ad2ec6bef30159f4a70238b0fb03f1d7a4f2be51048fe25d8cfeaaf",
@@ -89,21 +121,34 @@
    "sha512": "6fa46728037f697f0d3eeb265dc5ac2d5536b08b1386dd2ebca4814148a1034d",
    "size": 3629
   },
+  "the-truth-about-zeronet/examples/ZeroAuth.js": {
+   "sha512": "c636c5bbdf069c6574780c0503052db9bf803ffd254afc6ad0205f2088b4a0e0",
+   "size": 1833
+  },
+  "the-truth-about-zeronet/examples/ZeroFS.js": {
+   "sha512": "9bbee1c654129ded97403808c168cbb7f5124aafcbab57bc1790aaca7024dc65",
+   "size": 3055
+  },
+  "the-truth-about-zeronet/examples/ZeroPage.js": {
+   "sha512": "c20fa5402e33d785ab5d1fa013f38c86d3f5dd67452e46f4fd3a1e328e5f2ebc",
+   "size": 8040
+  },
   "the-truth-about-zeronet/index.html": {
-   "sha512": "2389f35ca49b1c140fbddca01a3dfd50db4521f276aa81f956ca149b7b7d5a2e",
-   "size": 3146
+   "sha512": "b44b1ae9d7bb4e2773f1185113fc82b5e1004c1b9c331ee0bdbe7b30bf76dd2e",
+   "size": 3170
   }
  },
  "ignore": "(\\.git|labs)",
  "inner_path": "content.json",
- "modified": 1537011635,
+ "modified": 1566712823,
  "postmessage_nonce_security": true,
  "signers_sign": "GyyJkYW7ScPWeaKnF43EZnRpAqeOzisEQSLv8Uf+HDBYKkkQ8wXUo/RWFknu7FX0vw8Qxvjm8sQaIY/hjNFFsXs=",
  "signs": {
-  "1CoDiNGYdEQX3PmP32K3pbZnrHJ2nWxXun": "HBxDK9eeBEwa0iadYKRdjCO4EZ1Gp+j2qf/1lxlVArCFa4fa4QNJLhlIwwtGMPCI8LD4xrw7U4eb5xziXwPnrvA="
+  "1CoDiNGYdEQX3PmP32K3pbZnrHJ2nWxXun": "HMoYxufVjOYb8e9+bTxjBrtoS8LVhy1f0V67H/CBnXCdDTGEkFBOrBNt/3HeVEgV0lRMqU0S8MHIj23QEsLLCIo="
  },
  "signs_required": 1,
  "title": "ZeroCoding",
  "translate": ["js/all.js"],
- "zeronet_version": "0.6.3"
+ "viewport": "width=device-width, initial-scale=1.0",
+ "zeronet_version": "0.6.4"
 }
