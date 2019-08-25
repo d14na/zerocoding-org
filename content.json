@@ -1,0 +1,109 @@
+{
+ "address": "1CoDiNGYdEQX3PmP32K3pbZnrHJ2nWxXun",
+ "address_index": 14886911,
+ "background-color": "#FFF",
+ "description": "A full-stack integrated development environment (IDE) for building and managing decentralized applications (DApps) on the Zeronet.",
+ "favicon": "images/favicon.png",
+ "files": {
+  "LICENSE": {
+   "sha512": "772987556efbdb6ceba6af1b23597c76f2db3bf5d1a0b74f158046134954db0e",
+   "size": 1062
+  },
+  "README.md": {
+   "sha512": "5c571a18f88c632bbc9180d7ddd53df6139753b41d7bf3b32cba62b4c6e53409",
+   "size": 169
+  },
+  "images/favicon.png": {
+   "sha512": "6e8c1822f110e46f444ffc527d64d0b6905e0e904e595943ef3dfe5085c15aeb",
+   "size": 1287
+  },
+  "images/icon.png": {
+   "sha512": "65cba435a0b0db487bf9c40c11780e7ac11fe346d38f492d83971a23f920cce9",
+   "size": 15500
+  },
+  "index.html": {
+   "sha512": "ed6bb39d5c5ffea3bda1c0d1b70db70c90da89935962d711350b814263f812d8",
+   "size": 5503
+  },
+  "js/ZeroFrame.js": {
+   "sha512": "42125c7aa72496455e044e3fd940e0f05db86824c781381edb7a70f71a5f0882",
+   "size": 3370
+  },
+  "js/jquery.min.js": {
+   "sha512": "f8da8f95b6ed33542a88af19028e18ae3d9ce25350a06bfc3fbf433ed2b38fef",
+   "size": 86927
+  },
+  "js/marked.min.js": {
+   "sha512": "6fca751c5f3c851fffe6a8fbf7798d47fd7b0e2be85356ae9aae47f5876ad5a0",
+   "size": 21525
+  },
+  "the-truth-about-zeronet/01-zites.md": {
+   "sha512": "00ed0bb54ad2ec6bef30159f4a70238b0fb03f1d7a4f2be51048fe25d8cfeaaf",
+   "size": 4950
+  },
+  "the-truth-about-zeronet/02-security.md": {
+   "sha512": "900f16da570429ccdad8ef6e1e373cc07d786b9ba48da665ac0ac60bb3c3144d",
+   "size": 4331
+  },
+  "the-truth-about-zeronet/03-cloning-zites.md": {
+   "sha512": "f056ea8e92744a2ff99a45684102bfc28c4260a81dfefd31caa104fe14a1b4c9",
+   "size": 3305
+  },
+  "the-truth-about-zeronet/04-creating-static-zite.md": {
+   "sha512": "845d65d1881ea35435eabd549262f2d1113fcec6eaf5790f2740f797bc79ef7c",
+   "size": 8174
+  },
+  "the-truth-about-zeronet/05-zeroframe.md": {
+   "sha512": "3f6e1e1211d7df37311116a52a5a7fa537a153aae1796126ddfbbfc9c78b2da7",
+   "size": 9767
+  },
+  "the-truth-about-zeronet/06-databases.md": {
+   "sha512": "8a894ef4e3bd8fbeb71833aca2c171174ba84e97c336d5a79e003e537093112f",
+   "size": 8308
+  },
+  "the-truth-about-zeronet/07-changing-tables.md": {
+   "sha512": "27c274c7b7733a511484c0ae86b3929ceeb2a1970aaec97b122eaaf749ba9393",
+   "size": 8273
+  },
+  "the-truth-about-zeronet/08-dbschema.md": {
+   "sha512": "473ae36e7615798fdcb59646f40b61b27e8c5e2be4dc7104202a3571116eb575",
+   "size": 5125
+  },
+  "the-truth-about-zeronet/09-user-content.md": {
+   "sha512": "6d9f25f5914e52307590b266a56ea90251f3782703934ca3fadc502b934dea83",
+   "size": 9149
+  },
+  "the-truth-about-zeronet/10-editing-user-data.md": {
+   "sha512": "d2b54d35f5767339a0c0aa5ba66c77b888441eb869a174b9298683ff4eba9a42",
+   "size": 10385
+  },
+  "the-truth-about-zeronet/11-merger-sites.md": {
+   "sha512": "33cc40f395e0c61836875c6dc5543e2d08b3746f20315e14a81ef98cb5bdf699",
+   "size": 7068
+  },
+  "the-truth-about-zeronet/12-merged-content.md": {
+   "sha512": "8076f1f971f51f2d55730d49b6b14613e8129f1d05edc8f96b92da178a9e735e",
+   "size": 10547
+  },
+  "the-truth-about-zeronet/13-ugly-things.md": {
+   "sha512": "6fa46728037f697f0d3eeb265dc5ac2d5536b08b1386dd2ebca4814148a1034d",
+   "size": 3629
+  },
+  "the-truth-about-zeronet/index.html": {
+   "sha512": "2389f35ca49b1c140fbddca01a3dfd50db4521f276aa81f956ca149b7b7d5a2e",
+   "size": 3146
+  }
+ },
+ "ignore": "(\\.git|labs)",
+ "inner_path": "content.json",
+ "modified": 1537011635,
+ "postmessage_nonce_security": true,
+ "signers_sign": "GyyJkYW7ScPWeaKnF43EZnRpAqeOzisEQSLv8Uf+HDBYKkkQ8wXUo/RWFknu7FX0vw8Qxvjm8sQaIY/hjNFFsXs=",
+ "signs": {
+  "1CoDiNGYdEQX3PmP32K3pbZnrHJ2nWxXun": "HBxDK9eeBEwa0iadYKRdjCO4EZ1Gp+j2qf/1lxlVArCFa4fa4QNJLhlIwwtGMPCI8LD4xrw7U4eb5xziXwPnrvA="
+ },
+ "signs_required": 1,
+ "title": "ZeroCoding",
+ "translate": ["js/all.js"],
+ "zeronet_version": "0.6.3"
+}
