@@ -1,8 +1,0 @@
-env:
-    browser: true
-parserOptions:
-    ecmaVersion: 8
-rules:
-    indent:
-        - error
-        - 4
