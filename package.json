@@ -1,14 +1,13 @@
 {
-  "name": "@coreui/coreui-free-vue-admin-template",
-  "version": "2.1.5",
-  "description": "Open Source Bootstrap Admin Template",
-  "author": "Łukasz Holeczek",
-  "homepage": "http://coreui.io",
-  "copyright": "Copyright 2018 creativeLabs Łukasz Holeczek",
+  "name": "zerocoding-org",
+  "version": "19.8.26",
+  "description": "ZeroCoding web portal.",
+  "author": "Decentralization Authority",
+  "homepage": "https://zerocoding.org",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:coreui/coreui-free-vue-admin-template.git"
+    "url": "git@github.com:d14na/zerocoding-org.git"
   },
   "scripts": {
     "serve": "vue-cli-service serve",
