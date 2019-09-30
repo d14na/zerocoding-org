@@ -1,9 +1,9 @@
 /*******************************************************************************
  *
- * Copyright (c) 2018 Decentralization Authority MDAO.
+ * Copyright (c) 2018-2019 Decentralization Authority MDAO.
  * Released under the MIT License.
  *
- * ZeroApi Class
+ * ZeroLib Class
  *
  * Primary framework necessary to manage message communications between
  * the sandboxed (iFrame) web document and the Zeronet client.
@@ -14,15 +14,15 @@
  *     2. IFPS
  *     3. Ethereum Web3
  *
- * Version 18.9.28
+ * Version 19.9.30
  *
  * Web   : https://d14na.org
  * Email : support@d14na.org
  */
 
 
-/* Initialize the ZeroApi Class. */
-class ZeroApi {
+/* Initialize the ZeroLib Class. */
+class ZeroLib {
     /* Constructor. */
     constructor(_url) {
         /* Bind private (class) functions to `this`. */
@@ -62,7 +62,8 @@ class ZeroApi {
         let args
         args = 1 <= arguments.length ? [].slice.call(arguments, 0) : []
 
-        return console.log.apply(console, ['[ZeroApi]'].concat([].slice.call(args)))
+        /* eslint-disable no-console */
+        return console.log.apply(console, ['[ZeroLib]'].concat([].slice.call(args)))
     }
 
     /* Initialize and retrieve the main object (class). */
@@ -131,12 +132,12 @@ class ZeroApi {
 
         /* Send with (promise) callback. */
         if (typeof _cb === 'undefined') {
-            return new Promise((_resolve, _reject) => {
+            return new Promise((resolve, reject) => {
                 this._send({ cmd, params }, (_res) => {
                     if (_res && _res.error) {
-                        _reject(_res.error)
+                        reject(_res.error)
                     } else {
-                        _resolve(_res)
+                        resolve(_res)
                     }
                 })
             })
@@ -211,10 +212,16 @@ class ZeroApi {
      * BitMessage Stub
      */
     bm() {
-        ping = function () {
-            return new Promise((_resolve, _reject) => {
-                _resolve('pong')
-            })
+        return {
+            /* Handle ping (from host/parent). */
+            ping: function () {
+                return new Promise((resolve, reject) => {
+                    if (!resolve) return reject('Oops!')
+
+                    /* Send pong (response). */
+                    resolve('pong')
+                })
+            }
         }
     }
 
@@ -222,10 +229,16 @@ class ZeroApi {
      * IPFS Stub
      */
     ipfs() {
-        ping = function () {
-            return new Promise((_resolve, _reject) => {
-                _resolve('pong')
-            })
+        return {
+            /* Handle ping (from host/parent). */
+            ping: function () {
+                return new Promise((resolve, reject) => {
+                    if (!resolve) return reject('Oops!')
+
+                    /* Send pong (response). */
+                    resolve('pong')
+                })
+            }
         }
     }
 
@@ -233,10 +246,23 @@ class ZeroApi {
      * Ethereum Web3 Stub
      */
     web3() {
-        ping = function () {
-            return new Promise((_resolve, _reject) => {
-                _resolve('pong')
-            })
+        return {
+            /* Handle ping (from host/parent). */
+            ping: function () {
+                return new Promise((resolve, reject) => {
+                    if (!resolve) return reject('Oops!')
+
+                    /* Send pong (response). */
+                    resolve('pong')
+                })
+            }
         }
     }
 }
+
+/**
+ * Add Zeronet Library to Window (Global Namespace)
+ *
+ * FIXME: Too much pollution is NEVER a good thing.
+ */
+window.ZeroLib = ZeroLib
