@@ -1,16 +1,33 @@
 export default {
     items: [{
-        name: 'Dashboard',
-        url: '/dashboard',
+        name: 'Welcome',
+        url: '/welcome',
         icon: 'icon-speedometer'
     }, {
         divider: true
     }, {
         title: true,
-        name: 'Resources'
+        name: 'Need Resources?'
     }, {
-        name: 'Resumes | CVs',
-        url: '/resumes',
+        name: 'Plugins & Add-ons',
+        url: '/plugins',
+        icon: 'icon-pencil'
+    }, {
+        divider: true
+    }, {
+        title: true,
+        name: 'Decentralized Career'
+    }, {
+        name: 'Bounties',
+        url: '/bounties',
+        icon: 'icon-pencil',
+        badge: {
+            variant: 'primary',
+            text: 'NEW'
+        }
+    }, {
+        name: 'Jobs Board',
+        url: '/jobs',
         icon: 'icon-pencil',
         badge: {
             variant: 'primary',
@@ -22,7 +39,7 @@ export default {
         title: true,
         name: 'Get Involved!'
     }, {
-        name: 'Labs',
+        name: 'Code Labs',
         url: '/labs',
         icon: 'icon-pencil'
     }]

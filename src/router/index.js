@@ -5,9 +5,12 @@ import Router from 'vue-router'
 const DefaultContainer = () => import('@/containers/DefaultContainer')
 
 // Views
-const Dashboard = () => import('@/views/Dashboard')
+const Bounties = () => import('@/views/Bounties')
+const Jobs = () => import('@/views/Jobs')
 const Labs = () => import('@/views/Labs')
-const Resumes = () => import('@/views/Resumes')
+const Plugins = () => import('@/views/Plugins')
+const Tutorials = () => import('@/views/Tutorials')
+const Welcome = () => import('@/views/Welcome')
 
 Vue.use(Router)
 
@@ -17,21 +20,33 @@ export default new Router({
     scrollBehavior: () => ({ y: 0 }),
     routes: [{
         path: '/',
-        redirect: '/dashboard',
-        name: 'Home',
+        redirect: '/welcome',
+        name: 'Welcome',
         component: DefaultContainer,
         children: [{
-            path: 'dashboard',
-            name: 'Dashboard',
-            component: Dashboard
+            path: 'welcome',
+            name: '',
+            component: Welcome
+        }, {
+            path: 'bounties',
+            name: 'Bounties',
+            component: Bounties
+        }, {
+            path: 'jobs',
+            name: 'Jobs & Career',
+            component: Jobs
         }, {
             path: 'labs',
             name: 'Labs',
             component: Labs
         }, {
-            path: 'resumes',
-            name: 'Resumes | CVs',
-            component: Resumes
+            path: 'plugins',
+            name: 'Plugins',
+            component: Plugins
+        }, {
+            path: 'tutorials',
+            name: 'Tutorials',
+            component: Tutorials
         }]
     }]
 })
