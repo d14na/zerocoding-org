@@ -2,33 +2,9 @@
     <div class="animated fadeIn">
         <b-row>
             <b-col md="6">
-                <b-card
-                    header-tag="header"
-                    footer-tag="footer">
-                    <div slot="header">
-                        <i class="fa fa-code mr-2"></i>
-                        <strong>Zeronet Development Library</strong>
-                    </div>
-
-                    <p>
-                        A comprehensive development toolkit for building decentralized apps on Zeronet and others (eg. IPFS).
-                    </p>
-
-                    <b-list-group>
-                        <b-list-group-item>
-                            zerolib.js
-                            <a href="https://cloudflare-ipfs.com/ipfs/QmQckzYgehFUPFdJvhD3sk9UiTRk4ibCUa1aEGqFSd6iin" target="_blank"><i class="fa fa-external-link ml-2"></i></a>
-                            <a href="javascript://"><i class="fa fa-copy ml-2"></i></a>
-                        </b-list-group-item>
-                        <b-list-group-item>
-                            zerolib.min.js
-                            <a href="https://cloudflare-ipfs.com/ipfs/QmZphxLbShLsreHcncgxcewf2hhLfETtQCuYf89PdHFQVf" target="_blank"><i class="fa fa-external-link ml-2"></i></a>
-                            <a href="javascript://"><i class="fa fa-copy ml-2"></i></a>
-                        </b-list-group-item>
-                    </b-list-group>
-                </b-card>
-
+                <ZeroLib />
                 <JQuery />
+                <Ethers />
             </b-col>
 
             <b-col md="6">
@@ -52,12 +28,16 @@
 </template>
 
 <script>
+const Ethers = () => import('@/views/ipcdn/Ethers')
 const JQuery = () => import('@/views/ipcdn/JQuery')
+const ZeroLib = () => import('@/views/ipcdn/ZeroLib')
 
 export default {
     name: 'typography',
     components: {
-        JQuery
+        Ethers,
+        JQuery,
+        ZeroLib,
     }
 }
 </script>
