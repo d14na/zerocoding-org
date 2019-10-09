@@ -12,11 +12,334 @@
         </b-col>
       </div>
     </div>
+
+    <div id="out"></div>
+
+    <br /><br />
+    <button class="btnAlerts"><h1>TEST: Alerts</h1></button>
+    <br /><br />
+    <button class="btnNewPermission"><h1>TEST: Permission Request</h1></button>
+    <br /><br />
+    <button class="btnUserInput"><h1>TEST: User Input</h1></button>
+    <br /><br />
+    <button class="btnCertSelect"><h1>TEST: Certificate Select</h1></button>
+    <br /><br />
+    <button class="btnServerInfo"><h1>TEST: Server Info</h1></button>
+    <br /><br />
+    <button class="btnSiteInfo"><h1>TEST: Site Info</h1></button>
+    <br /><br />
+    <button class="btnMergerList"><h1>TEST: Merger Site List</h1></button>
+    <br /><br />
+    <button class="btnCORSPermission"><h1>TEST: CORS Permission (0CDN)</h1></button>
+    <br /><br />
+    <button class="btnChartDb"><h1>TEST: ChartDb</h1></button>
+    <br /><br />
+    <button class="btnNewsfeed"><h1>TEST: Newsfeed</h1></button>
+    <br /><br />
+    <button class="btnNewsfeedList"><h1>TEST: Newsfeed List</h1></button>
+    <br /><br />
+    <button class="btnRunAs"><h1>TEST: Command `as`</h1></button>
+    <br /><br />
+    <button class="btnPubkey"><h1>TEST: Public Key</h1></button>
+    <br /><br />
+    <button class="btnEcies"><h1>TEST: ECIES Encryption</h1></button>
+    <br /><br />
+    <button class="btnUserSettings"><h1>TEST: User Settings</h1></button>
+    <br /><br />
+    <button class="btnP0rtalPlugin"><h1>TEST: P0rtal Plugin</h1></button>
+    <br /><br />
+    <button class="btnMisc"><h1>MISC</h1></button>
   </div>
 </template>
+
+<!-- <script src="../libs/jquery.min.js"></script> -->
+<!-- <script src="../libs/zerolib.js"></script> -->
+<!-- <script src="../libs/buffer.js"></script> -->
 
 <script>
 export default {
   name: 'typography'
 }
+
+// class ZeroApp extends ZeroApi {
+//     setSiteInfo(_siteInfo) {
+//         console.log('FULL SITE INFO', _siteInfo)
+//
+//         var out = document.getElementById("out")
+//         out.innerHTML =
+//             "Page address: " + _siteInfo.address +
+//             "<br>- Peers: " + _siteInfo.peers +
+//             "<br>- Size: " + _siteInfo.settings.size +
+//             "<br>- Modified: " + (new Date(_siteInfo.content.modified*1000))
+//     }
+//
+//     onOpen() {
+//         /* Call super. */
+//         super.onOpen()
+//
+//         this.cmd('siteInfo', [], function (_siteInfo) {
+//             App.setSiteInfo(_siteInfo)
+//         })
+//     }
+//
+//     onEvent(_event, _message) {
+//         if (_event === 'setSiteInfo') {
+//             this.setSiteInfo(_message.params)
+//         } else {
+//             this._log('Unknown event:', _event)
+//         }
+//     }
+// }
+//
+// /* Initialize new Zer0net app. */
+// App = new ZeroApp()
+//
+// $('.btnAlerts').click(() => {
+//     console.log('Testing alerts...')
+//     App.cmd('wrapperNotification', ['info', 'Are you looking for this? Cause I found it!', 3000])
+//     App.cmd('wrapperNotification', ['done', 'You\'re all set!', 6000])
+//     App.cmd('wrapperNotification', ['error', 'Oops! Try again...', 9000])
+// })
+//
+// $('.btnNewPermission').click(() => {
+//     console.log('Testing new permission request...')
+//     App.cmd('wrapperPermissionAdd', ['ADMIN'])
+//     // App.cmd('wrapperPermissionAdd', ['Merger:CDN'])
+//     // App.cmd('wrapperPermissionAdd', ['Merger:ZeroMe'])
+// })
+//
+// $('.btnUserInput').click(() => {
+//     console.log('Testing user input...')
+//     App.cmd('wrapperPrompt', ['Enter your private key:', 'password'], (_input) => {
+//         App.cmd('wrapperNotification', ['done', `Nice! I see you entered [${_input}]`, 7000])
+//     })
+// })
+//
+// $('.btnCertSelect').click(() => {
+//     console.log('Testing certificate selection...')
+//     App.cmd('certSelect', { 'accepted_domains': ['ethnick.bit', 'kaffie.bit', 'kxoid.bit', 'nametag.bit', 'xyzid.bit', 'zeroid.bit'] })
+// })
+//
+// $('.btnServerInfo').click(() => {
+//     console.log('Testing server info...')
+//     App.cmd('serverInfo', {}, (_info) => {
+//         console.log('Server Info', _info)
+//     })
+// })
+//
+// $('.btnSiteInfo').click(() => {
+//     console.log('Testing site info...')
+//     App.cmd('siteInfo', {}, (_info) => {
+//         console.log('Site Info', _info)
+//     })
+// })
+//
+// $('.btnMergerList').click(() => {
+//     console.log('Testing merger site list...')
+//     App.cmd('mergerSiteList', [true], (_list) => {
+//         console.log('Merger Site List', _list)
+//     })
+// })
+//
+// $('.btnCORSPermission').click(() => {
+//     console.log('Testing CORS permission...')
+//     App.cmd('corsPermission', ['1ZCDN4UGGVmhRd29DrVVW7vNsbmMvfrr3'], (_success) => {
+//         console.log('Connected via CORS', _success)
+//     })
+// })
+//
+// $('.btnChartDb').click(() => {
+//     console.log('Testing Chart Db...')
+//     App.cmd('chartGetPeerLocations', {}, (_results) => {
+//         console.log('Peer locations', _results)
+//     })
+// })
+//
+// $('.btnNewsfeed').click(() => {
+//     console.log('Testing Newsfeed...')
+//     query = `
+//         SELECT
+//             post_id AS event_uri,
+//             'post' AS type,
+//             date_published AS date_added,
+//             title AS title,
+//             body AS body,
+//             '?Post:' || post_id AS url
+//         FROM
+//             post
+//     `
+//     params = ['']
+//     // App.cmd('feedFollow', [{}], (_status) => {
+//     App.cmd('feedFollow', [{"Posts": [query, params]}], (_status) => {
+//         console.log('Newsfeed status', _status)
+//     })
+// })
+//
+// $('.btnNewsfeedList').click(() => {
+//     console.log('Testing Newsfeed list...')
+//
+//     App.cmd('feedListFollow', {}, (_list) => {
+//         console.log('Newsfeed list', _list)
+//     })
+//
+//     App.cmd('feedQuery', {}, (_results) => {
+//         console.log('Newsfeed results', _results)
+//     })
+// })
+//
+// $('.btnRunAs').click(() => {
+//     console.log('Testing Command as...')
+//     address = "1ZCDN4UGGVmhRd29DrVVW7vNsbmMvfrr3"
+//     query = "SELECT * FROM json WHERE file_name = :file_name"
+//     params = {"file_name": "data.json"}
+//     App.cmd("as", [address, "siteInfo", {}], function(res) {
+//     // App.cmd("as", [address, "dbQuery", [query, params]], function(res) {
+//         console.log(res)
+//     })
+//
+//     // App.cmd('chartGetPeerLocations', {}, (_results) => {
+//     //     console.log('Peer locations', _results)
+//     // })
+// })
+//
+// $('.btnPubkey').click(() => {
+//     console.log('Testing Public Key...')
+//
+//     App.cmd('userPublickey', {}, (_results) => {
+//         console.log('Public key', _results)
+//
+//         const decoded = Buffer.from(_results, 'base64')
+//         console.log('Decoded', decoded.toString('hex'))
+//     })
+// })
+//
+// $('.btnEcies').click(() => {
+//     console.log('Testing ECIES Encrypt...')
+//
+//     const options = {
+//         text: 'some secret message',
+//         // publickey: 0,
+//         // publickey: 'A9w1QbLfdgy4ga1MgOOOlieRN46IrrAsGBan6JWtUMgd', // BAD
+//         // publickey: 'AxzyNRpVzvl4NaFNbuc0lCr1Be0ZLGLuYSy99WQ5ONOD', // GOOD
+//         // publickey: Buffer.from('03dc3541b2df760cb881ad4c80e38e962791378e88aeb02c1816a7e895ad50c81d', 'hex').toString('base64'), // BAD
+//         publickey: Buffer.from('031cf2351a55cef97835a14d6ee734942af505ed192c62ee612cbdf5643938d383', 'hex').toString('base64'), // GOOD
+//         // publickey: Buffer.from('040e4d1a27c134d16f15131352c2002d8c141bc059a1b84ef46804cf3369f3a964fcd9826830c50ffc49a3426fb5f27d1b071fc8b394b87bd0e9f23bfa248b8171', 'hex').toString('base64'), // BITCORE
+//         // return_aes_key: true
+//     }
+//     console.log('OPTIONS', options)
+//
+//     App.cmd('eciesEncrypt', options, (_results) => {
+//         console.log('Encrypted text', _results)
+//         console.log('Encrypted text (hex)', Buffer.from(_results, 'base64').toString('hex'))
+//
+//         // const cypher = Buffer.from(_results[0], 'base64')
+//         // console.log('CYPHER', cypher.toString('hex'))
+//
+//         // const pubkey = Buffer.from(_results[0].slice(16, 70), 'base64')
+//         // console.log('PUBKEY', pubkey.toString('hex'))
+//
+//         // const cypherKey = Buffer.from(_results[1], 'base64')
+//         // console.log('CYPHER KEY', cypherKey.toString('hex'))
+//
+//         const newOptions = {
+//             // param: Buffer.from('034f9091a6ef8ed63a337d08e603e37a658d4957ad6de38b57e5c7c85618c39d6398fe587299138e68c8928ed335a62b6faffe6267c506e85d259cff36920df4375588890303ee00eeb548946c079b42283d83d86d26c6c37ebd3afc781cc798dd015b4c7a03cf49aa8af3769cd1c4ae7e', 'hex').toString('base64')
+//             // param: 'uVbNWh89O6ldp2NK2T+6DALKACDO9skv2op4R6TtuNSzay7jCQh8KIZsf8i7rKF5T+odEQAg4gQz5UQs2wCOulMTkh5cwu1Lnnv8RMbeigQfFVF3CXKCiYl+jHqtHAAOGZZzqf5kvqp24HB8aCgHLKD8Fs3pxwkDg3tVqvVUXxxC/JdUlNyN4oLlp6cN7xaSnJUhxHTJ'
+//             param: _results,
+//             // privatekey: 0
+//         }
+//
+//         App.cmd('eciesDecrypt', newOptions, (_results) => {
+//             console.log('Decrypted text', _results)
+//         })
+//     })
+// })
+//
+// $('.btnUserSettings').click(() => {
+//     console.log('Testing User Settings...')
+//
+//     const options = {
+//         settings: {
+//             hello: 'world',
+//             cool: [
+//                 1, 2, 3
+//             ]
+//         }
+//     }
+//
+//     App.cmd('userSetSettings', options, (_results) => {
+//         console.log('User Settings', _results)
+//
+//         App.cmd('userGetSettings', {}, (_results) => {
+//             console.log('Retrieve User Settings', _results)
+//         })
+//     })
+// })
+//
+// $('.btnP0rtalPlugin').click(() => {
+//     console.log('Testing P0rtal Plugin...')
+//
+//     App.cmd('blockchain', [], (_results) => {
+//         console.log('Blockchain', _results)
+//     })
+// })
+//
+// $('.btnMisc').click(() => {
+//     console.log('Miscellaneous...')
+//
+//     let options = {
+//         sample: 'more storage data'
+//     }
+//
+//     App.cmd('wrapperSetLocalStorage', [], (_err) => {
+//         console.log('MISC RESULTS 1', _err)
+//     })
+//
+//     options = {
+//
+//     }
+//
+//     App.cmd('wrapperGetLocalStorage', options, (_results) => {
+//         console.log('MISC RESULTS 2', _results)
+//     })
+// })
+//
+//
+// </script>
+//
+// <script>
+// /**
+//  * Load Zer0net CDN Libraries into Window (Global Context)
+//  *
+//  * NOTE Requires CORS permission (from user) to ZeroCDN.
+//  */
+// const _loadLib = async function(_location) {
+//     /* Initialize ZeroCDN public key. */
+//     const zeroCdn = '1ZCDN4UGGVmhRd29DrVVW7vNsbmMvfrr3'
+//
+//     /* Retrieve the file data. */
+//     const libData = await App.cmd('fileGet', [`cors-${zeroCdn}/libs/${_location}`])
+//
+//     /* Evaluate (execute) JS library data (in global scope). */
+//     eval(libData) // FIXME Is there possibly anything "safer" than eval??
+// }
+//
+// $(async function () {
+//     await _loadLib('moment/2.22.2/js/moment.min.js')
+//     await _loadLib('numeral/2.0.6/js/numeral.min.js')
+//
+//     /* Test injected library. */
+//     const epoch = moment().unix()
+//     const formatted = numeral(epoch).format('0,0')
+//     console.log(`Epoch is [ ${epoch} / ${formatted} ]`)
+//
+//     const cryptOptions = {
+//         param: Buffer.from('040e4d1a27c134d16f15131352c2002d8c141bc059a1b84ef46804cf3369f3a964fcd9826830c50ffc49a3426fb5f27d1b071fc8b394b87bd0e9f23bfa248b8171f55146dd73ac2dcc830394f653f442d908b2bf3e060d87572a7fd9853bb802eef0360d0ccdf39d71870774237d8c3e0943b3ee37e673436908fff07cc6b3de3e', 'hex').toString('base64'),
+//         // param: 'lnVtBSUiIDy6aecVXOD8fwLKACBUqdMW0V43W66mkw8fKhO513TAtpchP3Kc7nIl6jG1KAAgWqwT7xIyTj1oYl0fPZBylnKQS+YRsjMNcFwRZMfK6PD+uQArPKM2lr7vfWVV7gCYmAGoiO7T5jrKLYzTw72C8XYrqxCmcv3Tny77hAajtr4=',
+//         privatekey: 0
+//     }
+//     App.cmd('eciesDecrypt', cryptOptions, (_results) => {
+//         console.log('Decrypted text', _results)
+//     })
+// })
+
 </script>

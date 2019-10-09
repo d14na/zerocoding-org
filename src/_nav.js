@@ -2,45 +2,70 @@ export default {
     items: [{
         name: 'Welcome',
         url: '/welcome',
-        icon: 'icon-speedometer'
+        icon: 'icon-home'
     }, {
-        divider: true
-    }, {
-        title: true,
-        name: 'Need Resources?'
-    }, {
-        name: 'Plugins & Add-ons',
-        url: '/plugins',
-        icon: 'icon-pencil'
-    }, {
-        divider: true
-    }, {
-        title: true,
-        name: 'Decentralized Career'
-    }, {
-        name: 'Bounties',
-        url: '/bounties',
-        icon: 'icon-pencil',
+        name: 'Projects',
+        url: '/projects',
+        icon: 'icon-rocket',
         badge: {
             variant: 'primary',
             text: 'NEW'
+        }
+    }, {
+        divider: true
+    }, {
+        title: true,
+        name: 'Community Center'
+    }, {
+        name: 'Code Labs',
+        url: '/labs',
+        icon: 'icon-chemistry'
+    }, {
+        name: 'Plugins & Add-ons',
+        url: '/plugins',
+        icon: 'icon-pin'
+    }, {
+        divider: true
+    }, {
+        title: true,
+        name: 'Career Center'
+    }, {
+        name: 'Bounties',
+        url: '/bounties',
+        icon: 'icon-trophy',
+        badge: {
+            variant: 'warning',
+            text: 'SOON'
         }
     }, {
         name: 'Jobs Board',
         url: '/jobs',
-        icon: 'icon-pencil',
+        icon: 'icon-briefcase',
         badge: {
-            variant: 'primary',
-            text: 'NEW'
+            variant: 'warning',
+            text: 'SOON'
         }
     }, {
         divider: true
     }, {
         title: true,
-        name: 'Get Involved!'
+        name: 'Looking For Help?'
     }, {
-        name: 'Code Labs',
-        url: '/labs',
-        icon: 'icon-pencil'
+        name: 'Getting Started',
+        url: '/getting-started',
+        icon: 'icon-book-open'
+    }, {
+        name: 'Tutorials',
+        url: '/tutorials',
+        icon: 'icon-graduation'
+    }, {
+        divider: true
+    }, {
+        title: true,
+        name: 'Need More Resources?'
+    }, {
+        name: 'IPCDN',
+        url: '/ipcdn',
+        icon: 'icon-feed'
     }]
 }

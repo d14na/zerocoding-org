@@ -6,9 +6,11 @@ const DefaultContainer = () => import('@/containers/DefaultContainer')
 
 // Views
 const Bounties = () => import('@/views/Bounties')
+const IpCdn = () => import('@/views/IpCdn')
 const Jobs = () => import('@/views/Jobs')
 const Labs = () => import('@/views/Labs')
 const Plugins = () => import('@/views/Plugins')
+const Projects = () => import('@/views/Projects')
 const Tutorials = () => import('@/views/Tutorials')
 const Welcome = () => import('@/views/Welcome')
 
@@ -32,6 +34,10 @@ export default new Router({
             name: 'Bounties',
             component: Bounties
         }, {
+            path: 'ipcdn',
+            name: 'InterPlanetary Content Delivery Network (IPCDN)',
+            component: IpCdn
+        }, {
             path: 'jobs',
             name: 'Jobs & Career',
             component: Jobs
@@ -43,6 +49,10 @@ export default new Router({
             path: 'plugins',
             name: 'Plugins',
             component: Plugins
+        }, {
+            path: 'projects',
+            name: 'Projects',
+            component: Projects
         }, {
             path: 'tutorials',
             name: 'Tutorials',
