@@ -15,11 +15,11 @@
         <b-list-group>
             <b-list-group-item>
                 <strong>4 x 3</strong>
-                <img v-for="flag in flags" v-bind:key="flag" class="flag" :src="flagImg(flag)" />
+                <img v-for="flag of flags" v-bind:key="flag" class="flag" :src="flagImg(flag)" />
             </b-list-group-item>
             <b-list-group-item>
                 <strong>1 x 1</strong>
-                <img v-for="flag in flags" v-bind:key="flag" class="square-flag" :src="squareFlagImg(flag)" />
+                <img v-for="flag of flags" v-bind:key="flag" class="square-flag" :src="squareFlagImg(flag)" />
             </b-list-group-item>
         </b-list-group>
     </b-card>
@@ -33,15 +33,7 @@ export default {
     components: {
         Links
     },
-    methods: {
-        flagImg (_countryId) {
-            return `https://ipfs.io/ipfs/QmTq1STANGjUk9sbyPd6SHAAK1b65KT7i4vmYvq4Lp1of8/${_countryId}.svg`
-        },
-        squareFlagImg (_countryId) {
-            return `https://ipfs.io/ipfs/QmQuMaj2UDy9BDsqLRGbJpfYSriSkbsadL5vPWqHUxGJT6/${_countryId}.svg`
-        },
-    },
-    data: function () {
+    data: () => {
         return {
             flags: [
                 'ad','ae','af','ag','ai','al','am','ao','aq','ar','as','at','au','aw','ax','az',
@@ -49,6 +41,14 @@ export default {
                 'us',
             ]
         }
+    },
+    methods: {
+        flagImg (_countryId) {
+            return `https://ipfs.io/ipfs/QmTq1STANGjUk9sbyPd6SHAAK1b65KT7i4vmYvq4Lp1of8/${_countryId}.svg`
+        },
+        squareFlagImg (_countryId) {
+            return `https://ipfs.io/ipfs/QmQuMaj2UDy9BDsqLRGbJpfYSriSkbsadL5vPWqHUxGJT6/${_countryId}.svg`
+        },
     },
 }
 </script>

@@ -7,6 +7,7 @@
                 <Vuejs />
                 <SockJsClient />
                 <Ethers />
+                <Marked />
                 <Flags />
             </b-col>
 
@@ -34,6 +35,7 @@
 const Ethers = () => import('@/views/ipcdn/Ethers')
 const Flags = () => import('@/views/ipcdn/Flags')
 const JQuery = () => import('@/views/ipcdn/JQuery')
+const Marked = () => import('@/views/ipcdn/Marked')
 const SockJsClient = () => import('@/views/ipcdn/SockJsClient')
 const Vuejs = () => import('@/views/ipcdn/Vuejs')
 const ZeroLib = () => import('@/views/ipcdn/ZeroLib')
@@ -43,6 +45,7 @@ export default {
         Ethers,
         Flags,
         JQuery,
+        Marked,
         SockJsClient,
         Vuejs,
         ZeroLib,

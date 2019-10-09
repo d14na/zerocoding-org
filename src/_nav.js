@@ -17,13 +17,9 @@ export default {
         title: true,
         name: 'Community Center'
     }, {
-        name: 'Code Labs',
+        name: 'Coding Labs',
         url: '/labs',
         icon: 'icon-chemistry'
-    }, {
-        name: 'Plugins & Add-ons',
-        url: '/plugins',
-        icon: 'icon-pin'
     }, {
         divider: true
     }, {
@@ -49,23 +45,31 @@ export default {
         divider: true
     }, {
         title: true,
+        name: 'Resource Center'
+    }, {
+        name: 'IPCDN',
+        url: '/ipcdn',
+        icon: 'icon-feed'
+    }, {
+        name: 'Plugins & Add-ons',
+        url: '/plugins',
+        icon: 'icon-pin'
+    }, {
+        divider: true
+    }, {
+        title: true,
         name: 'Looking For Help?'
     }, {
         name: 'Getting Started',
         url: '/getting-started',
         icon: 'icon-book-open'
     }, {
+        name: 'FAQ',
+        url: '/faq',
+        icon: 'icon-question'
+    }, {
         name: 'Tutorials',
         url: '/tutorials',
         icon: 'icon-graduation'
-    }, {
-        divider: true
-    }, {
-        title: true,
-        name: 'Need More Resources?'
-    }, {
-        name: 'IPCDN',
-        url: '/ipcdn',
-        icon: 'icon-feed'
     }]
 }

@@ -1,6 +1,6 @@
-class ZeroFS {
+class ZeroFS { /* eslint-disable-line no-unused-vars */
     constructor(page) {
-        if (typeof page != 'object' || !page instanceof ZeroPage) {
+        if (typeof page != 'object' || !(page instanceof ZeroPage)) { /* eslint-disable-line no-undef */
             throw new Error('Page should be an instance of ZeroPage')
         }
 

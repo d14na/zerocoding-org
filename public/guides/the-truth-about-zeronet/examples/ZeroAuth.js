@@ -1,13 +1,13 @@
-class ZeroAuth {
+class ZeroAuth { /* eslint-disable-line no-unused-vars */
 	constructor(page, acceptedDomains) {
-		if (typeof page != 'object' || !page instanceof ZeroPage) {
+		if (typeof page != 'object' || !(page instanceof ZeroPage)) { /* eslint-disable-line no-undef */
 			throw new Error('page should be an instance of ZeroPage')
 		}
 
 		this.page = page
 
 		if (acceptedDomains) {
-			if (typeof acceptedDomains != 'object' || !acceptedDomains instanceof Array) {
+			if (typeof acceptedDomains != 'object' || !(acceptedDomains instanceof Array)) {
 				throw new Error('acceptedDomains should be an instance of Array')
 			}
 			this.acceptedDomains = acceptedDomains
@@ -37,7 +37,7 @@ class ZeroAuth {
 		} else {
 			return new Promise((resolve, reject) => {
 				this.page.once('setSiteInfo', () => {
-					ZeroPage.async.setTimeout(200)
+					ZeroPage.async.setTimeout(200) /* eslint-disable-line no-undef */
 						.then(() => {
 							return this.page.getSiteInfo()
 						}).then(siteInfo => {
@@ -65,7 +65,7 @@ class ZeroAuth {
 
 	isValidAddress(address) {
 		return address.indexOf('@') != -1 && // has @
-		       address.indexOf('@', address.indexOf('@') + 1) == -1 // only one @
+            address.indexOf('@', address.indexOf('@') + 1) == -1 // only one @
 	}
 
 	addressToFilename(address) {

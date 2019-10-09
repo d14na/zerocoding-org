@@ -7,6 +7,7 @@ const DefaultContainer = () => import('@/containers/DefaultContainer')
 // Views
 const Bounties = () => import('@/views/Bounties')
 const IpCdn = () => import('@/views/IpCdn')
+const FAQ = () => import('@/views/FAQ')
 const Jobs = () => import('@/views/Jobs')
 const Labs = () => import('@/views/Labs')
 const Plugins = () => import('@/views/Plugins')
@@ -26,37 +27,65 @@ export default new Router({
         name: 'Welcome',
         component: DefaultContainer,
         children: [{
-            path: 'welcome',
-            name: '',
-            component: Welcome
-        }, {
             path: 'bounties',
             name: 'Bounties',
             component: Bounties
+
+        /* FAQ */
+        }, {
+            path: 'faq',
+            name: 'FAQ',
+            component: FAQ
+
+        /* IPCDN */
         }, {
             path: 'ipcdn',
             name: 'InterPlanetary Content Delivery Network (IPCDN)',
             component: IpCdn
+
+        /* Jobs */
         }, {
             path: 'jobs',
             name: 'Jobs & Career',
             component: Jobs
+
+        /* Labs */
         }, {
             path: 'labs',
             name: 'Labs',
             component: Labs
+
+        /* Plugins */
         }, {
             path: 'plugins',
             name: 'Plugins',
             component: Plugins
+
+        /* Projects */
         }, {
             path: 'projects',
             name: 'Projects',
             component: Projects
-        }, {
+
+        /* Tutorials */
+        },{
             path: 'tutorials',
             name: 'Tutorials',
             component: Tutorials
+        },{
+            path: 'tutorials/:guideId',
+            name: 'Tutorials',
+            component: Tutorials
+        },{
+            path: 'tutorials/:guideId/:pageId',
+            name: 'Tutorials',
+            component: Tutorials
+
+        /* Welcome */
+        },{
+            path: 'welcome',
+            name: '',
+            component: Welcome
         }]
     }]
 })

@@ -435,7 +435,7 @@
                             </div>
                         </div>
                         <i slot="country" class="h4 mb-0" :class="flag(item.value.flag)" slot-scope="item" :title="item.value.flag" :id="item.value.flag"></i>
-                        <i class="flag-icon flag-icon-pw h1" title="pw" id="pw"></i>
+                        <i class="flag-icon flag-icon-pw h1" title="pw" id="pw"></i>FLAG??
                         <div slot="usage" slot-scope="item">
                             <div class="clearfix">
                                 <div class="float-left">

@@ -1,0 +1,22 @@
+{
+ "address": "1CoDiNGYdEQX3PmP32K3pbZnrHJ2nWxXun",
+ "address_index": 14886911,
+ "background-color": "#FFF",
+ "description": "Learn. Share. BUIDL for the UNSTOPABBLE Web.",
+ "favicon": "img/favicon.png",
+ "files": {},
+ "ignore": "(\\.git)",
+ "inner_path": "content.json",
+ "modified": 1800000000,
+ "optional": "(guides)",
+ "postmessage_nonce_security": true,
+ "signers_sign": "GyyJkYW7ScPWeaKnF43EZnRpAqeOzisEQSLv8Uf+HDBYKkkQ8wXUo/RWFknu7FX0vw8Qxvjm8sQaIY/hjNFFsXs=",
+ "signs": {
+  "1CoDiNGYdEQX3PmP32K3pbZnrHJ2nWxXun": "HMoYxufVjOYb8e9+bTxjBrtoS8LVhy1f0V67H/CBnXCdDTGEkFBOrBNt/3HeVEgV0lRMqU0S8MHIj23QEsLLCIo="
+ },
+ "signs_required": 1,
+ "title": "ZeroCoding",
+ "translate": ["js/all.js"],
+ "viewport": "width=device-width, initial-scale=1.0",
+ "zeronet_version": "0.6.4"
+}
