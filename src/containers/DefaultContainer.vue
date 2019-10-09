@@ -67,7 +67,7 @@
         <TheFooter>
             <!--footer-->
             <div>
-                <span class="ml-1">&copy; {{curYear}} <a href="https://d14na.org" target="_blank">D14na MDAO</a>. All rights reserved.</span>
+                <span class="ml-1">&copy; 2018-{{curYear}} <a href="https://d14na.org" target="_blank">D14na MDAO</a>. All rights reserved.</span>
             </div>
             <div class="ml-auto">
                 <span class="mr-1">Powered by</span>

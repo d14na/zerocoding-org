@@ -4,18 +4,18 @@
         footer-tag="footer">
         <div slot="header">
             <i class="fa fa-code mr-2"></i>
-            <strong>Ethers</strong>
+            <strong>Vue.js</strong>
         </div>
 
         <p>
-            The ethers.js library is a compact and complete JavaScript library for Ethereum.
+            Vue.js is an open-source JavaScript framework for building user interfaces and single-page applications.
         </p>
 
         <b-list-group>
             <b-list-group-item>
-                <strong>ethers-v4.0.7.min.js</strong>
-                <button class="btn-pill btn-sm btn-light disabled ml-2">291.2k</button>
-                <Links min="QmNyYn3VJiwHHyDBaYtkcDua3avVuKfaVBy66UxwhbZLba" />
+                <strong>vuejs-v2.5.17.min.js</strong>
+                <button class="btn-pill btn-sm btn-light disabled ml-2">86.5k</button>
+                <Links min="QmYwExkVbo2tQyUmMyvXjf31N58y2ys57ZpSG7Xw6rTZqt" />
             </b-list-group-item>
         </b-list-group>
     </b-card>

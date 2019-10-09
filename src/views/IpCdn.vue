@@ -4,7 +4,10 @@
             <b-col md="6">
                 <ZeroLib />
                 <JQuery />
+                <Vuejs />
+                <SockJsClient />
                 <Ethers />
+                <Flags />
             </b-col>
 
             <b-col md="6">
@@ -29,14 +32,19 @@
 
 <script>
 const Ethers = () => import('@/views/ipcdn/Ethers')
+const Flags = () => import('@/views/ipcdn/Flags')
 const JQuery = () => import('@/views/ipcdn/JQuery')
+const SockJsClient = () => import('@/views/ipcdn/SockJsClient')
+const Vuejs = () => import('@/views/ipcdn/Vuejs')
 const ZeroLib = () => import('@/views/ipcdn/ZeroLib')
 
 export default {
-    name: 'typography',
     components: {
         Ethers,
+        Flags,
         JQuery,
+        SockJsClient,
+        Vuejs,
         ZeroLib,
     }
 }
