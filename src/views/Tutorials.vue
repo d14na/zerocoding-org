@@ -142,7 +142,7 @@ export default {
             }
 
             /* Request markdown from IPFS. */
-            markdown = await superagent(`http://ipfs.io/ipfs/${cid}`)
+            markdown = await superagent(`https://ipfs.io/ipfs/${cid}`)
                 .catch(console.error)
 
             // console.log('MARKDOWN', markdown)

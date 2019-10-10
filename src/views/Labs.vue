@@ -1,160 +1,147 @@
 <template>
-  <div class="animated fadeIn">
-    <div class="card">
-      <div class="card-header">
-        ZEROCODING LABS
-      </div>
-      <div class="card-body">
-        <p>Documentation and examples for Bootstrap typography, including global settings, headings, body text, lists, and more.</p>
+    <div class="animated fadeIn">
+        <div class="card">
+            <div class="card-header">
+                ZEROCODING LABS
+            </div>
+            <div class="card-body">
+                <p>Documentation and examples for Bootstrap typography, including global settings, headings, body text, lists, and more.</p>
 
-          <b-button block variant="primary">Primary</b-button>
-          <b-button block variant="secondary">Secondary</b-button>
-        </b-col>
-      </div>
+                <b-button block variant="primary">Primary</b-button>
+                <b-button block variant="secondary">Secondary</b-button>
+            </div>
+        </div>
+
+        <div id="out"></div>
+
+        <br /><br />
+
+        <button class="btn btn-success" @click="btnAlerts"><h1>TEST: Alerts</h1></button>
+
+        <br /><br />
+
+        <button class="btnNewPermission"><h1>TEST: Permission Request</h1></button>
+        <br /><br />
+        <button class="btnUserInput"><h1>TEST: User Input</h1></button>
+        <br /><br />
+        <button class="btnCertSelect"><h1>TEST: Certificate Select</h1></button>
+        <br /><br />
+        <button class="btnServerInfo"><h1>TEST: Server Info</h1></button>
+        <br /><br />
+        <button class="btnSiteInfo"><h1>TEST: Site Info</h1></button>
+        <br /><br />
+        <button class="btnMergerList"><h1>TEST: Merger Site List</h1></button>
+        <br /><br />
+        <button class="btnCORSPermission"><h1>TEST: CORS Permission (0CDN)</h1></button>
+        <br /><br />
+        <button class="btnChartDb"><h1>TEST: ChartDb</h1></button>
+        <br /><br />
+        <button class="btnNewsfeed"><h1>TEST: Newsfeed</h1></button>
+        <br /><br />
+        <button class="btnNewsfeedList"><h1>TEST: Newsfeed List</h1></button>
+        <br /><br />
+        <button class="btnRunAs"><h1>TEST: Command `as`</h1></button>
+        <br /><br />
+        <button class="btnPubkey"><h1>TEST: Public Key</h1></button>
+        <br /><br />
+        <button class="btnEcies"><h1>TEST: ECIES Encryption</h1></button>
+        <br /><br />
+        <button class="btnUserSettings"><h1>TEST: User Settings</h1></button>
+        <br /><br />
+        <button class="btnP0rtalPlugin"><h1>TEST: P0rtal Plugin</h1></button>
+        <br /><br />
+        <button class="btnMisc"><h1>MISC</h1></button>
     </div>
-
-    <div id="out"></div>
-
-    <br /><br />
-    <button class="btnAlerts"><h1>TEST: Alerts</h1></button>
-    <br /><br />
-    <button class="btnNewPermission"><h1>TEST: Permission Request</h1></button>
-    <br /><br />
-    <button class="btnUserInput"><h1>TEST: User Input</h1></button>
-    <br /><br />
-    <button class="btnCertSelect"><h1>TEST: Certificate Select</h1></button>
-    <br /><br />
-    <button class="btnServerInfo"><h1>TEST: Server Info</h1></button>
-    <br /><br />
-    <button class="btnSiteInfo"><h1>TEST: Site Info</h1></button>
-    <br /><br />
-    <button class="btnMergerList"><h1>TEST: Merger Site List</h1></button>
-    <br /><br />
-    <button class="btnCORSPermission"><h1>TEST: CORS Permission (0CDN)</h1></button>
-    <br /><br />
-    <button class="btnChartDb"><h1>TEST: ChartDb</h1></button>
-    <br /><br />
-    <button class="btnNewsfeed"><h1>TEST: Newsfeed</h1></button>
-    <br /><br />
-    <button class="btnNewsfeedList"><h1>TEST: Newsfeed List</h1></button>
-    <br /><br />
-    <button class="btnRunAs"><h1>TEST: Command `as`</h1></button>
-    <br /><br />
-    <button class="btnPubkey"><h1>TEST: Public Key</h1></button>
-    <br /><br />
-    <button class="btnEcies"><h1>TEST: ECIES Encryption</h1></button>
-    <br /><br />
-    <button class="btnUserSettings"><h1>TEST: User Settings</h1></button>
-    <br /><br />
-    <button class="btnP0rtalPlugin"><h1>TEST: P0rtal Plugin</h1></button>
-    <br /><br />
-    <button class="btnMisc"><h1>MISC</h1></button>
-  </div>
 </template>
 
-<!-- <script src="../libs/jquery.min.js"></script> -->
-<!-- <script src="../libs/zerolib.js"></script> -->
-<!-- <script src="../libs/buffer.js"></script> -->
-
 <script>
-export default {
-  name: 'typography'
+/* Import (local) libraries. */
+import ZeroLib from '../libs/zerolib'
+
+class ZeroApp extends ZeroLib {
+    setSiteInfo(_siteInfo) {
+        console.log('FULL SITE INFO', _siteInfo)
+
+        var out = document.getElementById("out")
+        out.innerHTML =
+            "Page address: " + _siteInfo.address +
+            "<br>- Peers: " + _siteInfo.peers +
+            "<br>- Size: " + _siteInfo.settings.size +
+            "<br>- Modified: " + (new Date(_siteInfo.content.modified*1000))
+    }
+
+    onOpen() {
+        /* Call super. */
+        super.onOpen()
+
+        this.cmd('siteInfo', [], function (_siteInfo) {
+            App.setSiteInfo(_siteInfo)
+        })
+    }
+
+    onEvent(_event, _message) {
+        if (_event === 'setSiteInfo') {
+            this.setSiteInfo(_message.params)
+        } else {
+            this._log('Unknown event:', _event)
+        }
+    }
 }
 
-// class ZeroApp extends ZeroApi {
-//     setSiteInfo(_siteInfo) {
-//         console.log('FULL SITE INFO', _siteInfo)
-//
-//         var out = document.getElementById("out")
-//         out.innerHTML =
-//             "Page address: " + _siteInfo.address +
-//             "<br>- Peers: " + _siteInfo.peers +
-//             "<br>- Size: " + _siteInfo.settings.size +
-//             "<br>- Modified: " + (new Date(_siteInfo.content.modified*1000))
-//     }
-//
-//     onOpen() {
-//         /* Call super. */
-//         super.onOpen()
-//
-//         this.cmd('siteInfo', [], function (_siteInfo) {
-//             App.setSiteInfo(_siteInfo)
-//         })
-//     }
-//
-//     onEvent(_event, _message) {
-//         if (_event === 'setSiteInfo') {
-//             this.setSiteInfo(_message.params)
-//         } else {
-//             this._log('Unknown event:', _event)
-//         }
-//     }
-// }
-//
-// /* Initialize new Zer0net app. */
-// App = new ZeroApp()
-//
-// $('.btnAlerts').click(() => {
-//     console.log('Testing alerts...')
-//     App.cmd('wrapperNotification', ['info', 'Are you looking for this? Cause I found it!', 3000])
-//     App.cmd('wrapperNotification', ['done', 'You\'re all set!', 6000])
-//     App.cmd('wrapperNotification', ['error', 'Oops! Try again...', 9000])
-// })
-//
 // $('.btnNewPermission').click(() => {
 //     console.log('Testing new permission request...')
 //     App.cmd('wrapperPermissionAdd', ['ADMIN'])
 //     // App.cmd('wrapperPermissionAdd', ['Merger:CDN'])
 //     // App.cmd('wrapperPermissionAdd', ['Merger:ZeroMe'])
 // })
-//
+
 // $('.btnUserInput').click(() => {
 //     console.log('Testing user input...')
 //     App.cmd('wrapperPrompt', ['Enter your private key:', 'password'], (_input) => {
 //         App.cmd('wrapperNotification', ['done', `Nice! I see you entered [${_input}]`, 7000])
 //     })
 // })
-//
+
 // $('.btnCertSelect').click(() => {
 //     console.log('Testing certificate selection...')
 //     App.cmd('certSelect', { 'accepted_domains': ['ethnick.bit', 'kaffie.bit', 'kxoid.bit', 'nametag.bit', 'xyzid.bit', 'zeroid.bit'] })
 // })
-//
+
 // $('.btnServerInfo').click(() => {
 //     console.log('Testing server info...')
 //     App.cmd('serverInfo', {}, (_info) => {
 //         console.log('Server Info', _info)
 //     })
 // })
-//
+
 // $('.btnSiteInfo').click(() => {
 //     console.log('Testing site info...')
 //     App.cmd('siteInfo', {}, (_info) => {
 //         console.log('Site Info', _info)
 //     })
 // })
-//
+
 // $('.btnMergerList').click(() => {
 //     console.log('Testing merger site list...')
 //     App.cmd('mergerSiteList', [true], (_list) => {
 //         console.log('Merger Site List', _list)
 //     })
 // })
-//
+
 // $('.btnCORSPermission').click(() => {
 //     console.log('Testing CORS permission...')
 //     App.cmd('corsPermission', ['1ZCDN4UGGVmhRd29DrVVW7vNsbmMvfrr3'], (_success) => {
 //         console.log('Connected via CORS', _success)
 //     })
 // })
-//
+
 // $('.btnChartDb').click(() => {
 //     console.log('Testing Chart Db...')
 //     App.cmd('chartGetPeerLocations', {}, (_results) => {
 //         console.log('Peer locations', _results)
 //     })
 // })
-//
+
 // $('.btnNewsfeed').click(() => {
 //     console.log('Testing Newsfeed...')
 //     query = `
@@ -174,7 +161,7 @@ export default {
 //         console.log('Newsfeed status', _status)
 //     })
 // })
-//
+
 // $('.btnNewsfeedList').click(() => {
 //     console.log('Testing Newsfeed list...')
 //
@@ -186,7 +173,7 @@ export default {
 //         console.log('Newsfeed results', _results)
 //     })
 // })
-//
+
 // $('.btnRunAs').click(() => {
 //     console.log('Testing Command as...')
 //     address = "1ZCDN4UGGVmhRd29DrVVW7vNsbmMvfrr3"
@@ -196,12 +183,12 @@ export default {
 //     // App.cmd("as", [address, "dbQuery", [query, params]], function(res) {
 //         console.log(res)
 //     })
-//
+
 //     // App.cmd('chartGetPeerLocations', {}, (_results) => {
 //     //     console.log('Peer locations', _results)
 //     // })
 // })
-//
+
 // $('.btnPubkey').click(() => {
 //     console.log('Testing Public Key...')
 //
@@ -212,7 +199,7 @@ export default {
 //         console.log('Decoded', decoded.toString('hex'))
 //     })
 // })
-//
+
 // $('.btnEcies').click(() => {
 //     console.log('Testing ECIES Encrypt...')
 //
@@ -253,7 +240,7 @@ export default {
 //         })
 //     })
 // })
-//
+
 // $('.btnUserSettings').click(() => {
 //     console.log('Testing User Settings...')
 //
@@ -274,7 +261,7 @@ export default {
 //         })
 //     })
 // })
-//
+
 // $('.btnP0rtalPlugin').click(() => {
 //     console.log('Testing P0rtal Plugin...')
 //
@@ -282,7 +269,7 @@ export default {
 //         console.log('Blockchain', _results)
 //     })
 // })
-//
+
 // $('.btnMisc').click(() => {
 //     console.log('Miscellaneous...')
 //
@@ -302,44 +289,26 @@ export default {
 //         console.log('MISC RESULTS 2', _results)
 //     })
 // })
-//
-//
-// </script>
-//
-// <script>
-// /**
-//  * Load Zer0net CDN Libraries into Window (Global Context)
-//  *
-//  * NOTE Requires CORS permission (from user) to ZeroCDN.
-//  */
-// const _loadLib = async function(_location) {
-//     /* Initialize ZeroCDN public key. */
-//     const zeroCdn = '1ZCDN4UGGVmhRd29DrVVW7vNsbmMvfrr3'
-//
-//     /* Retrieve the file data. */
-//     const libData = await App.cmd('fileGet', [`cors-${zeroCdn}/libs/${_location}`])
-//
-//     /* Evaluate (execute) JS library data (in global scope). */
-//     eval(libData) // FIXME Is there possibly anything "safer" than eval??
-// }
-//
-// $(async function () {
-//     await _loadLib('moment/2.22.2/js/moment.min.js')
-//     await _loadLib('numeral/2.0.6/js/numeral.min.js')
-//
-//     /* Test injected library. */
-//     const epoch = moment().unix()
-//     const formatted = numeral(epoch).format('0,0')
-//     console.log(`Epoch is [ ${epoch} / ${formatted} ]`)
-//
-//     const cryptOptions = {
-//         param: Buffer.from('040e4d1a27c134d16f15131352c2002d8c141bc059a1b84ef46804cf3369f3a964fcd9826830c50ffc49a3426fb5f27d1b071fc8b394b87bd0e9f23bfa248b8171f55146dd73ac2dcc830394f653f442d908b2bf3e060d87572a7fd9853bb802eef0360d0ccdf39d71870774237d8c3e0943b3ee37e673436908fff07cc6b3de3e', 'hex').toString('base64'),
-//         // param: 'lnVtBSUiIDy6aecVXOD8fwLKACBUqdMW0V43W66mkw8fKhO513TAtpchP3Kc7nIl6jG1KAAgWqwT7xIyTj1oYl0fPZBylnKQS+YRsjMNcFwRZMfK6PD+uQArPKM2lr7vfWVV7gCYmAGoiO7T5jrKLYzTw72C8XYrqxCmcv3Tny77hAajtr4=',
-//         privatekey: 0
-//     }
-//     App.cmd('eciesDecrypt', cryptOptions, (_results) => {
-//         console.log('Decrypted text', _results)
-//     })
-// })
 
+export default {
+    data: () => {
+        return {
+            app: null
+        }
+    },
+    methods: {
+        btnAlerts () {
+            console.log('Testing alerts...')
+
+            this.app.cmd('wrapperNotification', ['info', 'Are you looking for this? Cause I found it!', 3000])
+            this.app.cmd('wrapperNotification', ['done', 'You\'re all set!', 6000])
+            this.app.cmd('wrapperNotification', ['error', 'Oops! Try again...', 9000])
+        }
+    },
+    mounted: function () {
+        // /* Initialize new Zer0net app. */
+        this.app = new ZeroApp()
+
+    },
+}
 </script>

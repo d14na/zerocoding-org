@@ -8,6 +8,7 @@ const DefaultContainer = () => import('@/containers/DefaultContainer')
 const Bounties = () => import('@/views/Bounties')
 const IpCdn = () => import('@/views/IpCdn')
 const FAQ = () => import('@/views/FAQ')
+const GettingStarted = () => import('@/views/GettingStarted')
 const Jobs = () => import('@/views/Jobs')
 const Labs = () => import('@/views/Labs')
 const Plugins = () => import('@/views/Plugins')
@@ -37,6 +38,12 @@ export default new Router({
             name: 'FAQ',
             component: FAQ
 
+        /* Getting Started */
+        }, {
+            path: 'getting-started',
+            name: 'Getting Started',
+            component: GettingStarted
+
         /* IPCDN */
         }, {
             path: 'ipcdn',
@@ -46,7 +53,7 @@ export default new Router({
         /* Jobs */
         }, {
             path: 'jobs',
-            name: 'Jobs & Career',
+            name: 'Jobs Board',
             component: Jobs
 
         /* Labs */
