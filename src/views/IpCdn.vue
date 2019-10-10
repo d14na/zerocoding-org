@@ -32,6 +32,7 @@
 </template>
 
 <script>
+/* Import views. */
 const Ethers = () => import('@/views/ipcdn/Ethers')
 const Flags = () => import('@/views/ipcdn/Flags')
 const JQuery = () => import('@/views/ipcdn/JQuery')

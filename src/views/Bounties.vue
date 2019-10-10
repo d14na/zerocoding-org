@@ -140,11 +140,75 @@
                 </div>
             </b-col>
         </b-row>
+
+        <!-- Under Construction -->
+        <b-modal id="modal-under-construction" centered no-close-on-esc no-close-on-backdrop hide-header-close>
+            <template v-slot:modal-title>
+                <b-img src="https://ipfs.io/ipfs/QmPnhBwSfQksYsB1wCsReVcDK2PnpSzM7TMqfboRrbCZFX" fluid rounded alt="Under Construction (Fancy)"></b-img>
+            </template>
+
+            <UnderConstruction />
+
+            <template v-slot:modal-footer>
+                <button class="btn btn-sm btn-outline-danger float-left" @click="closeNotice">↵ Return</button>
+
+                <small class="text-secondary d-none d-sm-inline-flex"><strong>14 days 6 hours 28 minutes 4 seconds</strong></small>
+                <small class="text-secondary d-sm-none"><strong>14 days 6 hrs 28 mins 4 secs</strong></small>
+            </template>
+        </b-modal>
     </div>
 </template>
 
 <script>
+import CardLine1ChartExample from './dashboard/CardLine1ChartExample'
+import CardLine2ChartExample from './dashboard/CardLine2ChartExample'
+
+/* Import views. */
+const UnderConstruction = () => import('@/views/UnderConstruction')
+
 export default {
-  name: 'typography'
+    components: {
+        CardLine1ChartExample,
+        CardLine2ChartExample,
+        UnderConstruction,
+    },
+    data: () => {
+        return {
+            slide: 0,
+            sliding: null,
+            text: `
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+              richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+              brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
+              tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
+              assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
+              wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+              vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic
+              synth nesciunt you probably haven't heard of them accusamus labore VHS.
+            `,
+        }
+    },
+    methods: {
+        closeNotice () {
+            /* Go back in history ONE stop. */
+            this.$router.go(-1)
+        },
+        suggest () {
+            alert('not right now.')
+        },
+
+        onSlideStart (slide) {
+            console.log('onSlideStart', slide)
+            this.sliding = true
+        },
+        onSlideEnd (slide) {
+            console.log('onSlideEnd', slide)
+            this.sliding = false
+        },
+    },
+    mounted: function () {
+        /* Display the un-dismissable modal. */
+        this.$bvModal.show('modal-under-construction')
+    },
 }
 </script>

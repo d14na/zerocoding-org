@@ -31,7 +31,7 @@ export default {
         icon: 'icon-trophy',
         badge: {
             variant: 'warning',
-            text: 'SOON'
+            text: 'UC'
         }
     }, {
         name: 'Jobs Board',
@@ -39,7 +39,7 @@ export default {
         icon: 'icon-briefcase',
         badge: {
             variant: 'warning',
-            text: 'SOON'
+            text: 'UC'
         }
     }, {
         divider: true
@@ -62,11 +62,19 @@ export default {
     }, {
         name: 'Getting Started',
         url: '/getting-started',
-        icon: 'icon-book-open'
+        icon: 'icon-book-open',
+        badge: {
+            variant: 'warning',
+            text: 'UC'
+        }
     }, {
         name: 'FAQ',
         url: '/faq',
-        icon: 'icon-question'
+        icon: 'icon-question',
+        badge: {
+            variant: 'warning',
+            text: 'UC'
+        }
     }, {
         name: 'Tutorials',
         url: '/tutorials',
