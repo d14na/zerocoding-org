@@ -1,5 +1,5 @@
 <template>
-    <div class="links">
+    <div class="float-right">
         <a :href="ipfs" target="_blank" v-b-tooltip.hover title="ipfs.io"><i class="fa fa-external-link ml-2 text-primary"></i></a>
         <a :href="cloudflare" target="_blank" v-b-tooltip.hover title="cloudflare-ipfs.com"><i class="fa fa-external-link ml-2 text-success"></i></a>
         <a :href="infura" target="_blank" v-b-tooltip.hover title="ipfs.infura.io"><i class="fa fa-external-link ml-2 text-warning"></i></a>
@@ -57,10 +57,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-.links {
-    display: inline-flex;
-    float:right
-}
-</style>
