@@ -21,14 +21,4 @@ $simple-line-font-path: '~simple-line-icons/fonts/';
 @import '~bootstrap-vue/dist/bootstrap-vue.css';
 // Import Main styles for this application
 @import 'assets/scss/style';
-
-// Global Styles
-// FIXME: Eventually to be moved to stylesheet.
-.coming-soon-content {
-    height: 150px;
-    overflow: auto;
-}
-.monetii {
-    cursor: pointer;
-}
 </style>

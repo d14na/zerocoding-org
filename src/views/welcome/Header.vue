@@ -52,73 +52,71 @@
                             <h2 class="text-center">What's Trending Now?</h2>
                             <hr />
 
-                            <ul class="horizontal-bars type-2">
-                                <div class="progress-group">
-                                    <div class="progress-group-header">
-                                        <i class="icon-user progress-group-icon"></i>
-                                        <span class="title">Male</span>
-                                        <span class="ml-auto font-weight-bold">43%</span>
-                                    </div>
-                                    <div class="progress-group-bars">
-                                        <b-progress height={} class="progress-xs" :value="43" variant="warning"></b-progress>
-                                    </div>
+                            <div class="progress-group">
+                                <div class="progress-group-header">
+                                    <i class="icon-user progress-group-icon"></i>
+                                    <span class="title">Male</span>
+                                    <span class="ml-auto font-weight-bold">43%</span>
                                 </div>
-                                <div class="progress-group">
-                                    <div class="progress-group-header">
-                                        <i class="icon-user-female progress-group-icon"></i>
-                                        <span class="title">Female</span>
-                                        <span class="ml-auto font-weight-bold">37%</span>
-                                    </div>
-                                    <div class="progress-group-bars">
-                                        <b-progress height={} class="progress-xs" :value="37" variant="warning"></b-progress>
-                                    </div>
+                                <div class="progress-group-bars">
+                                    <b-progress height={} class="progress-xs" :value="43" variant="warning"></b-progress>
                                 </div>
+                            </div>
+                            <div class="progress-group">
+                                <div class="progress-group-header">
+                                    <i class="icon-user-female progress-group-icon"></i>
+                                    <span class="title">Female</span>
+                                    <span class="ml-auto font-weight-bold">37%</span>
+                                </div>
+                                <div class="progress-group-bars">
+                                    <b-progress height={} class="progress-xs" :value="37" variant="warning"></b-progress>
+                                </div>
+                            </div>
 
-                                <div class="divider text-center">
-                                    <b-button variant="link" size="sm" class="text-muted"><i class="icon-options"></i></b-button>
-                                </div>
+                            <div class="divider text-center">
+                                <b-button variant="link" size="sm" class="text-muted"><i class="icon-options"></i></b-button>
+                            </div>
 
-                                <div class="progress-group">
-                                    <div class="progress-group-header">
-                                        <i class="icon-globe progress-group-icon"></i>
-                                        <span class="title">Organic Search</span>
-                                        <span class="ml-auto font-weight-bold">191,235 <span class="text-muted small">(56%)</span></span>
-                                    </div>
-                                    <div class="progress-group-bars">
-                                        <b-progress height={} class="progress-xs" :value="56" variant="success"></b-progress>
-                                    </div>
+                            <div class="progress-group">
+                                <div class="progress-group-header">
+                                    <i class="icon-globe progress-group-icon"></i>
+                                    <span class="title">Organic Search</span>
+                                    <span class="ml-auto font-weight-bold">191,235 <span class="text-muted small">(56%)</span></span>
                                 </div>
-                                <div class="progress-group">
-                                    <div class="progress-group-header">
-                                        <i class="icon-social-facebook progress-group-icon"></i>
-                                        <span class="title">Facebook</span>
-                                        <span class="ml-auto font-weight-bold">51,223 <span class="text-muted small">(15%)</span></span>
-                                    </div>
-                                    <div class="progress-group-bars">
-                                        <b-progress height={} class="progress-xs" :value="15" variant="success"></b-progress>
-                                    </div>
+                                <div class="progress-group-bars">
+                                    <b-progress height={} class="progress-xs" :value="56" variant="success"></b-progress>
                                 </div>
-                                <div class="progress-group">
-                                    <div class="progress-group-header">
-                                        <i class="icon-social-twitter progress-group-icon"></i>
-                                        <span class="title">Twitter</span>
-                                        <span class="ml-auto font-weight-bold">37,564 <span class="text-muted small">(11%)</span></span>
-                                    </div>
-                                    <div class="progress-group-bars">
-                                        <b-progress height={} class="progress-xs" :value="11" variant="success"></b-progress>
-                                    </div>
+                            </div>
+                            <div class="progress-group">
+                                <div class="progress-group-header">
+                                    <i class="icon-social-facebook progress-group-icon"></i>
+                                    <span class="title">Facebook</span>
+                                    <span class="ml-auto font-weight-bold">51,223 <span class="text-muted small">(15%)</span></span>
                                 </div>
-                                <div class="progress-group">
-                                    <div class="progress-group-header">
-                                        <i class="icon-social-linkedin progress-group-icon"></i>
-                                        <span class="title">LinkedIn</span>
-                                        <span class="ml-auto font-weight-bold">27,319 <span class="text-muted small">&nbsp;(8%)</span></span>
-                                    </div>
-                                    <div class="progress-group-bars">
-                                        <b-progress height={} class="progress-xs" :value="8" variant="success"></b-progress>
-                                    </div>
+                                <div class="progress-group-bars">
+                                    <b-progress height={} class="progress-xs" :value="15" variant="success"></b-progress>
                                 </div>
-                            </ul>
+                            </div>
+                            <div class="progress-group">
+                                <div class="progress-group-header">
+                                    <i class="icon-social-twitter progress-group-icon"></i>
+                                    <span class="title">Twitter</span>
+                                    <span class="ml-auto font-weight-bold">37,564 <span class="text-muted small">(11%)</span></span>
+                                </div>
+                                <div class="progress-group-bars">
+                                    <b-progress height={} class="progress-xs" :value="11" variant="success"></b-progress>
+                                </div>
+                            </div>
+                            <div class="progress-group">
+                                <div class="progress-group-header">
+                                    <i class="icon-social-linkedin progress-group-icon"></i>
+                                    <span class="title">LinkedIn</span>
+                                    <span class="ml-auto font-weight-bold">27,319 <span class="text-muted small">&nbsp;(8%)</span></span>
+                                </div>
+                                <div class="progress-group-bars">
+                                    <b-progress height={} class="progress-xs" :value="8" variant="success"></b-progress>
+                                </div>
+                            </div>
                         </b-tab>
                         <b-tab class="contentWin">
                             <template v-slot:title>

@@ -266,6 +266,10 @@ export default {
 </script>
 
 <style scoped>
+.monetii {
+    cursor: pointer;
+}
+
 /* IE fix */
 #card-chart-01, #card-chart-02 {
     width: 100% !important;

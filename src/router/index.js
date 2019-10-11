@@ -6,6 +6,8 @@ const DefaultContainer = () => import('@/containers/DefaultContainer')
 
 // Views
 const Bounties = () => import('@/views/Bounties')
+const Chans = () => import('@/views/Chans')
+const Design = () => import('@/views/Design')
 const IpCdn = () => import('@/views/IpCdn')
 const FAQ = () => import('@/views/FAQ')
 const GettingStarted = () => import('@/views/GettingStarted')
@@ -31,6 +33,18 @@ export default new Router({
             path: 'bounties',
             name: 'Bounties',
             component: Bounties
+
+        /* Chans */
+        }, {
+            path: 'chans',
+            name: 'Chans',
+            component: Chans
+
+        /* Design */
+        }, {
+            path: 'design',
+            name: 'Design Studios',
+            component: Design
 
         /* FAQ */
         }, {
@@ -59,13 +73,13 @@ export default new Router({
         /* Labs */
         }, {
             path: 'labs',
-            name: 'Labs',
+            name: 'Coding Labs',
             component: Labs
 
         /* Plugins */
         }, {
             path: 'plugins',
-            name: 'Plugins',
+            name: 'Plugins & Add-ons',
             component: Plugins
 
         /* Projects */
@@ -81,11 +95,11 @@ export default new Router({
             component: Tutorials
         },{
             path: 'tutorials/:guideId',
-            name: 'Tutorials',
+            name: 'Tutorial Guide',
             component: Tutorials
         },{
             path: 'tutorials/:guideId/:pageId',
-            name: 'Tutorials',
+            name: 'Tutorial Guide',
             component: Tutorials
 
         /* Welcome */

@@ -17,9 +17,25 @@ export default {
         title: true,
         name: 'Community Center'
     }, {
+        name: 'Chans',
+        url: '/chans',
+        icon: 'icon-earphones-alt',
+        badge: {
+            variant: 'primary',
+            text: 'NEW'
+        }
+    }, {
         name: 'Coding Labs',
         url: '/labs',
         icon: 'icon-chemistry'
+    }, {
+        name: 'Design Studios',
+        url: '/design',
+        icon: 'icon-magic-wand',
+        badge: {
+            variant: 'warning',
+            text: 'UC'
+        }
     }, {
         divider: true
     }, {
@@ -49,7 +65,11 @@ export default {
     }, {
         name: 'IPCDN',
         url: '/ipcdn',
-        icon: 'icon-feed'
+        icon: 'icon-feed',
+        badge: {
+            variant: 'primary',
+            text: 'NEW'
+        }
     }, {
         name: 'Plugins & Add-ons',
         url: '/plugins',

@@ -21,7 +21,7 @@
                 <div class="win-preview fixed-top">
                     <div class="card d-none d-lg-flex card-preview">
                         <div class="card-header">
-                            <strong>FAQ Preview</strong>
+                            <strong>Chan Preview</strong>
                         </div>
 
                         <div class="card-body">
@@ -31,22 +31,6 @@
                 </div>
             </b-col>
         </b-row>
-
-        <!-- Under Construction -->
-        <b-modal id="modal-under-construction" centered no-close-on-esc no-close-on-backdrop hide-header-close>
-            <template v-slot:modal-title>
-                <b-img src="https://ipfs.io/ipfs/QmPnhBwSfQksYsB1wCsReVcDK2PnpSzM7TMqfboRrbCZFX" fluid rounded alt="Under Construction (Fancy)"></b-img>
-            </template>
-
-            <UnderConstruction />
-
-            <template v-slot:modal-footer>
-                <button class="btn btn-sm btn-outline-danger float-left" @click="closeNotice">↵ Return</button>
-
-                <small class="text-secondary d-none d-sm-inline-flex"><strong>14 days 6 hours 28 minutes 4 seconds</strong></small>
-                <small class="text-secondary d-sm-none"><strong>14 days 6 hrs 28 mins 4 secs</strong></small>
-            </template>
-        </b-modal>
     </div>
 </template>
 
