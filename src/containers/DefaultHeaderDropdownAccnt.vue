@@ -4,10 +4,29 @@
             <img
             src="img/dark-hood-icon.jpg"
             class="img-avatar"
-            alt="admin@bootstrapmaster.com" />
+            alt="Guest User" />
         </template>
 
         <template slot="dropdown">
+            <b-dropdown-item>
+                <i class="fa fa-unlock" /> Signin / Auth
+            </b-dropdown-item>
+            <b-dropdown-item>
+                <i class="fa fa-bell-o" /> Updates
+                <b-badge variant="warning">{{numUpdates}}</b-badge>
+            </b-dropdown-item>
+            <b-dropdown-header tag="div" class="text-center">
+                <strong>My Profile</strong>
+            </b-dropdown-header>
+            <b-dropdown-item>
+                <i class="fa fa-bell-o" /> Notifications
+                <b-badge variant="secondary">{{numNotif}}</b-badge>
+            </b-dropdown-item>
+            <b-dropdown-item>
+                <i class="fa fa-lock" /> Signout
+            </b-dropdown-item>
+        </template>
+        <!-- <template slot="dropdown">
             <b-dropdown-header tag="div" class="text-center">
                 <strong>Account</strong>
             </b-dropdown-header>
@@ -37,19 +56,23 @@
             <b-dropdown-divider />
             <b-dropdown-item><i class="fa fa-shield" /> Lock Account</b-dropdown-item>
             <b-dropdown-item><i class="fa fa-lock" /> Logout</b-dropdown-item>
-        </template>
+        </template> -->
     </AppHeaderDropdown>
 </template>
 
 <script>
 import { HeaderDropdown as AppHeaderDropdown } from '@coreui/vue'
+
 export default {
-    name: 'DefaultHeaderDropdownAccnt',
     components: {
         AppHeaderDropdown
     },
     data: () => {
-        return { itemsCount: 42 }
-    }
+        return {
+            numUpdates: 1,
+            numNotif: 0,
+            itemsCount: 42,
+        }
+    },
 }
 </script>

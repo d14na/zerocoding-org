@@ -28,4 +28,7 @@ $simple-line-font-path: '~simple-line-icons/fonts/';
     height: 150px;
     overflow: auto;
 }
+.monetii {
+    cursor: pointer;
+}
 </style>

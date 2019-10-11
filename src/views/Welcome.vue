@@ -1,90 +1,50 @@
 <template>
     <div class="animated fadeIn">
-        <b-row>
-            <b-col sm="6" lg="3">
-                <b-card no-body class="bg-primary">
-                    <b-card-body class="pb-0">
-                        <b-dropdown class="float-right" variant="transparent p-0" right>
-                            <template slot="button-content">
-                                <i class="icon-settings"></i>
-                            </template>
-                            <b-dropdown-item>Action</b-dropdown-item>
-                            <b-dropdown-item>Another action</b-dropdown-item>
-                            <b-dropdown-item>Something else here...</b-dropdown-item>
-                            <b-dropdown-item disabled>Disabled action</b-dropdown-item>
-                        </b-dropdown>
-                        <h4 class="mb-0">9.823</h4>
-                        <p>Members online</p>
-                    </b-card-body>
-                    <card-line1-chart-example chartId="card-chart-01" class="chart-wrapper px-3" style="height:70px;" :height="70"/>
-                </b-card>
-            </b-col>
-            <b-col sm="6" lg="3">
-                <b-card no-body class="bg-info">
-                    <b-card-body class="pb-0">
-                        <b-dropdown class="float-right" variant="transparent p-0" right no-caret>
-                            <template slot="button-content">
-                                <i class="icon-location-pin"></i>
-                            </template>
-                            <b-dropdown-item>Action</b-dropdown-item>
-                            <b-dropdown-item>Another action</b-dropdown-item>
-                            <b-dropdown-item>Something else here...</b-dropdown-item>
-                            <b-dropdown-item disabled>Disabled action</b-dropdown-item>
-                        </b-dropdown>
-                        <h4 class="mb-0">9.823</h4>
-                        <p>Members online</p>
-                    </b-card-body>
-                    <card-line2-chart-example chartId="card-chart-02" class="chart-wrapper px-3" style="height:70px;" :height="70"/>
-                </b-card>
-            </b-col>
-            <b-col sm="12" lg="6">
-                <b-carousel id="carousel1"
-                    class="mb-3"
-                    style="text-shadow: 1px 1px 2px #333;"
-                    controls
-                    indicators
-                    background="#ababab"
-                    :interval="7000"
-                    img-width="1024"
-                    img-height="480"
-                    v-model="slide"
-                    @sliding-start="onSlideStart"
-                    @sliding-end="onSlideEnd"
-                >
-                    <!-- Text slides with image -->
-                    <b-carousel-slide
-                        caption="First slide"
-                        text="Nulla vitae elit libero, a pharetra augue mollis interdum."
-                        img-src="https://lorempixel.com/1024/480/technics/2/">
-                    </b-carousel-slide>
+        <Header />
 
-                    <!-- Slides with custom text -->
-                    <b-carousel-slide img-src="https://lorempixel.com/1024/480/technics/4/">
-                        <h1>Hello world!</h1>
-                    </b-carousel-slide>
-
-                    <!-- Slides with image only -->
-                    <b-carousel-slide img-src="https://lorempixel.com/1024/480/technics/8/">
-                    </b-carousel-slide>
-
-                    <!-- Slides with img slot -->
-                    <!-- Note the classes .d-block and .img-fluid to prevent browser default image alignment -->
-                    <b-carousel-slide>
-                        <img slot="img" class="d-block img-fluid w-100" width="1024" height="480"
-                        src="https://lorempixel.com/1024/480/technics/5/" alt="image slot">
-                    </b-carousel-slide>
-
-                    <!-- Slide with blank fluid image to maintain slide aspect ratio -->
-                    <b-carousel-slide caption="Blank Image" img-blank img-alt="Blank image">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                            eros felis, tincidunt a tincidunt eget, convallis vel est. Ut pellentesque
-                            ut lacus vel interdum.
-                        </p>
-                    </b-carousel-slide>
-                </b-carousel>
-            </b-col>
-        </b-row>
+        <b-card-group class="mb-4">
+            <b-card class="text-white bg-info">
+                <div class="h1 text-muted text-right mb-4">
+                    <i class="icon-people"></i>
+                </div>
+                <div class="h4 mb-0">87.500</div>
+                <small class="text-muted text-uppercase font-weight-bold">Visitors</small>
+                <card-chart-sample chartId="card-chart-sample" class="chart-wrapper px-3" style="height:70px;" :height="70"/>
+            </b-card>
+            <b-card class="text-white bg-success">
+                <div class="h1 text-muted text-right mb-4">
+                    <i class="icon-user-follow"></i>
+                </div>
+                <div class="h4 mb-0">385</div>
+                <small class="text-muted text-uppercase font-weight-bold">New Clients</small>
+                <!-- <b-progress height={} class="progress-xs mt-3 mb-0" variant="success" :value="25"/> -->
+                <card-line2-chart-example chartId="card-chart-02" class="chart-wrapper px-3" style="height:70px;" :height="70"/>
+            </b-card>
+            <b-card class="text-white bg-warning">
+                <div class="h1 text-muted text-right mb-4">
+                    <i class="icon-basket-loaded"></i>
+                </div>
+                <div class="h4 mb-0">1238</div>
+                <small class="text-muted text-uppercase font-weight-bold">Products sold</small>
+                <b-progress height={} class="progress-xs mt-3 mb-0" variant="warning" :value="25"/>
+            </b-card>
+            <b-card class="text-white bg-primary">
+                <div class="h1 text-muted text-right mb-4">
+                    <i class="icon-pie-chart"></i>
+                </div>
+                <div class="h4 mb-0">28%</div>
+                <small class="text-muted text-uppercase font-weight-bold">Returning Visitors</small>
+                <b-progress height={} class="progress-xs mt-3 mb-0" :value="25"/>
+            </b-card>
+            <b-card class="text-white bg-danger">
+                <div class="h1 text-muted text-right mb-4">
+                    <i class="icon-speedometer"></i>
+                </div>
+                <div class="h4 mb-0">5:34:11</div>
+                <small class="text-muted text-uppercase font-weight-bold">Avg. Time</small>
+                <b-progress height={} class="progress-xs mt-3 mb-0" variant="danger" :value="25"/>
+            </b-card>
+        </b-card-group>
 
         <b-card>
             <b-row>
@@ -460,6 +420,9 @@
 </template>
 
 <script>
+import CardChartSample from './welcome/CardChartSample'
+import Header from './welcome/Header'
+
 import CardLine1ChartExample from './dashboard/CardLine1ChartExample'
 import CardLine2ChartExample from './dashboard/CardLine2ChartExample'
 import CardLine3ChartExample from './dashboard/CardLine3ChartExample'
@@ -472,6 +435,9 @@ import { Callout } from '@coreui/vue'
 export default {
     name: 'dashboard',
     components: {
+        CardChartSample,
+        Header,
+
         Callout,
         CardLine1ChartExample,
         CardLine2ChartExample,
@@ -483,8 +449,6 @@ export default {
     },
     data: function () {
         return {
-            slide: 0,
-            sliding: null,
             selected: 'Month',
             tableItems: [
                 {
@@ -538,14 +502,6 @@ export default {
         }
     },
     methods: {
-        onSlideStart (slide) {
-            console.log('onSlideStart', slide)
-            this.sliding = true
-        },
-        onSlideEnd (slide) {
-            console.log('onSlideEnd', slide)
-            this.sliding = false
-        },
         variant (value) {
             let $variant
             if (value <= 25) {
@@ -561,12 +517,12 @@ export default {
         },
         flag (value) {
             return 'flag-icon flag-icon-' + value
-        }
+        },
     }
 }
 </script>
 
-<style>
+<style scoped>
 /* IE fix */
 #card-chart-01, #card-chart-02 {
     width: 100% !important;

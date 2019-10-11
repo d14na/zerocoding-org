@@ -22,10 +22,6 @@
                         <b-form-input class="searchInput" size="lg" type="text" placeholder="What are you looking for?"></b-form-input>
                     </b-input-group>
                 </b-form-group>
-
-                <!-- searchbar placeholder -->
-                <!-- <b-nav-item class="px-3" to="/welcome">Welcome</b-nav-item> -->
-                <!-- <b-nav-item class="px-3" to="/devlist" exact>DevList</b-nav-item> -->
             </b-navbar-nav>
 
             <b-navbar-nav class="ml-auto">
@@ -43,7 +39,7 @@
                 <DefaultHeaderDropdownAccnt/>
             </b-navbar-nav>
 
-            <AsideToggler class="d-none d-lg-block" />
+            <!-- <AsideToggler class="d-none d-lg-block" /> -->
         </AppHeader>
         <div class="app-body">
             <AppSidebar fixed>
@@ -137,6 +133,6 @@ export default {
 
 <style scoped>
 .searchInput {
-    width:550px;
+    width: 550px;
 }
 </style>
