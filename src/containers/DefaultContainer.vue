@@ -19,7 +19,7 @@
                                 <i class="fa fa-search"></i> Search
                             </b-button>
                         </b-input-group-prepend>
-                        <b-form-input class="searchInput" size="lg" type="text" placeholder="What are you looking for?"></b-form-input>
+                        <b-form-input class="searchInput" size="lg" type="text" placeholder="What do ya need dev?"></b-form-input>
                     </b-input-group>
                 </b-form-group>
             </b-navbar-nav>
@@ -41,6 +41,7 @@
 
             <!-- <AsideToggler class="d-none d-lg-block" /> -->
         </AppHeader>
+
         <div class="app-body">
             <AppSidebar fixed>
                 <SidebarHeader/>
@@ -49,22 +50,26 @@
                 <SidebarFooter/>
                 <SidebarMinimizer/>
             </AppSidebar>
+
             <main class="main">
                 <Breadcrumb :list="list"/>
                 <div class="container-fluid">
                     <router-view></router-view>
                 </div>
             </main>
+
             <AppAside fixed>
                 <!--aside-->
                 <DefaultAside/>
             </AppAside>
         </div>
+
         <TheFooter>
             <!--footer-->
             <div>
                 <span class="ml-1">&copy; 2018-{{curYear}} <a href="https://d14na.org" target="_blank">D14na MDAO</a>. All rights reserved.</span>
             </div>
+
             <div class="ml-auto">
                 <span class="mr-1">Powered by</span>
                 <a href="https://coreui.io" target="_blank">CoreUI for Vue</a>

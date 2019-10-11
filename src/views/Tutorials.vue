@@ -2,17 +2,65 @@
     <div class="animated fadeIn">
         <b-row>
             <b-col md="4">
-                <b-card
-                    header-tag="header"
-                    footer-tag="footer">
-                    <div slot="header">
-                        <i class="fa fa-book mr-2"></i>
-                        <strong>Tutorials </strong>
-                    </div>
-                    <b-list-group v-for="guide of guides" v-bind:key="guide.id">
-                        <b-list-group-item button @click="loadGuide(guide.id)">{{guide.title}}</b-list-group-item>
-                    </b-list-group>
-                </b-card>
+                <div role="tablist">
+                    <b-card no-body class="mb-2" v-for="guide of guides" v-bind:key="guide.id" @click="loadGuide(guide.id)">
+                        <b-card-header header-tag="header" class="p-0" role="tab">
+                            <b-button block href="javascript://" v-b-toggle.accordion-1 class="btn-tutorial">
+                                {{guide.title}}
+                                <div class="btn-tutorial-author text-right mr-2">
+                                    Researched and written by <a :href="guide.authorLink" target="_blank" class="text-info"><strong>{{guide.author}}</strong></a>
+                                </div>
+                            </b-button>
+                        </b-card-header>
+
+                        <b-collapse id="accordion-1" visible accordion="my-accordion" role="tabpanel">
+                            <b-card-body>
+                                <h4 class="text-center">Table Of Contents</h4>
+
+                                <ul>
+                                    <li><a href="#/tutorials/the-truth-about-zeronet/1">Chapter 01 — Zites</a></li>
+                                    <li><a href="#/tutorials/the-truth-about-zeronet/2">Chapter 02 — Security</a></li>
+                                    <li><a href="#/tutorials/the-truth-about-zeronet/3">Chapter 03 — Cloning Zites</a></li>
+                                    <li><a href="#/tutorials/the-truth-about-zeronet/4">Chapter 04 — Creating Static Zite</a></li>
+                                    <li><a href="#/tutorials/the-truth-about-zeronet/5">Chapter 05 — ZeroFrame</a></li>
+                                    <li><a href="#/tutorials/the-truth-about-zeronet/6">Chapter 06 — Databases</a></li>
+                                    <li><a href="#/tutorials/the-truth-about-zeronet/7">Chapter 07 — Changing Tables</a></li>
+                                    <li><a href="#/tutorials/the-truth-about-zeronet/8">Chapter 08 — DbSchema</a></li>
+                                    <li><a href="#/tutorials/the-truth-about-zeronet/9">Chapter 09 — User Content</a></li>
+                                    <li><a href="#/tutorials/the-truth-about-zeronet/10">Chapter 10 — Editing User Data</a></li>
+                                    <li><a href="#/tutorials/the-truth-about-zeronet/11">Chapter 11 — Merger Sites</a></li>
+                                    <li><a href="#/tutorials/the-truth-about-zeronet/12">Chapter 12 — Merged Content</a></li>
+                                    <li><a href="#/tutorials/the-truth-about-zeronet/13">Chapter 13 — Ugly Things</a></li>
+                                    <li><a href="#/tutorials/the-truth-about-zeronet/14">Example — ZeroAuth.js</a></li>
+                                    <li><a href="#/tutorials/the-truth-about-zeronet/15">Example — ZeroFS.js</a></li>
+                                    <li><a href="#/tutorials/the-truth-about-zeronet/16">Example — ZeroPage.js</a></li>
+                                </ul>
+                            </b-card-body>
+                        </b-collapse>
+                    </b-card>
+
+                    <b-card no-body class="mb-2">
+                      <b-card-header header-tag="header" class="p-0" role="tab">
+                        <b-button block href="#" v-b-toggle.accordion-2 class="btn-tutorial">Another Tutorial</b-button>
+                      </b-card-header>
+                      <b-collapse id="accordion-2" accordion="my-accordion" role="tabpanel">
+                        <b-card-body>
+                          <b-card-text>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</b-card-text>
+                        </b-card-body>
+                      </b-collapse>
+                    </b-card>
+
+                    <b-card no-body class="mb-2">
+                      <b-card-header header-tag="header" class="p-0" role="tab">
+                        <b-button block href="#" v-b-toggle.accordion-3 class="btn-tutorial">Yet Another Tutorial</b-button>
+                      </b-card-header>
+                      <b-collapse id="accordion-3" accordion="my-accordion" role="tabpanel">
+                        <b-card-body>
+                          <b-card-text>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</b-card-text>
+                        </b-card-body>
+                      </b-collapse>
+                    </b-card>
+                  </div>
             </b-col>
 
             <b-col md="8">
@@ -48,35 +96,11 @@ export default {
         return {
             guides: [{
                 id: 'the-truth-about-zeronet',
-                title: 'The Truth About Zeronet'
+                title: 'The Truth About Zeronet',
+                author: 'Ivanq',
+                authorLink: 'https://github.com/imachug',
             }],
             preview: '',
-            welcome: `
-## Welcome to The Truth About Zeronet
-
-### Researched and written by [Ivanq](https://github.com/imachug)
-
----
-
-### Chapters
-
-- [01 — Zites](#/tutorials/the-truth-about-zeronet/1)
-- [02 — Security](#/tutorials/the-truth-about-zeronet/2)
-- [03 — Cloning Zites](#/tutorials/the-truth-about-zeronet/3)
-- [04 — Creating Static Zite](#/tutorials/the-truth-about-zeronet/4)
-- [05 — ZeroFrame](#/tutorials/the-truth-about-zeronet/5)
-- [06 — Databases](#/tutorials/the-truth-about-zeronet/6)
-- [07 — Changing Tables](#/tutorials/the-truth-about-zeronet/7)
-- [08 — DbSchema](#/tutorials/the-truth-about-zeronet/8)
-- [09 — User Content](#/tutorials/the-truth-about-zeronet/9)
-- [10 — Editing User Data](#/tutorials/the-truth-about-zeronet/10)
-- [11 — Merger Sites](#/tutorials/the-truth-about-zeronet/11)
-- [12 — Merged Content](#/tutorials/the-truth-about-zeronet/12)
-- [13 — Ugly Things](#/tutorials/the-truth-about-zeronet/13)
-- [Example — ZeroAuth.js](#/tutorials/the-truth-about-zeronet/14)
-- [Example — ZeroFS.js](#/tutorials/the-truth-about-zeronet/15)
-- [Example — ZeroPage.js](#/tutorials/the-truth-about-zeronet/16)
-            `
         }
     },
     methods: {
@@ -85,6 +109,7 @@ export default {
             this.$router.push({ path: `/tutorials/${_guideId}` })
         },
         async loadPreview (_pageId) {
+            console.log('LOADING PREVIEW', _pageId);
             let cid = ''
             let markdown = null
             let preview = ''
@@ -171,7 +196,7 @@ export default {
         /* Set (current) route. */
         const route = this.$router.currentRoute
 
-        // console.log('CURRENT ROUTE', route)
+        console.log('CURRENT ROUTE', route)
 
         /* Set guide id. */
         const guideId = route.params.guideId
@@ -179,16 +204,17 @@ export default {
         /* Set page id. */
         const pageId = route.params.pageId
 
-        // console.log('PAGE/GUIDE', guideId, pageId)
+        console.log('PAGE/GUIDE', guideId, pageId)
 
         if (pageId) {
             this.loadPreview(parseInt(pageId))
         } else {
-            this.preview = marked(this.welcome)
+            this.loadPreview(1)
         }
     },
     watch: {
         $route(to, from) {
+            console.log('GOINGTO', to)
             /* Set guide id. */
             const guideId = to.params.guideId
 
@@ -200,85 +226,28 @@ export default {
             if (pageId) {
                 this.loadPreview(parseInt(pageId))
             } else {
-                this.preview = marked(this.welcome)
+                this.loadPreview(1)
             }
         }
     },
 }
-
-/* Initialize ZeroApi. */
-// const zeroApi = new ZeroApi()
-
-function readFile(file, callback) {
-    console.log('READFILE IS DISABLED!!')
-    // zeroApi.cmd('fileGet', [file, false], callback)
-}
-
-// if (!pageNum) {
-//     const markdown = marked(welcome)
-//
-//     /* Update the markup holder. */
-//     $('#preview').html(markdown)
-// } else {
-//     switch(parseInt(pageNum)) {
-//         case 1:
-//             pageName = '01-zites.md'
-//             break
-//         case 2:
-//             pageName = '02-security.md'
-//             break
-//         case 3:
-//             pageName = '03-cloning-zites.md'
-//             break
-//         case 4:
-//             pageName = '04-creating-static-zite.md'
-//             break
-//         case 5:
-//             pageName = '05-zeroframe.md'
-//             break
-//         case 6:
-//             pageName = '06-databases.md'
-//             break
-//         case 7:
-//             pageName = '07-changing-tables.md'
-//             break
-//         case 8:
-//             pageName = '08-dbschema.md'
-//             break
-//         case 9:
-//             pageName = '09-user-content.md'
-//             break
-//         case 10:
-//             pageName = '10-editing-user-data.md'
-//             break
-//         case 11:
-//             pageName = '11-merger-sites.md'
-//             break
-//         case 12:
-//             pageName = '12-merged-content.md'
-//             break
-//         case 13:
-//             pageName = '13-ugly-things.md'
-//             break
-//         default:
-//             pageName = '01-zites.md'
-//             break
-//     }
-//
-//     /* Read the source (markdown) file. */
-//     // readFile(`the-truth-about-zeronet/${pageName}`, (content) => {
-//     //     if (content) {
-//     //         const markdown = marked(welcome + content)
-//     //
-//     //         /* Update the markup holder. */
-//     //         $('#preview').html(markdown)
-//     //     }
-//     // })
-// }
 </script>
 
 <style scoped>
 .previewWin {
     padding: 15px;
+}
+
+.btn-tutorial {
+    /* height: 45px; */
+    padding: 10px 0;
+
+    background-color: rgba(30, 30, 30, 0.8);
+    color: rgba(230, 230, 230, 1.0);
+    font-size: 1.4em;
+}
+.btn-tutorial-author {
+    color: rgba(230, 230, 230, 0.5);
+    font-size: 0.6em;
 }
 </style>

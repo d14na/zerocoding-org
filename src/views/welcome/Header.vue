@@ -5,7 +5,12 @@
                 <div>
                     <b-tabs content-class="mt-3" justified>
                         <b-tab title="Welcome" class="contentWin" active>
-                            <h4 class="">{{greeting}}</h4>
+                            <template v-slot:title>
+                                <strong class="text-warning">Welcome</strong>
+                            </template>
+
+                            <h2 class="text-center">{{greeting}}</h2>
+                            <hr />
 
                             <p>
                                 Arbitror eruditionem ex quamquam, iudicem enim sunt probant illum ea qui magna
@@ -21,7 +26,14 @@
                                 nisi quamquam.
                             </p>
                         </b-tab>
-                        <b-tab title="Second" class="contentWin">
+                        <b-tab class="contentWin">
+                            <template v-slot:title>
+                                <strong class="text-warning">Quick Start</strong>
+                            </template>
+
+                            <h2 class="text-center">Quick Start</h2>
+                            <hr />
+
                             <p class="mb-0">
                                 Nostrud ad nostrud. Iis in irure possumus, si occaecat imitarentur. Multos
                                 eiusmod cernantur. An summis anim a arbitror quo cupidatat de quorum proident ab
@@ -32,15 +44,87 @@
                                 Constias labore malis voluptate velit, fore probant reprehenderit.
                             </p>
                         </b-tab>
-                        <b-tab title="Trending" class="contentWin">
-                            <h4>What's Trending Now?</h4>
+                        <b-tab class="contentWin">
+                            <template v-slot:title>
+                                <strong class="text-warning">Trending</strong>
+                            </template>
 
-                            <ol>
-                                <li>something</li>
-                                <li>something else</li>
-                            </ol>
+                            <h2 class="text-center">What's Trending Now?</h2>
+                            <hr />
+
+                            <ul class="horizontal-bars type-2">
+                                <div class="progress-group">
+                                    <div class="progress-group-header">
+                                        <i class="icon-user progress-group-icon"></i>
+                                        <span class="title">Male</span>
+                                        <span class="ml-auto font-weight-bold">43%</span>
+                                    </div>
+                                    <div class="progress-group-bars">
+                                        <b-progress height={} class="progress-xs" :value="43" variant="warning"></b-progress>
+                                    </div>
+                                </div>
+                                <div class="progress-group">
+                                    <div class="progress-group-header">
+                                        <i class="icon-user-female progress-group-icon"></i>
+                                        <span class="title">Female</span>
+                                        <span class="ml-auto font-weight-bold">37%</span>
+                                    </div>
+                                    <div class="progress-group-bars">
+                                        <b-progress height={} class="progress-xs" :value="37" variant="warning"></b-progress>
+                                    </div>
+                                </div>
+
+                                <div class="divider text-center">
+                                    <b-button variant="link" size="sm" class="text-muted"><i class="icon-options"></i></b-button>
+                                </div>
+
+                                <div class="progress-group">
+                                    <div class="progress-group-header">
+                                        <i class="icon-globe progress-group-icon"></i>
+                                        <span class="title">Organic Search</span>
+                                        <span class="ml-auto font-weight-bold">191,235 <span class="text-muted small">(56%)</span></span>
+                                    </div>
+                                    <div class="progress-group-bars">
+                                        <b-progress height={} class="progress-xs" :value="56" variant="success"></b-progress>
+                                    </div>
+                                </div>
+                                <div class="progress-group">
+                                    <div class="progress-group-header">
+                                        <i class="icon-social-facebook progress-group-icon"></i>
+                                        <span class="title">Facebook</span>
+                                        <span class="ml-auto font-weight-bold">51,223 <span class="text-muted small">(15%)</span></span>
+                                    </div>
+                                    <div class="progress-group-bars">
+                                        <b-progress height={} class="progress-xs" :value="15" variant="success"></b-progress>
+                                    </div>
+                                </div>
+                                <div class="progress-group">
+                                    <div class="progress-group-header">
+                                        <i class="icon-social-twitter progress-group-icon"></i>
+                                        <span class="title">Twitter</span>
+                                        <span class="ml-auto font-weight-bold">37,564 <span class="text-muted small">(11%)</span></span>
+                                    </div>
+                                    <div class="progress-group-bars">
+                                        <b-progress height={} class="progress-xs" :value="11" variant="success"></b-progress>
+                                    </div>
+                                </div>
+                                <div class="progress-group">
+                                    <div class="progress-group-header">
+                                        <i class="icon-social-linkedin progress-group-icon"></i>
+                                        <span class="title">LinkedIn</span>
+                                        <span class="ml-auto font-weight-bold">27,319 <span class="text-muted small">&nbsp;(8%)</span></span>
+                                    </div>
+                                    <div class="progress-group-bars">
+                                        <b-progress height={} class="progress-xs" :value="8" variant="success"></b-progress>
+                                    </div>
+                                </div>
+                            </ul>
                         </b-tab>
-                        <b-tab title="CoC" class="contentWin">
+                        <b-tab class="contentWin">
+                            <template v-slot:title>
+                                <strong class="text-warning">CoC</strong>
+                            </template>
+
                             <CodeOfConduct />
                         </b-tab>
                     </b-tabs>
@@ -96,7 +180,10 @@
 
             <div class="text-right">
                 <b-badge variant="secondary" @click="monetii" class="monetii">
-                    <small class="text-white">Blockchain Ads by Monetii</small>
+                    <small class="text-white">
+                        <i class="fa fa-question-circle mr-0"></i>
+                        Blockchain Ads by Monetii
+                    </small>
                 </b-badge>
             </div>
         </b-col>
@@ -127,7 +214,7 @@ export default {
             this.sliding = false
         },
         monetii () {
-            alert('monetii')
+            window.open('http://127.0.0.1:43110/monetii.bit')
         },
     },
 }
