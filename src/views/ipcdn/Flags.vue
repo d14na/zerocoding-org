@@ -14,12 +14,14 @@
 
         <b-list-group>
             <b-list-group-item>
-                <strong>4 x 3</strong>
-                <img v-for="flag of flags" v-bind:key="flag" class="flag" :src="flagImg(flag)" />
+                <h4>4 x 3</h4>
+                <a :href="flagImg(flag)" v-for="flag of flags" v-bind:key="flag" target="_blank">
+                <img class="flag" :src="flagImg(flag)" /></a>
             </b-list-group-item>
             <b-list-group-item>
-                <strong>1 x 1</strong>
-                <img v-for="flag of flags" v-bind:key="flag" class="square-flag" :src="squareFlagImg(flag)" />
+                <h4>1 x 1</h4>
+                <a :href="flagImg(flag)" v-for="flag of flags" v-bind:key="flag" target="_blank">
+                <img class="square-flag" :src="squareFlagImg(flag)" /></a>
             </b-list-group-item>
         </b-list-group>
     </b-card>

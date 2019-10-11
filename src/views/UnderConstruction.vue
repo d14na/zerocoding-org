@@ -1,14 +1,32 @@
 <template>
-    <div>
-        <b-tabs content-class="mt-3" justified card>
+    <b-card no-body class="mb-0">
+        <b-tabs justified card>
             <b-tab active>
                 <template v-slot:title>
-                    <strong class="d-none d-sm-inline-flex">Dev Status</strong>
+                    <strong class="d-none d-sm-inline-flex">Status &amp; Log</strong>
                     <strong class="d-sm-none">Status</strong>
                 </template>
 
-                <div class="coming-soon-content">
-                    We're BUIDLing something wonderful, just you wait and see.
+                <div class="uc-content">
+                    <b-alert show class="buidl-status mb-3 p-2">
+                        <p class="text-center text-danger mb-1">
+                            <strong>We're Currently BUIDLin’ Something UNSTOPPABLE!</strong>
+                        </p>
+
+                        <b-progress height="10px" class="mb-1">
+                            <b-progress-bar variant="success" :value="60"></b-progress-bar>
+                            <b-progress-bar variant="warning" :value="20" striped animated></b-progress-bar>
+                            <b-progress-bar variant="danger" :value="14"></b-progress-bar>
+                            <b-progress-bar variant="light" :value="6"></b-progress-bar>
+                        </b-progress>
+                    </b-alert>
+
+                    <p class="log-entry">
+                        <strong>Friday, October 11, 2019</strong><br />
+                        We're excited to start rolling out the newly renovated ZeroCoding portal.
+                        We've obviously got a lot of construction happening.
+                        Please be patient and bear with us for a while, as our team puts in <strong class="text-warning">WORK</strong> to get things in proper order.
+                    </p>
                 </div>
             </b-tab>
 
@@ -18,7 +36,7 @@
                     <strong class="d-sm-none">Wishlist</strong>
                 </template>
 
-                <div class="coming-soon-content">
+                <div class="uc-content">
                     <div class="progress-group">
                         <div class="progress-group-header">
                             <i class="icon-user progress-group-icon"></i>
@@ -86,36 +104,55 @@
                     </div>
                 </div>
             </b-tab>
+
             <b-tab>
                 <template v-slot:title>
                     <strong class="d-none d-sm-inline-flex">Make Your Wish</strong>
                     <strong class="d-sm-none">Wish</strong>
                 </template>
 
-                <div class="coming-soon-content">
+                <div class="uc-content">
                     <p>
                         We need your help in getting this project up and running.
                         Please let us know what you need to make it great!
                     </p>
 
-                    Ex incididunt transferrem. Te cernantur consectetur, mentitum tamen enim ut
-                    dolor. Mandaremus enim tamen e aliqua est nisi occaecat ad magna minim, cillum
-                    de id tempor incurreret de sed labore iudicem occaecat.Ex sint coniunctione ea
-                    qui est enim aute dolore, ab officia o appellat, si ita praetermissum, ut
-                    voluptate despicationes, nam enim eram a voluptate ut non summis est esse a
-                    cupidatat eram ubi expetendis graviterque. Ullamco do sunt. Laboris o quid
-                    constias.
+                    <hr />
+
+                    <b-row class="my-1">
+                        <b-col sm="4" class="text-right">
+                            <label for="input-small"><strong>Profile Name</strong></label>
+                        </b-col>
+                        <b-col sm="7">
+                            <b-form-input id="input-small" size="sm" placeholder="Please signin to a profile." readonly></b-form-input>
+                        </b-col>
+                    </b-row>
+
+                    <b-row>
+                        <b-col sm="4" class="text-right">
+                            <label for="textarea-small"><strong>Your Wish</strong></label>
+                        </b-col>
+                        <b-col sm="7">
+                            <b-form-textarea
+                                id="user-wish"
+                                v-model="userWish"
+                                size="sm"
+                                rows="3"
+                                placeholder="Enter your wish here; then click submit below."
+                          ></b-form-textarea>
+                        </b-col>
+                      </b-row>
                 </div>
             </b-tab>
         </b-tabs>
-    </div>
+    </b-card>
 </template>
 
 <script>
 export default {
     data: () => {
         return {
-            //
+            userWish: ''
         }
     },
     methods: {
@@ -132,12 +169,16 @@ export default {
 </script>
 
 <style scoped>
-.coming-soon-content {
-    height: 150px;
+.uc-content {
+    height: 175px;
     overflow: auto;
 }
 
-.wishful-progress {
-    border: 1pt solid #f00;
+.buidl-status {
+    background-color: rgba(30, 30, 30, 0.85);
+}
+
+.log-entry {
+    font-size: 0.8em;
 }
 </style>
