@@ -14,7 +14,7 @@
             <b-col md="6">
                 <div class="card">
                     <div class="card-header">
-                        InterPlanetary Content Delivery Network
+                        <strong>ZeroLib</strong>
                     </div>
 
                     <div class="card-body">
@@ -22,8 +22,16 @@
                             Simply the FASTEST content delivery on the planet. GUARANTEED!
                         </p>
 
-                        <b-button block variant="primary">Getting Started</b-button>
-                        <b-button block variant="secondary">Learn More..</b-button>
+                        <hr />
+
+                        <b-button block variant="primary">IPFS</b-button>
+                        <b-button block variant="success">Cloudflare</b-button>
+                        <b-button block variant="warning">Infura</b-button>
+
+                        <hr />
+
+                        <b-button block variant="outline-danger">Copy to Clipboard</b-button>
+                        <b-button block variant="outline-danger">View Full Source</b-button>
                     </div>
                 </div>
             </b-col>

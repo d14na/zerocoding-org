@@ -2,23 +2,33 @@
     <div class="animated fadeIn">
         <b-row>
             <b-col sm="12" lg="4">
-                <button class="btn btn-outline-dark btn-block mb-3" @click="btnAlerts">Alerts</button>
-                <button class="btn btn-outline-dark btn-block mb-3" @click="btnNewPermission">Permission Request</button>
-                <button class="btn btn-outline-dark btn-block mb-3" @click="btnUserInput">User Input</button>
-                <button class="btn btn-outline-dark btn-block mb-3" @click="btnCertSelect">Certificate Select</button>
-                <button class="btn btn-outline-dark btn-block mb-3" @click="btnServerInfo">Server Info</button>
-                <button class="btn btn-outline-dark btn-block mb-3" @click="btnSiteInfo">Site Info</button>
-                <button class="btn btn-outline-dark btn-block mb-3" @click="btnMergerList">Merger Site List</button>
-                <button class="btn btn-outline-dark btn-block mb-3" @click="btnCORSPermission">CORS Permission (ZeroCDN)</button>
-                <button class="btn btn-outline-dark btn-block mb-3" @click="btnChartDb">ChartDb</button>
-                <button class="btn btn-outline-dark btn-block mb-3" @click="btnNewsfeed">Newsfeed</button>
-                <button class="btn btn-outline-dark btn-block mb-3" @click="btnNewsfeedList">Newsfeed List</button>
-                <button class="btn btn-outline-dark btn-block mb-3" @click="btnRunAs">Command `as`</button>
-                <button class="btn btn-outline-dark btn-block mb-3" @click="btnPubkey">Public Key</button>
-                <button class="btn btn-outline-dark btn-block mb-3" @click="btnEcies">ECIES Encryption</button>
-                <button class="btn btn-outline-dark btn-block mb-3" @click="btnUserSettings">User Settings</button>
-                <button class="btn btn-outline-dark btn-block mb-3" @click="btnPlugin">Blockchain Plugin</button>
-                <button class="btn btn-outline-dark btn-block mb-3" @click="btnMisc">MISC</button>
+                <button class="btn btn-info btn-block mb-3" @click="btnServerInfo">Server Info</button>
+                <button class="btn btn-info btn-block" @click="btnSiteInfo">Site Info</button>
+
+                <div class="divider text-center my-2">
+                    <b-button variant="link" size="sm" class="text-muted"><i class="icon-options"></i></b-button>
+                </div>
+
+                <button class="btn btn-warning btn-block mb-3" @click="btnAlerts">Alerts</button>
+                <button class="btn btn-warning btn-block mb-3" @click="btnUserInput">User Input</button>
+                <button class="btn btn-warning btn-block mb-3" @click="btnReadUserSettings">(Read) User Settings</button>
+                <button class="btn btn-warning btn-block mb-3" @click="btnCertSelect">Certificate Select</button>
+                <button class="btn btn-warning btn-block mb-3" @click="btnMergerList">Merger Site List</button>
+                <button class="btn btn-warning btn-block mb-3" @click="btnPubkey">Public Key</button>
+                <button class="btn btn-warning btn-block mb-3" @click="btnEcies">ECIES Encryption</button>
+                <button class="btn btn-warning btn-block mb-3" @click="btnMisc">MISC</button>
+                <button class="btn btn-warning btn-block mb-3" @click="btnChartDb">ChartDb</button>
+                <button class="btn btn-warning btn-block mb-3" @click="btnNewsfeed">Newsfeed</button>
+                <button class="btn btn-warning btn-block mb-3" @click="btnNewsfeedList">Newsfeed List</button>
+
+                <div class="divider text-center my-2">
+                    <b-button variant="link" size="sm" class="text-muted"><i class="icon-options"></i></b-button>
+                </div>
+
+                <button class="btn btn-danger btn-block mb-3" @click="btnNewPermission">Permission Request</button>
+                <button class="btn btn-danger btn-block mb-3" @click="btnWriteUserSettings">(Write) User Settings</button>
+                <button class="btn btn-danger btn-block mb-3" @click="btnCORSPermission">CORS Permission (ZeroCDN)</button>
+                <button class="btn btn-danger btn-block mb-3" @click="btnRunAs">Command `as`</button>
             </b-col>
 
             <b-col sm="12" lg="8">
@@ -36,10 +46,10 @@
 
                 <b-card class="bg-white">
                     <div slot="header">
-                        The Truth About Zeronet
+                        Lab Preview
 
                         <div class="card-header-actions">
-                            <b-link href="#/tutorials/the-truth-about-zeronet" class="card-header-action btn-setting">
+                            <b-link href="javascript://" class="card-header-action btn-setting">
                                 <i class="icon-home"></i>
                             </b-link>
                             <b-link href="javascript://" class="card-header-action btn-close">
@@ -47,7 +57,7 @@
                             </b-link>
                         </div>
                     </div>
-                    <b-card-body v-html="preview">
+                    <b-card-body v-html="preview" id="display-console">
                         <!-- placeholder for markdown display -->
                     </b-card-body>
                 </b-card>
@@ -68,11 +78,22 @@ import ZeroLib from '../libs/zerolib'
  * Zeronet Application
  */
 class ZeroApp extends ZeroLib {
+    constructor(_supeer) {
+        super(_supeer)
+
+        /* Initialize notification flag. */
+        this.notif = false
+
+        /* Bind methods. */
+        this.onOpen = this.onOpen.bind(this)
+    }
+
     setSiteInfo(_siteInfo) {
         console.log('FULL SITE INFO', _siteInfo)
 
-        var out = document.getElementById("out")
-        out.innerHTML =
+        const displayConsole = document.getElementById('display-console')
+
+        displayConsole.innerHTML =
             "Page address: " + _siteInfo.address +
             "<br>- Peers: " + _siteInfo.peers +
             "<br>- Size: " + _siteInfo.settings.size +
@@ -83,20 +104,34 @@ class ZeroApp extends ZeroLib {
         /* Call super. */
         super.onOpen()
 
-        this.cmd('siteInfo', [], function (_siteInfo) {
-            App.setSiteInfo(_siteInfo)
+        this.cmd('siteInfo', [], (_siteInfo) => {
+            this.setSiteInfo(_siteInfo)
         })
     }
 
     onEvent(_event, _message) {
-        if (_event === 'setSiteInfo') {
+        /* Validate event. */
+        if (typeof _event === 'undefined') {
+            if (!this.notif) {
+                this.notif = true
+                return console.error('What should we do about this undefined?')
+            }
+        }
+
+        switch(_event) {
+        case 'setSiteInfo':
             this.setSiteInfo(_message.params)
-        } else {
+            break
+        default:
+            // FIXME Add notification for Clearnet users to d/l client.
             this._log('Unknown event:', _event)
         }
     }
 }
 
+/**
+ * Vue Application
+ */
 export default {
     data: () => {
         return {
@@ -105,6 +140,17 @@ export default {
         }
     },
     methods: {
+        /**
+         * Display Console Message.
+         */
+        displayOnConsole (_msg) {
+            /* Format message (for display). */
+            const formatted = `<code><pre>${JSON.stringify(_msg, null, 4)}</pre></code>`
+
+            /* Display formatted message. */
+            this.preview = marked(formatted)
+        },
+
         btnAlerts () {
             this.app.cmd('wrapperNotification', ['info', 'Are you looking for this? Cause I found it!', 3000])
             this.app.cmd('wrapperNotification', ['done', 'You\'re all set!', 6000])
@@ -116,36 +162,36 @@ export default {
             // this.app.cmd('wrapperPermissionAdd', ['Merger:ZeroMe'])
         },
         btnUserInput () {
-            this.app.cmd('wrapperPrompt', ['Enter your private key:', 'password'], (_input) => {
-                this.app.cmd('wrapperNotification', ['done', `Nice! I see you entered [${_input}]`, 7000])
+            this.app.cmd('wrapperPrompt', ['Enter your private key:', 'password'], (input) => {
+                this.app.cmd('wrapperNotification', ['done', `Nice! I see you entered [${input}]`, 7000])
             })
         },
         btnCertSelect () {
             this.app.cmd('certSelect', { 'accepted_domains': ['kaffie.bit', 'kxoid.bit', 'nametag.bit', 'zeroid.bit'] })
         },
         btnServerInfo () {
-            this.app.cmd('serverInfo', {}, (_info) => {
-                console.log('Server Info', _info)
+            this.app.cmd('serverInfo', {}, (info) => {
+                this.displayOnConsole(info)
             })
         },
         btnSiteInfo () {
-            this.app.cmd('siteInfo', {}, (_info) => {
-                console.log('Site Info', _info)
+            this.app.cmd('siteInfo', {}, (info) => {
+                this.displayOnConsole(info)
             })
         },
         btnMergerList () {
-            this.app.cmd('mergerSiteList', [true], (_list) => {
-                console.log('Merger Site List', _list)
+            this.app.cmd('mergerSiteList', [true], (list) => {
+                this.displayOnConsole(list)
             })
         },
         btnCORSPermission () {
-            this.app.cmd('corsPermission', ['1ZCDN4UGGVmhRd29DrVVW7vNsbmMvfrr3'], (_success) => {
-                console.log('Connected via CORS', _success)
+            this.app.cmd('corsPermission', ['1ZCDN4UGGVmhRd29DrVVW7vNsbmMvfrr3'], (success) => {
+                this.displayOnConsole(success)
             })
         },
         btnChartDb () {
-            this.app.cmd('chartGetPeerLocations', {}, (_results) => {
-                console.log('Peer locations', _results)
+            this.app.cmd('chartGetPeerLocations', {}, (results) => {
+                this.displayOnConsole(results)
             })
         },
         btnNewsfeed () {
@@ -163,19 +209,18 @@ export default {
 
             const params = ['']
 
-            // this.app.cmd('feedFollow', [{}], (_status) => {
-
-            this.app.cmd('feedFollow', [{"Posts": [query, params]}], (_status) => {
-                console.log('Newsfeed status', _status)
+            // this.app.cmd('feedFollow', [{}], (status) => {
+            this.app.cmd('feedFollow', [{"Posts": [query, params]}], (status) => {
+                this.displayOnConsole(status)
             })
         },
         btnNewsfeedList () {
-            this.app.cmd('feedListFollow', {}, (_list) => {
-                console.log('Newsfeed list', _list)
+            this.app.cmd('feedListFollow', {}, (list) => {
+                this.displayOnConsole(list)
             })
 
-            this.app.cmd('feedQuery', {}, (_results) => {
-                console.log('Newsfeed results', _results)
+            this.app.cmd('feedQuery', {}, (results) => {
+                this.displayOnConsole(results)
             })
         },
         btnRunAs () {
@@ -183,21 +228,26 @@ export default {
             const query = "SELECT * FROM json WHERE file_name = :file_name"
             const params = {"file_name": "data.json"}
 
-            this.app.cmd("as", [address, "siteInfo", {}], function(res) {
-            // this.app.cmd("as", [address, "dbQuery", [query, params]], function(res) {
+            this.app.cmd("as", [address, "siteInfo", {}], (res) => {
+                // this.app.cmd("as", [address, "dbQuery", [query, params]], function(res) {
                 console.log(res)
+                this.displayOnConsole(res)
             })
 
-            // this.app.cmd('chartGetPeerLocations', {}, (_results) => {
-            //     console.log('Peer locations', _results)
+            // this.app.cmd('chartGetPeerLocations', {}, (results) => {
+            //     console.log('Peer locations', results)
             // })
         },
         btnPubkey () {
-            this.app.cmd('userPublickey', {}, (_results) => {
-                console.log('Public key', _results)
+            this.app.cmd('userPublickey', {}, (results) => {
+                console.log('Public key', results)
 
-                const decoded = Buffer.from(_results, 'base64')
+                const decoded = Buffer.from(results, 'base64')
                 console.log('Decoded', decoded.toString('hex'))
+
+                const pkg = { results, decoded }
+
+                this.displayOnConsole(pkg)
             })
         },
         btnEcies () {
@@ -213,32 +263,37 @@ export default {
             }
             console.log('OPTIONS', options)
 
-            this.app.cmd('eciesEncrypt', options, (_results) => {
-                console.log('Encrypted text', _results)
-                console.log('Encrypted text (hex)', Buffer.from(_results, 'base64').toString('hex'))
+            this.app.cmd('eciesEncrypt', options, (results) => {
+                console.log('Encrypted text', results)
+                console.log('Encrypted text (hex)', Buffer.from(results, 'base64').toString('hex'))
 
-                // const cypher = Buffer.from(_results[0], 'base64')
+                // const cypher = Buffer.from(results[0], 'base64')
                 // console.log('CYPHER', cypher.toString('hex'))
 
-                // const pubkey = Buffer.from(_results[0].slice(16, 70), 'base64')
+                // const pubkey = Buffer.from(results[0].slice(16, 70), 'base64')
                 // console.log('PUBKEY', pubkey.toString('hex'))
 
-                // const cypherKey = Buffer.from(_results[1], 'base64')
+                // const cypherKey = Buffer.from(results[1], 'base64')
                 // console.log('CYPHER KEY', cypherKey.toString('hex'))
 
                 const newOptions = {
                     // param: Buffer.from('034f9091a6ef8ed63a337d08e603e37a658d4957ad6de38b57e5c7c85618c39d6398fe587299138e68c8928ed335a62b6faffe6267c506e85d259cff36920df4375588890303ee00eeb548946c079b42283d83d86d26c6c37ebd3afc781cc798dd015b4c7a03cf49aa8af3769cd1c4ae7e', 'hex').toString('base64')
                     // param: 'uVbNWh89O6ldp2NK2T+6DALKACDO9skv2op4R6TtuNSzay7jCQh8KIZsf8i7rKF5T+odEQAg4gQz5UQs2wCOulMTkh5cwu1Lnnv8RMbeigQfFVF3CXKCiYl+jHqtHAAOGZZzqf5kvqp24HB8aCgHLKD8Fs3pxwkDg3tVqvVUXxxC/JdUlNyN4oLlp6cN7xaSnJUhxHTJ'
-                    param: _results,
+                    param: results,
                     // privatekey: 0
                 }
 
-                this.app.cmd('eciesDecrypt', newOptions, (_results) => {
-                    console.log('Decrypted text', _results)
+                this.app.cmd('eciesDecrypt', newOptions, (new_results) => {
+                    const pkg = {
+                        results,
+                        hex: Buffer.from(results, 'base64').toString('hex'),
+                        new_results
+                    }
+                    this.displayOnConsole(pkg)
                 })
             })
         },
-        btnUserSettings () {
+        btnWriteUserSettings () {
             const options = {
                 settings: {
                     hello: 'world',
@@ -248,18 +303,15 @@ export default {
                 }
             }
 
-            this.app.cmd('userSetSettings', options, (_results) => {
-                console.log('User Settings', _results)
+            this.app.cmd('userSetSettings', options, (results) => {
+                console.log('User Settings', results)
 
-                this.app.cmd('userGetSettings', {}, (_results) => {
-                    console.log('Retrieve User Settings', _results)
-                })
+                this.displayOnConsole(results)
             })
         },
-        btnPlugin () {
-            this.app.cmd('blockchain', [], (_results) => {
-                console.log('Blockchain', _results)
-                this.preview = marked(JSON.stringify(_results, null, 4))
+        btnReadUserSettings () {
+            this.app.cmd('userGetSettings', {}, (results) => {
+                this.displayOnConsole(results)
             })
         },
         btnMisc () {
@@ -267,16 +319,16 @@ export default {
                 sample: 'more storage data'
             }
 
-            this.app.cmd('wrapperSetLocalStorage', [], (_err) => {
-                console.log('MISC RESULTS 1', _err)
+            this.app.cmd('wrapperSetLocalStorage', [], (err) => {
+                console.log('MISC RESULTS 1', err)
             })
 
             options = {
 
             }
 
-            this.app.cmd('wrapperGetLocalStorage', options, (_results) => {
-                console.log('MISC RESULTS 2', _results)
+            this.app.cmd('wrapperGetLocalStorage', options, (results) => {
+                this.displayOnConsole(results)
             })
         },
     },

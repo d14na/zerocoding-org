@@ -14,7 +14,7 @@
  *     2. IFPS
  *     3. Ethereum Web3
  *
- * Version 19.10.9
+ * Version 19.10.11
  *
  * Web   : https://d14na.org
  * Email : support@d14na.org
@@ -23,8 +23,19 @@
 
 /* Initialize the ZeroLib Class. */
 class ZeroLib {
-    /* Constructor. */
-    constructor(_url) {
+    /**
+     * Constructor
+     *
+     * ZeroLib can be initialized with a default Supeer (eg. supeer.host),
+     * used for configuration settings and client setup.
+     *
+     * Valid Supeer Address Formats:
+     *     - Domain.Host[:Port#]
+     *     - IPv4[:Port#]
+     *     - IPv6[:Port#]
+     *     - (more gateways added soon..)
+     */
+    constructor(_supeer) {
         /* Bind private (class) functions to `this`. */
         this._init = this._init.bind(this)
         this._connect = this._connect.bind(this)
@@ -39,7 +50,7 @@ class ZeroLib {
         this.onMessage = this.onMessage.bind(this)
 
         /* Initialize data/object holders. */
-        this.url = _url
+        this.supeer = _supeer
         this.pendingCbs = {}
         this.next_message_id = 0
 

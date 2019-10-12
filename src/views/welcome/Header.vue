@@ -27,7 +27,8 @@
                     </b-tab>
                     <b-tab class="contentWin">
                         <template v-slot:title>
-                            <strong class="text-warning">Quick Start</strong>
+                            <strong class="d-none d-sm-inline-flex text-warning">Quick Start</strong>
+                            <strong class="d-sm-none text-warning">Start</strong>
                         </template>
 
                         <h2 class="text-center">Quick Start</h2>
@@ -201,12 +202,12 @@ export default {
         }
     },
     methods: {
-        onSlideStart (slide) {
-            console.log('onSlideStart', slide)
+        onSlideStart (_slide) {
+            // console.log('onSlideStart', _slide)
             this.sliding = true
         },
-        onSlideEnd (slide) {
-            console.log('onSlideEnd', slide)
+        onSlideEnd (_slide) {
+            // console.log('onSlideEnd', _slide)
             this.sliding = false
         },
         monetii () {

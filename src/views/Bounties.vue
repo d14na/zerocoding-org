@@ -1,142 +1,33 @@
 <template>
-  <div class="animated fadeIn">
-      <b-row>
-          <b-col sm="6" lg="3">
-              <b-card no-body class="bg-primary">
-                  <b-card-body class="pb-0">
-                      <b-dropdown class="float-right" variant="transparent p-0" right>
-                          <template slot="button-content">
-                              <i class="icon-settings"></i>
-                          </template>
-                          <b-dropdown-item>Action</b-dropdown-item>
-                          <b-dropdown-item>Another action</b-dropdown-item>
-                          <b-dropdown-item>Something else here...</b-dropdown-item>
-                          <b-dropdown-item disabled>Disabled action</b-dropdown-item>
-                      </b-dropdown>
-                      <h4 class="mb-0">9.823</h4>
-                      <p>Members online</p>
-                  </b-card-body>
-                  <card-line1-chart-example chartId="card-chart-01" class="chart-wrapper px-3" style="height:70px;" :height="70"/>
-              </b-card>
-          </b-col>
-          <b-col sm="6" lg="3">
-              <b-card no-body class="bg-info">
-                  <b-card-body class="pb-0">
-                      <b-dropdown class="float-right" variant="transparent p-0" right no-caret>
-                          <template slot="button-content">
-                              <i class="icon-location-pin"></i>
-                          </template>
-                          <b-dropdown-item>Action</b-dropdown-item>
-                          <b-dropdown-item>Another action</b-dropdown-item>
-                          <b-dropdown-item>Something else here...</b-dropdown-item>
-                          <b-dropdown-item disabled>Disabled action</b-dropdown-item>
-                      </b-dropdown>
-                      <h4 class="mb-0">9.823</h4>
-                      <p>Members online</p>
-                  </b-card-body>
-                  <card-line2-chart-example chartId="card-chart-02" class="chart-wrapper px-3" style="height:70px;" :height="70"/>
-              </b-card>
-          </b-col>
-
-          <b-col sm="12" lg="6">
-              <b-carousel id="carousel1"
-                  class="mb-3"
-                  style="text-shadow: 1px 1px 2px #333;"
-                  controls
-                  indicators
-                  background="#ababab"
-                  :interval="7000"
-                  img-width="1024"
-                  img-height="480"
-                  v-model="slide"
-                  @sliding-start="onSlideStart"
-                  @sliding-end="onSlideEnd"
-              >
-                  <!-- Text slides with image -->
-                  <b-carousel-slide
-                      caption="First slide"
-                      text="Nulla vitae elit libero, a pharetra augue mollis interdum."
-                      img-src="https://lorempixel.com/1024/480/technics/2/">
-                  </b-carousel-slide>
-
-                  <!-- Slides with custom text -->
-                  <b-carousel-slide img-src="https://lorempixel.com/1024/480/technics/4/">
-                      <h1>Hello world!</h1>
-                  </b-carousel-slide>
-
-                  <!-- Slides with image only -->
-                  <b-carousel-slide img-src="https://lorempixel.com/1024/480/technics/8/">
-                  </b-carousel-slide>
-
-                  <!-- Slides with img slot -->
-                  <!-- Note the classes .d-block and .img-fluid to prevent browser default image alignment -->
-                  <b-carousel-slide>
-                      <img slot="img" class="d-block img-fluid w-100" width="1024" height="480"
-                      src="https://lorempixel.com/1024/480/technics/5/" alt="image slot">
-                  </b-carousel-slide>
-
-                  <!-- Slide with blank fluid image to maintain slide aspect ratio -->
-                  <b-carousel-slide caption="Blank Image" img-blank img-alt="Blank image">
-                      <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                          eros felis, tincidunt a tincidunt eget, convallis vel est. Ut pellentesque
-                          ut lacus vel interdum.
-                      </p>
-                  </b-carousel-slide>
-              </b-carousel>
-            </b-col>
-        </b-row>
-
+    <div class="animated fadeIn">
         <b-row>
-            <b-col sm="12" lg="6">
-                <div class="card">
-                  <div class="card-header">
-                    LOOK AT MY RESUME
-                  </div>
-                  <div class="card-body">
-                    <p>Documentation and examples for Bootstrap typography, including global settings, headings, body text, lists, and more.</p>
+            <b-col cols="12" sm="7">
+                <b-card v-for="bounty of bounties">
+                    <b-media>
+                        <template v-slot:aside>
+                            <b-img src="https://picsum.photos/64" width="64" alt="Bounty"></b-img>
+                        </template>
 
-                      <b-button block variant="primary">Primary</b-button>
-                      <b-button block variant="secondary">Secondary</b-button>
-                  </div>
-                </div>
+                        <h5 class="mt-0">{{bounty.title}}</h5>
+
+                        <p class="bounty">
+                            {{bounty.body}}
+                        </p>
+                    </b-media>
+                </b-card>
             </b-col>
 
-            <b-col sm="12" lg="6">
-                <div role="tablist">
-                    <b-card no-body class="mb-1">
-                        <b-card-header header-tag="header" class="p-1" role="tab">
-                            <b-button block href="#" v-b-toggle.accordion-1 variant="info">Accordion 1</b-button>
-                        </b-card-header>
-                        <b-collapse id="accordion-1" visible accordion="my-accordion" role="tabpanel">
-                            <b-card-body>
-                                <b-card-text>I start opened because <code>visible</code> is <code>true</code></b-card-text>
-                                <b-card-text>{{ text }}</b-card-text>
-                            </b-card-body>
-                        </b-collapse>
-                    </b-card>
+            <b-col sm="5">
+                <div class="win-preview fixed-top">
+                    <div class="card d-none d-lg-flex card-preview">
+                        <div class="card-header">
+                            <strong>Bounty Preview</strong>
+                        </div>
 
-                    <b-card no-body class="mb-1">
-                        <b-card-header header-tag="header" class="p-1" role="tab">
-                            <b-button block href="#" v-b-toggle.accordion-2 variant="info">Accordion 2</b-button>
-                        </b-card-header>
-                        <b-collapse id="accordion-2" accordion="my-accordion" role="tabpanel">
-                            <b-card-body>
-                                <b-card-text>{{ text }}</b-card-text>
-                            </b-card-body>
-                        </b-collapse>
-                    </b-card>
-
-                    <b-card no-body class="mb-1">
-                        <b-card-header header-tag="header" class="p-1" role="tab">
-                            <b-button block href="#" v-b-toggle.accordion-3 variant="info">Accordion 3</b-button>
-                        </b-card-header>
-                        <b-collapse id="accordion-3" accordion="my-accordion" role="tabpanel">
-                            <b-card-body>
-                                <b-card-text>{{ text }}</b-card-text>
-                            </b-card-body>
-                        </b-collapse>
-                    </b-card>
+                        <div class="card-body">
+                            <b-img thumbnail fluid src="https://picsum.photos/600" alt="Bounty Preview"></b-img>
+                        </div>
+                    </div>
                 </div>
             </b-col>
         </b-row>
@@ -160,50 +51,83 @@
 </template>
 
 <script>
-import CardLine1ChartExample from './dashboard/CardLine1ChartExample'
-import CardLine2ChartExample from './dashboard/CardLine2ChartExample'
-
 /* Import views. */
 const UnderConstruction = () => import('@/views/UnderConstruction')
 
 export default {
     components: {
-        CardLine1ChartExample,
-        CardLine2ChartExample,
         UnderConstruction,
     },
     data: () => {
         return {
-            slide: 0,
-            sliding: null,
-            text: `
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-              richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
-              brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
-              tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-              assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
-              wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
-              vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic
-              synth nesciunt you probably haven't heard of them accusamus labore VHS.
-            `,
+            tabIndex: 0,
+            bounties: [
+                {
+                    title: 'Bounty #1',
+                    body: `Eram vidisse offendit eu duis ab incididunt de quid eu ad illum constias,
+                    voluptate quo export, mentitum non noster offendit sed pariatur eram fore et
+                    aute de esse proident te summis quorum, nisi singulis id efflorescere. Officia
+                    aut iudicem ad velit possumus de eiusmod. Legam excepteur sed ipsum fore. Ea et
+                    coniunctione est admodum qui illum ullamco, est laboris fidelissimae ad ullamco
+                    noster singulis senserit, duis occaecat hic aliqua aute, nulla senserit ea eram
+                    quorum quo nescius cillum vidisse, si nescius praetermissum.Singulis fugiat hic
+                    probant concursionibus, dolor voluptate et reprehenderit. Et quid labore amet
+                    admodum, aute singulis possumus sed in quorum appellat exercitation, commodo
+                    eram tamen nostrud quorum iis consequat ut consequat, incurreret amet probant
+                    commodo ut ullamco culpa sed mandaremus cohaerescant qui te tamen litteris
+                    familiaritatem. Ex id concursionibus, de esse consequat praesentibus qui irure
+                    instituendarum ullamco quid ullamco iis fugiat probant qui incurreret ne esse a
+                    mentitum ne eiusmod sempiternum hic senserit et id sed cohaerescant, possumus
+                    enim voluptate.`
+                }, {
+                    title: 'Bounty #2',
+                    body: `Fore qui offendit et enim. Ingeniis cillum export occaecat sint, illum si
+                    cupidatat, consequat te dolor, noster cernantur sed philosophari. Ullamco magna
+                    malis do culpa, pariatur iis veniam senserit, ubi e arbitrantur est se proident
+                    se ingeniis.Quae cernantur aliquip, tempor quamquam id despicationes, o id
+                    imitarentur sed an cillum arbitror reprehenderit a mentitum do duis proident, in
+                    elit in nisi si magna ingeniis ubi praesentibus, laborum ea irure nescius. Nulla
+                    proident eu voluptate ea noster si sed ipsum cernantur, quo cillum graviterque
+                    ad esse mentitum a quibusdam. Iudicem do laborum, qui aute philosophari ex
+                    nostrud multos magna ex nisi, commodo multos cupidatat aliquip ne ex velit
+                    fabulas philosophari, non offendit de fabulas id eu a distinguantur e dolor non
+                    proident.`
+                }, {
+                    title: 'Bounty #3',
+                    body: `Sed enim vidisse ne proident velit fore sed quem. Ab de consectetur est
+                    incididunt dolore mentitum aliquip non probant ab aute iis eu enim sunt amet
+                    ullamco. Non sint efflorescere, fore transferrem occaecat fugiat vidisse. Ea a
+                    nulla dolor aliqua, consequat multos fabulas, ubi aut quae doctrina, consequat
+                    sed aliqua quamquam.Veniam quamquam hic enim tamen se duis ut nostrud id id
+                    veniam nostrud tractavissent ut hic o consectetur, cernantur si multos, qui eu
+                    sempiternum ad si amet cernantur praesentibus, do in magna tamen magna. Amet
+                    relinqueret incurreret quis arbitror aut aute nam offendit o senserit dolor
+                    nescius proident non e labore quibusdam arbitror. Excepteur nisi quamquam
+                    quibusdam.`
+                }, {
+                    title: 'Bounty #4',
+                    body: `Cupidatat legam dolor qui fore se admodum de eiusmod hic ad aut esse arbitror,
+                    aliqua ita e quid quibusdam sed legam voluptate se malis anim do esse fabulas
+                    nam distinguantur, occaecat elit anim mandaremus cillum non nisi est in fore
+                    pariatur. Veniam mentitum de fugiat elit in dolor cupidatat nam fidelissimae,
+                    aliquip qui illum, te tamen ne export. Illum do a dolore ingeniis te ipsum
+                    proident incididunt ex probant reprehenderit non commodo, enim possumus
+                    imitarentur de quo legam occaecat tractavissent, an duis noster aute laborum a
+                    deserunt ea eiusmod, ex cernantur in officia. Ex ad concursionibus.Quid
+                    incurreret possumus, deserunt fore quamquam admodum. Nisi officia e appellat,
+                    mentitum multos nam occaecat efflorescere quo duis do ne ipsum iudicem o nostrud
+                    velit noster ingeniis magna, appellat ita quem occaecat, singulis multos aliqua
+                    an esse, hic nisi occaecat nescius, ad aute nam nisi. Litteris est constias si
+                    quis familiaritatem quamquam quorum mandaremus, expetendis export noster o
+                    dolore, probant nam proident. De nulla dolore in doctrina.`
+                }
+            ]
         }
     },
     methods: {
         closeNotice () {
             /* Go back in history ONE stop. */
             this.$router.go(-1)
-        },
-        suggest () {
-            alert('not right now.')
-        },
-
-        onSlideStart (slide) {
-            console.log('onSlideStart', slide)
-            this.sliding = true
-        },
-        onSlideEnd (slide) {
-            console.log('onSlideEnd', slide)
-            this.sliding = false
         },
     },
     mounted: function () {
@@ -212,3 +136,24 @@ export default {
     },
 }
 </script>
+
+<style scoped>
+.win-preview {
+    /* border: 4pt solid #f33; */
+    height: 1px; /* prevent UI blocking */
+}
+
+.card-preview {
+    float: right;
+    width: 30vw;
+
+    margin-top: 125px;
+    margin-right: 25px;
+}
+
+.bounty {
+    display: block;
+    max-height: 65px;
+    overflow: auto;
+}
+</style>
