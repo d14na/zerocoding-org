@@ -5,13 +5,13 @@
                 <b-card v-for="job of jobs">
                     <b-media>
                         <template v-slot:aside>
-                            <b-img src="https://picsum.photos/64" width="64" alt="Job"></b-img>
+                            <b-img :src="job.coverImg" rounded width="64" height="64" alt="Bounty Cover Image"></b-img>
                         </template>
 
                         <h5 class="mt-0">{{job.title}}</h5>
 
                         <p class="job">
-                            {{job.body}}
+                            {{job.coverDesc}}
                         </p>
                     </b-media>
                 </b-card>
@@ -21,11 +21,32 @@
                 <div class="win-preview fixed-top">
                     <div class="card d-none d-lg-flex card-preview">
                         <div class="card-header">
-                            <strong>Job Preview</strong>
+                            <strong>Ambitious, Talented Blockchain Developer</strong>
                         </div>
 
                         <div class="card-body">
-                            <b-img thumbnail fluid src="https://picsum.photos/600" alt="Job Preview"></b-img>
+                            <b-img thumbnail fluid src="https://i.imgur.com/GOHGhmI.png" class="mb-3" alt="Bounty Preview"></b-img>
+
+                            <h4>Description</h4>
+
+                            <p>
+                                We are looking for a lead blockchain full stack engineer, who is passionate about building innovative solutions for a groundbreaking new marketplace. You should be knowledgeable of the existing blockchain stack and visionary in your approach to leveraging its components.
+                            </p>
+
+                            <h4>Requirements</h4>
+
+                            <ol>
+                                <li>Experience working with data architecture, networking, system scalability and security
+                                <li>Experience in Open source, APIs, interoperability, platforms</li>
+                                <li>Working familiarity with blockchain technology and the architecture of decentralized networks</li>
+                                <li>Knowledgeable about Ethereum, Solidity smart-contracts, the Ethereum Virtual Machine, LLL, and IPFS.</li></li>
+                            </ol>
+
+                            <h4>Competitive Salary and/or Equity</h4>
+
+                            <p>
+                                Forge new relationships and connections with global leaders in the blockchain industry You’ll learn more than you thought was possible; our team is obsessed with personal and professional growth.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -63,63 +84,21 @@ export default {
             tabIndex: 0,
             jobs: [
                 {
-                    title: 'Job #1',
-                    body: `Eram vidisse offendit eu duis ab incididunt de quid eu ad illum constias,
-                    voluptate quo export, mentitum non noster offendit sed pariatur eram fore et
-                    aute de esse proident te summis quorum, nisi singulis id efflorescere. Officia
-                    aut iudicem ad velit possumus de eiusmod. Legam excepteur sed ipsum fore. Ea et
-                    coniunctione est admodum qui illum ullamco, est laboris fidelissimae ad ullamco
-                    noster singulis senserit, duis occaecat hic aliqua aute, nulla senserit ea eram
-                    quorum quo nescius cillum vidisse, si nescius praetermissum.Singulis fugiat hic
-                    probant concursionibus, dolor voluptate et reprehenderit. Et quid labore amet
-                    admodum, aute singulis possumus sed in quorum appellat exercitation, commodo
-                    eram tamen nostrud quorum iis consequat ut consequat, incurreret amet probant
-                    commodo ut ullamco culpa sed mandaremus cohaerescant qui te tamen litteris
-                    familiaritatem. Ex id concursionibus, de esse consequat praesentibus qui irure
-                    instituendarum ullamco quid ullamco iis fugiat probant qui incurreret ne esse a
-                    mentitum ne eiusmod sempiternum hic senserit et id sed cohaerescant, possumus
-                    enim voluptate.`
+                    title: 'Ambitious, Talented Blockchain Developer',
+                    coverDesc: `We are looking for a lead blockchain full stack engineer, who is passionate about building innovative solutions for a groundbreaking new marketplace. You should be knowledgeable of the existing blockchain stack and visionary in your approach to leveraging its components.`,
+                    coverImg: 'https://i.imgur.com/GOHGhmI.png',
                 }, {
-                    title: 'Job #2',
-                    body: `Fore qui offendit et enim. Ingeniis cillum export occaecat sint, illum si
-                    cupidatat, consequat te dolor, noster cernantur sed philosophari. Ullamco magna
-                    malis do culpa, pariatur iis veniam senserit, ubi e arbitrantur est se proident
-                    se ingeniis.Quae cernantur aliquip, tempor quamquam id despicationes, o id
-                    imitarentur sed an cillum arbitror reprehenderit a mentitum do duis proident, in
-                    elit in nisi si magna ingeniis ubi praesentibus, laborum ea irure nescius. Nulla
-                    proident eu voluptate ea noster si sed ipsum cernantur, quo cillum graviterque
-                    ad esse mentitum a quibusdam. Iudicem do laborum, qui aute philosophari ex
-                    nostrud multos magna ex nisi, commodo multos cupidatat aliquip ne ex velit
-                    fabulas philosophari, non offendit de fabulas id eu a distinguantur e dolor non
-                    proident.`
+                    title: 'Sales Development Representative',
+                    coverDesc: `We are looking for a motivated, entrepreneurial self-starter with an appetite & passion for sales. Your job will consist of outbound outreach to potential clients and identifying the needs of each company. Sourcing, vetting, selling and closing will make up the large majority of the role.`,
+                    coverImg: 'https://i.imgur.com/9fnXAp3.png',
                 }, {
-                    title: 'Job #3',
-                    body: `Sed enim vidisse ne proident velit fore sed quem. Ab de consectetur est
-                    incididunt dolore mentitum aliquip non probant ab aute iis eu enim sunt amet
-                    ullamco. Non sint efflorescere, fore transferrem occaecat fugiat vidisse. Ea a
-                    nulla dolor aliqua, consequat multos fabulas, ubi aut quae doctrina, consequat
-                    sed aliqua quamquam.Veniam quamquam hic enim tamen se duis ut nostrud id id
-                    veniam nostrud tractavissent ut hic o consectetur, cernantur si multos, qui eu
-                    sempiternum ad si amet cernantur praesentibus, do in magna tamen magna. Amet
-                    relinqueret incurreret quis arbitror aut aute nam offendit o senserit dolor
-                    nescius proident non e labore quibusdam arbitror. Excepteur nisi quamquam
-                    quibusdam.`
+                    title: 'Ambitions Crypto Content Researcher',
+                    coverDesc: `We’re looking for a technical writer eager to join our team to bring clarity and transparency to cryptocurrency space. The ideal candidate must have the intellectual curiosity and a desire to learn everything cryptocurrency as well as the technical know-how to write crypto-related research reports from scratch.`,
+                    coverImg: 'https://i.imgur.com/6Zekykf.png',
                 }, {
-                    title: 'Job #4',
-                    body: `Cupidatat legam dolor qui fore se admodum de eiusmod hic ad aut esse arbitror,
-                    aliqua ita e quid quibusdam sed legam voluptate se malis anim do esse fabulas
-                    nam distinguantur, occaecat elit anim mandaremus cillum non nisi est in fore
-                    pariatur. Veniam mentitum de fugiat elit in dolor cupidatat nam fidelissimae,
-                    aliquip qui illum, te tamen ne export. Illum do a dolore ingeniis te ipsum
-                    proident incididunt ex probant reprehenderit non commodo, enim possumus
-                    imitarentur de quo legam occaecat tractavissent, an duis noster aute laborum a
-                    deserunt ea eiusmod, ex cernantur in officia. Ex ad concursionibus.Quid
-                    incurreret possumus, deserunt fore quamquam admodum. Nisi officia e appellat,
-                    mentitum multos nam occaecat efflorescere quo duis do ne ipsum iudicem o nostrud
-                    velit noster ingeniis magna, appellat ita quem occaecat, singulis multos aliqua
-                    an esse, hic nisi occaecat nescius, ad aute nam nisi. Litteris est constias si
-                    quis familiaritatem quamquam quorum mandaremus, expetendis export noster o
-                    dolore, probant nam proident. De nulla dolore in doctrina.`
+                    title: 'PR Coordinator',
+                    coverDesc: `We are looking for a motivated and autonomous PR specialist to join our fast growing team. At MLG Blockchain Consulting we value ownership and initiative-taking, therefore we are looking for someone that can take on a project and run with it from beginning to end.`,
+                    coverImg: 'https://i.imgur.com/WuZL5Va.png',
                 }
             ]
         }
