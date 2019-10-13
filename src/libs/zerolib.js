@@ -11,7 +11,8 @@
  *
  * In development are 3 stubs for supporting decentralized networks:
  *     1. BitMessage
- *     2. IFPS
+ *     2. IPFS
+ *     2. IPLD
  *     3. Ethereum Web3
  *
  * Version 19.10.11
@@ -131,34 +132,10 @@ class ZeroLib {
         return this._send({ cmd, to, result })
     }
 
-    /**
-     * Execute Command (Make Request)
-     *
-     * Send a command request to the client for processing.
+
+    /***************************************************************************
+     * EVENT HANDLERS
      */
-    cmd(cmd, params, _cb) {
-        if (params === null) {
-            params = {}
-        }
-
-        /* Send with (promise) callback. */
-        if (typeof _cb === 'undefined') {
-            return new Promise((resolve, reject) => {
-                this._send({ cmd, params }, (_res) => {
-                    if (_res && _res.error) {
-                        reject(_res.error)
-                    } else {
-                        resolve(_res)
-                    }
-                })
-            })
-        }
-
-        /* Send with (legacy) callback. */
-        // NOTE Callbacks have been deprecated.
-        //      Please migrate all code to (async/await) promises.
-        return this._send({ cmd, params }, _cb)
-    }
 
     /**
      * Event Received
@@ -219,6 +196,64 @@ class ZeroLib {
         }
     }
 
+
+    /***************************************************************************
+     * ACTIONS
+     */
+
+    /**
+     * Execute Command (Make Request)
+     *
+     * Send a command request to the client for processing.
+     */
+    cmd(cmd, params, _cb) {
+        if (params === null) {
+            params = {}
+        }
+
+        /* Send with (promise) callback. */
+        if (typeof _cb === 'undefined') {
+            return new Promise((resolve, reject) => {
+                this._send({ cmd, params }, (_res) => {
+                    if (_res && _res.error) {
+                        reject(_res.error)
+                    } else {
+                        resolve(_res)
+                    }
+                })
+            })
+        }
+
+        /* Send with (legacy) callback. */
+        // NOTE Callbacks have been deprecated.
+        //      Please migrate all code to (async/await) promises.
+        return this._send({ cmd, params }, _cb)
+    }
+
+
+    /***************************************************************************
+     * GETTERS
+     */
+
+    /**
+     * Get Host
+     *
+     * Currently available responses are:
+     *     1. zeronet
+     *     2. clearnet
+     *     3. ipfs
+     *     4. swarm
+     *     5. tor
+     */
+    getHost() {
+        // TODO
+    }
+
+
+    /***************************************************************************
+     * SUB-NETWORKS
+     */
+
     /**
      * BitMessage Stub
      */
@@ -236,10 +271,28 @@ class ZeroLib {
         }
     }
 
+
     /**
      * IPFS Stub
      */
     ipfs() {
+        return {
+            /* Handle ping (from host/parent). */
+            ping: function () {
+                return new Promise((resolve, reject) => {
+                    if (!resolve) return reject('Oops!')
+
+                    /* Send pong (response). */
+                    resolve('pong')
+                })
+            }
+        }
+    }
+
+    /**
+     * IPLD Stub
+     */
+    ipld() {
         return {
             /* Handle ping (from host/parent). */
             ping: function () {

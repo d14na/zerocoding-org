@@ -8,6 +8,7 @@ const DefaultContainer = () => import('@/containers/DefaultContainer')
 const Bounties = () => import('@/views/Bounties')
 const Chans = () => import('@/views/Chans')
 const Design = () => import('@/views/Design')
+const HelloZero = () => import('@/views/HelloZero')
 const IpCdn = () => import('@/views/IpCdn')
 const FAQ = () => import('@/views/FAQ')
 const GettingStarted = () => import('@/views/GettingStarted')
@@ -57,6 +58,12 @@ export default new Router({
             path: 'getting-started',
             name: 'Getting Started',
             component: GettingStarted
+
+        /* Hello, Zero! */
+        }, {
+            path: 'hello-zero',
+            name: 'Hello, Zero!',
+            component: HelloZero
 
         /* IPCDN */
         }, {

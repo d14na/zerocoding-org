@@ -63,9 +63,13 @@ export default {
         title: true,
         name: 'Resource Center'
     }, {
+        name: 'Hello, Zero!',
+        url: '/hello-zero',
+        icon: 'icon-rocket'
+    }, {
         name: 'IPCDN',
         url: '/ipcdn',
-        icon: 'icon-feed',
+        icon: 'icon-globe',
         badge: {
             variant: 'primary',
             text: 'NEW'
