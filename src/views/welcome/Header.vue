@@ -1,6 +1,6 @@
 <template>
     <b-row>
-        <b-col sm="12" lg="6">
+        <b-col sm="12" lg="7">
             <b-card no-body class="mb-0">
                 <b-tabs justified card>
                     <b-tab title="Welcome" class="contentWin" active>
@@ -128,51 +128,57 @@
                 </b-tabs>
             </b-card>
         </b-col>
-        <b-col sm="12" lg="6">
+
+        <b-col sm="12" lg="5">
             <b-carousel id="carousel1"
                 class="mb-0"
-                style="text-shadow: 1px 1px 2px #333;"
-                controls
                 indicators
                 background="#ababab"
                 :interval="7000"
-                img-width="1024"
-                img-height="480"
+                img-width="336"
+                img-height="280"
                 v-model="slide"
                 @sliding-start="onSlideStart"
                 @sliding-end="onSlideEnd"
             >
                 <!-- Text slides with image -->
-                <b-carousel-slide
+                <!-- <b-carousel-slide
                     caption="First slide"
                     text="Nulla vitae elit libero, a pharetra augue mollis interdum."
                     img-src="https://lorempixel.com/1024/480/technics/2/">
-                </b-carousel-slide>
+                </b-carousel-slide> -->
 
                 <!-- Slides with custom text -->
-                <b-carousel-slide img-src="https://lorempixel.com/1024/480/technics/4/">
+                <!-- <b-carousel-slide img-src="https://lorempixel.com/1024/480/technics/4/">
                     <h1>Hello world!</h1>
-                </b-carousel-slide>
+                </b-carousel-slide> -->
 
-                <!-- Slides with image only -->
-                <b-carousel-slide img-src="https://lorempixel.com/1024/480/technics/8/">
+                <!-- Ad Slot #3 -->
+
+                <!-- <b-carousel-slide img-blank img-alt="Blank image">
+                    <b-img src="https://picsum.photos/300/150/?image=41" fluid rounded alt="Fluid image"></b-img>
+                </b-carousel-slide> -->
+
+                <b-carousel-slide class="ad-slide">
+                    <img slot="img" class="d-block img-fluid img-rounded rounded w-100" width="1024" height="480"
+                    src="https://i.imgur.com/dwgC8XD.png" alt="image slot">
                 </b-carousel-slide>
 
                 <!-- Slides with img slot -->
                 <!-- Note the classes .d-block and .img-fluid to prevent browser default image alignment -->
                 <b-carousel-slide>
-                    <img slot="img" class="d-block img-fluid w-100" width="1024" height="480"
-                    src="https://lorempixel.com/1024/480/technics/5/" alt="image slot">
+                    <img slot="img" class="d-block img-fluid w-100" width="336" height="280"
+                    src="https://i.imgur.com/dwgC8XD.png" alt="image slot">
                 </b-carousel-slide>
 
                 <!-- Slide with blank fluid image to maintain slide aspect ratio -->
-                <b-carousel-slide caption="Blank Image" img-blank img-alt="Blank image">
+                <!-- <b-carousel-slide caption="Blank Image" img-blank img-alt="Blank image">
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
                         eros felis, tincidunt a tincidunt eget, convallis vel est. Ut pellentesque
                         ut lacus vel interdum.
                     </p>
-                </b-carousel-slide>
+                </b-carousel-slide> -->
             </b-carousel>
 
             <div class="text-right">
@@ -225,6 +231,27 @@ export default {
     background-color: rgba(30, 30, 30, 0.8);
     color: rgba(230, 230, 230, 1.0);
 } */
+
+#carousel1 {
+    width: 336px;
+    height: 280px;
+
+    float: right;
+
+    text-shadow: 1px 1px 2px #333;
+
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px; /* future proofing */
+    -khtml-border-radius: 10px; /* for old Konqueror browsers */
+}
+
+.ad-slide {
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px; /* future proofing */
+    -khtml-border-radius: 10px; /* for old Konqueror browsers */
+}
 
 .contentWin {
     height: 205px;

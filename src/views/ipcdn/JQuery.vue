@@ -17,8 +17,8 @@
                 <button class="btn-pill btn-sm btn-light disabled ml-2">86.9k</button>
                 <Links
                     min="QmRbr6GPmMaXViCSY6fErfB14WWdCMBESyRzTPdk6VvjDu"
-                    full="QmWmzYYF9dAcqMDqDjCue4ChpDmAexizqqKp6vngYgWjju"
-                    map="Qmd81mDYLoJc4yRGrDfsTSiX8F6i3RP3ofHfahqJtYnVNN" />
+                    map="Qmd81mDYLoJc4yRGrDfsTSiX8F6i3RP3ofHfahqJtYnVNN"
+                    full="QmWmzYYF9dAcqMDqDjCue4ChpDmAexizqqKp6vngYgWjju" />
             </b-list-group-item>
         </b-list-group>
     </b-card>

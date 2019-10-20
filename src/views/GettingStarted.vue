@@ -12,7 +12,11 @@
                         </div>
                     </template>
 
-                    <strong>The Zeronet? .. Is The Internet .. Built Today!</strong>
+                    <h3>The Zeronet? .. Is The Internet .. Built Today!</h3>
+
+                    <h5 class="text-warning">Let's Take a Trip Down the Rabbit Hole</h5>
+
+                    <b-img src="https://i.imgur.com/oVhT3Zc.png" width="300" />
                 </b-tab>
                 <b-tab>
                     <template v-slot:title>

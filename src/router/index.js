@@ -18,6 +18,7 @@ const Plugins = () => import('@/views/Plugins')
 const Projects = () => import('@/views/Projects')
 const Tutorials = () => import('@/views/Tutorials')
 const Welcome = () => import('@/views/Welcome')
+const Workshop = () => import('@/views/Workshop')
 
 Vue.use(Router)
 
@@ -114,6 +115,12 @@ export default new Router({
             path: 'welcome',
             name: '',
             component: Welcome
+
+        /* Workshop */
+        },{
+            path: 'workshop',
+            name: '',
+            component: Workshop
         }]
     }]
 })

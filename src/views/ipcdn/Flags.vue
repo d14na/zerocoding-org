@@ -4,15 +4,25 @@
         footer-tag="footer">
         <div slot="header">
             <i class="fa fa-code mr-2"></i>
-            <strong>Flags</strong>
+            <strong>Flag Icon CSS</strong>
         </div>
 
         <p>
-            SockJS is a browser JavaScript library that provides a WebSocket-like object.
-            SockJS gives you a coherent, cross-browser, Javascript API which creates a low latency, full duplex, cross-domain communication channel between the browser and the web server.
+            A collection of all country flags in SVG — plus the CSS for easier integration.
         </p>
 
         <b-list-group>
+            <b-list-group-item>
+                <strong>flags-v3.4.3.min.css</strong>
+                <button class="btn-pill btn-sm btn-light disabled ml-2">33.7k</button>
+                <Links min="QmRsHiURBYvnRmKnp3gEsoz8ZR1eGo8ckmjRzx1JkmoDLi/css/flag-icon.min.css" />
+            </b-list-group-item>
+            <b-list-group-item>
+                <span>Example Usage</span>
+                <div class="text-center">
+                    <code>&lt;span class="flag-icon flag-icon-us"&gt;&lt;/span&gt;</code>
+                </div>
+            </b-list-group-item>
             <b-list-group-item>
                 <h4>4 x 3</h4>
                 <a :href="flagImg(flag)" v-for="flag of flags" v-bind:key="flag" target="_blank">

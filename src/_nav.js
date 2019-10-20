@@ -79,6 +79,14 @@ export default {
         url: '/plugins',
         icon: 'icon-pin'
     }, {
+        name: 'Workshop',
+        url: '/workshop',
+        icon: 'icon-wrench',
+        badge: {
+            variant: 'warning',
+            text: 'UC'
+        }
+    }, {
         divider: true
     }, {
         title: true,
