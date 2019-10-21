@@ -144,7 +144,8 @@
             <b-col sm="6" lg="3">
                 <div class="brand-card clickable" @click="openTelegram">
                     <div class="brand-card-header bg-primary">
-                        <i class="fa fa-telegram"></i>
+                        <b-img src="https://i.imgur.com/PG4baGJ.png" width="35" />
+                        <!-- <i class="fa fa-telegram"></i> -->
                         <div class="chart-wrapper">
                             <social-box-chart-example chartId="box-chart-03" :data="[78, 81, 80, 45, 34, 12, 40]" />
                         </div>
@@ -226,10 +227,6 @@ export default {
 </script>
 
 <style scoped>
-.clickable {
-    cursor: pointer;
-}
-
 /* IE fix */
 #card-chart-01, #card-chart-02 {
     width: 100% !important;

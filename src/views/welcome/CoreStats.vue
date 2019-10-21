@@ -32,13 +32,13 @@
                 <div class="h1 text-muted text-right mb-4">
                     <i class="icon-basket-loaded"></i>
                 </div>
-                <div class="h5 mb-0">TheBlackAlley <small>10.6k</small></div>
-                <small class="text-muted text-uppercase font-weight-bold">Most Visited Zites</small>
+                <div class="h5 mb-0">TheBlackAlley <small>5.7k</small></div>
+                <small class="text-muted text-uppercase font-weight-bold">Most Active Zites</small>
                 <div class="mt-2 mb-0 text-right">
-                    <div>Beautyleg腿模 <small>3.5k</small></div>
-                    <div>Jessica Nigri Gallery <small>3.1k</small></div>
-                    <div>Millchan <small>2.7k</small></div>
-                    <div>XiuRen秀人 <small>1.5k</small></div>
+                    <div>Beautyleg腿模 <small>2.3k</small></div>
+                    <div>Jessica Nigri Gallery <small>2.3k</small></div>
+                    <div>Millchan <small>1.9k</small></div>
+                    <div>XiuRen秀人 <small>1.3k</small></div>
                 </div>
             </b-card>
 
