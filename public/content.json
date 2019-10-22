@@ -8,7 +8,7 @@
  "ignore": "(\\.git)",
  "inner_path": "content.json",
  "modified": 1800000000,
- "optional": "(tutorials)",
+ "optional": "(plugins|tutorials)",
  "postmessage_nonce_security": true,
  "signers_sign": "GyyJkYW7ScPWeaKnF43EZnRpAqeOzisEQSLv8Uf+HDBYKkkQ8wXUo/RWFknu7FX0vw8Qxvjm8sQaIY/hjNFFsXs=",
  "signs": {

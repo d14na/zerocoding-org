@@ -207,52 +207,60 @@
                 </div>
             </div><!-- chat-content-header -->
 
+            <!-- start chat content body -->
             <div class="chat-content-body ps ps--active-y">
                 <div class="chat-group">
                     <div class="chat-group-divider">February 20, 2019</div>
+
                     <div class="media">
-                        <div class="avatar avatar-sm avatar-online"><span class="avatar-initial rounded-circle">k</span></div>
+                        <div class="avatar avatar-offline"><img src="img/dark-hood-icon.jpg" class="rounded-circle" alt=""></div>
                         <div class="media-body">
-                            <h6>katherine <small>Today at 1:30am</small></h6>
+                            <h6>s.nakamoto <small>Today at 1:30am</small></h6>
                             <p>Hello everyone, this is my first message to this chan</p>
                             <p>anybody here?</p>
-                        </div><!-- media-body -->
-                </div><!-- media -->
+                        </div>
+                </div>
+
                 <div class="chat-group-divider">February 21, 2019</div>
                     <div class="media">
-                        <div class="avatar avatar-sm avatar-online"><span class="avatar-initial rounded-circle">k</span></div>
+                        <div class="avatar avatar-offline"><img src="img/dark-hood-icon.jpg" class="rounded-circle" alt=""></div>
                         <div class="media-body">
-                            <h6>katherine <small>Yesterday at 4:10am</small></h6>
+                            <h6>s.nakamoto <small>Yesterday at 4:10am</small></h6>
                             <p>I'm back once again!!</p>
                             <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
                         </div><!-- media-body -->
                     </div><!-- media -->
+
                     <div class="media">
-                        <div class="avatar avatar-sm avatar-online"><img src="@/assets/img/img6.jpg" class="rounded-circle" alt=""></div>
+                        <div class="avatar avatar-online"><img src="https://i.imgur.com/pI7Mxug.jpg" class="rounded-circle" alt=""></div>
                         <div class="media-body">
                             <h6>situmay <small>Yesterday at 4:15am</small></h6>
                             <p>Excepteur sint occaecat cupidatat non proident</p>
                             <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse...</p>
                         </div><!-- media-body -->
                     </div><!-- media -->
+
                     <div class="chat-group-divider">February 22, 2019</div>
+
                     <div class="media">
-                        <div class="avatar avatar-sm avatar-offline"><img src="@/assets/img/img8.jpg" class="rounded-circle" alt=""></div>
+                        <div class="avatar avatar-offline"><img src="https://i.imgur.com/Qg5WW6Q.jpg" class="rounded-circle" alt=""></div>
                         <div class="media-body">
                             <h6>rlabares <small>Today at 9:40am</small></h6>
                             <p>Nam libero tempore, cum soluta nobis</p>
-                        </div><!-- media-body -->
-                    </div><!-- media -->
+                        </div>
+                    </div>
+
                     <div class="media">
-                        <div class="avatar avatar-sm avatar-online"><span class="avatar-initial rounded-circle">k</span></div>
+                        <div class="avatar avatar-offline"><img src="img/dark-hood-icon.jpg" class="rounded-circle" alt=""></div>
                         <div class="media-body">
-                            <h6>katherine <small>Today at 10:05am</small></h6>
+                            <h6>s.nakamoto <small>Today at 10:05am</small></h6>
                             <p>I'm back once again!!</p>
                             <p>Et harum quidem rerum facilis est et expedita distinctio.</p>
                             <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
-                        </div><!-- media-body -->
-                    </div><!-- media -->
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="ps__rail-x" style="left: 0px; top: 0px;">
@@ -275,25 +283,25 @@
                             </div><!-- media-body -->
                         </a><!-- media -->
                         <a href="javascript://" class="media">
-                            <div class="avatar avatar-sm avatar-online"><img src="@/assets/img/img6.jpg" class="rounded-circle" alt=""></div>
+                            <div class="avatar avatar-sm avatar-online"><img src="https://i.imgur.com/262FP2N.jpg" class="rounded-circle" alt=""></div>
                             <div class="media-body mg-l-10">
                                 <h6 class="mg-b-0">situmay</h6>
                             </div><!-- media-body -->
                         </a><!-- media -->
                         <a href="javascript://" class="media">
-                            <div class="avatar avatar-sm avatar-offline"><img src="@/assets/img/img7.jpg" class="rounded-circle" alt=""></div>
+                            <div class="avatar avatar-sm avatar-offline"><img src="https://i.imgur.com/1k5A3bj.jpg" class="rounded-circle" alt=""></div>
                             <div class="media-body mg-l-10">
                                 <h6 class="mg-b-0">acantones</h6>
                             </div><!-- media-body -->
                         </a><!-- media -->
                         <a href="javascript://" class="media">
-                            <div class="avatar avatar-sm avatar-offline"><img src="@/assets/img/img8.jpg" class="rounded-circle" alt=""></div>
+                            <div class="avatar avatar-sm avatar-offline"><img src="https://i.imgur.com/yZfoBOs.jpg" class="rounded-circle" alt=""></div>
                             <div class="media-body mg-l-10">
                                 <h6 class="mg-b-0">rlabares</h6>
                             </div><!-- media-body -->
                         </a><!-- media -->
                         <a href="javascript://" class="media">
-                            <div class="avatar avatar-sm avatar-online"><img src="@/assets/img/img9.jpg" class="rounded-circle" alt=""></div>
+                            <div class="avatar avatar-sm avatar-online"><img src="https://i.imgur.com/pI7Mxug.jpg" class="rounded-circle" alt=""></div>
                             <div class="media-body mg-l-10">
                                 <h6 class="mg-b-0">h.owen</h6>
                             </div><!-- media-body -->
@@ -305,7 +313,7 @@
                             </div><!-- media-body -->
                         </a><!-- media -->
                         <a href="javascript://" class="media">
-                            <div class="avatar avatar-sm avatar-online"><img src="@/assets/img/img10.jpg" class="rounded-circle" alt=""></div>
+                            <div class="avatar avatar-sm avatar-online"><img src="https://i.imgur.com/Qg5WW6Q.jpg" class="rounded-circle" alt=""></div>
                             <div class="media-body mg-l-10">
                                 <h6 class="mg-b-0">m.audrey</h6>
                             </div><!-- media-body -->
@@ -317,7 +325,7 @@
                             </div><!-- media-body -->
                         </a><!-- media -->
                         <a href="javascript://" class="media">
-                            <div class="avatar avatar-sm avatar-online"><img src="@/assets/img/img6.jpg" class="rounded-circle" alt=""></div>
+                            <div class="avatar avatar-sm avatar-online"><img src="https://i.imgur.com/262FP2N.jpg" class="rounded-circle" alt=""></div>
                             <div class="media-body mg-l-10">
                                 <h6 class="mg-b-0">e.ocaba</h6>
                             </div><!-- media-body -->

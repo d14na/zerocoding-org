@@ -37,7 +37,7 @@
 
                             <hr />
 
-                            <b-button block variant="warning" @click="test">Run Blockchain Tests</b-button>
+                            <b-button block variant="warning" @click="runTest">Run {{pluginName}} Tests</b-button>
                             <b-button block variant="outline-danger" @click="install">Install Blockchain</b-button>
                             <b-button block variant="outline-danger" @click="uninstall">Uninstall Blockchain</b-button>
                         </div>
@@ -77,22 +77,28 @@ class ZeroApp extends ZeroLib {
         super.onOpen()
     }
 
-    onEvent(_event, _message) {
+    onEvent(evt, msg) {
         /* Validate event. */
-        if (typeof _event === 'undefined') {
+        if (typeof evt === 'undefined') {
             if (!this.notif) {
                 this.notif = true
                 return console.error('What should we do about this undefined?')
             }
         }
 
-        switch(_event) {
-        // case 'setSiteInfo':
-        //     this.setSiteInfo(_message.params)
-        //     break
+        switch(evt) {
+        case 'peerReceive':
+            this.cmd('peerValid', [msg.params.hash]); // This message is valid - broadcast it to other peers
+
+            let text = msg.params.message; // Get message itself
+            let identityAddress = msg.params.signed_by; // and identity address
+
+            console.log(identityAddress + ":", text); // and print them
+
+            break
         default:
             // FIXME Add notification for Clearnet users to d/l client.
-            this._log('Unknown event:', _event)
+            this._log('Unknown event:', evt)
         }
     }
 }
@@ -117,8 +123,18 @@ export default {
                 title: 'Superuser',
                 coverDesc: `For advanced users that are looking for more fine-grained control over their Zeronet experience.`,
                 coverImg: 'https://i.imgur.com/Ce98F9v.jpg',
+            }, {
+                id: 'background',
+                title: 'Background Processing',
+                coverDesc: `ZeroNet plugin for running site code in background, when browser is closed. Safe.`,
+                coverImg: 'https://i.imgur.com/4ZJQwfK.jpg',
             }],
         }
+    },
+    computed: {
+        pluginName () {
+            return 'PeerMessage'
+        },
     },
     methods: {
         getCover (_url) {
@@ -199,22 +215,103 @@ export default {
         uninstall () {
             this.app.cmd('wrapperNotification', ['error', 'Oops! That feature is NOT available yet.', 5000])
         },
-        test () {
-            this.app.cmd('blockchain', [], (results) => {
-                /* Set display object. */
-                const displayConsole = document.getElementById('display-console')
+        async runTest () {
+            /* Initialize hub address. */
+            const HUB_ADDRESS = '1LoBBY2nHUfRBdawmMLhHGRnAGVWTxWBjj'
 
+            /**
+             * Send Message
+             */
+            const _sendMessage = (_text) => {
+                /* Build package. */
+                const pkg = {
+                    message: _text,
+                    privatekey: false
+                }
+
+                console.log('SENDING', pkg)
+
+                /* Send message to those who have downloaded hub. */
+                this.app.cmd('as', [HUB_ADDRESS, 'peerBroadcast', pkg])
+            }
+
+            /* Request permission for hub. */
+            const success = await this.app.cmd('wrapperPermissionAdd', ['Merger:ZeroCoding-Chans'])
+            // const success = await this.app.cmd('permissionAdd', ['Merger:ZC_Chan_Lobby'])
+                .catch(error => {
+                    console.error('MERGER ERROR:', error)
+                })
+            console.log('SUCCESS', success)
+
+            /* Validate permission. */
+            if (success) {
+                /* Add new merger site. */
+                this.app.cmd('mergerSiteAdd', [HUB_ADDRESS])
+            }
+
+            /* Set display object. */
+            const displayConsole = document.getElementById('display-console')
+
+            /* Build package. */
+            const pkg = {
+                text: 'Just a quick, hi there!',
+                // message: 'Just a quick, hi there!',
+                privatekey: false
+            }
+
+            let text = 'Just a quick, hi there!'
+            return _sendMessage(text)
+
+            /* Request peer broadcast. */
+            // const request = await this.app.cmd('peerBroadcast', pkg)
+            const results = await this.app.cmd('peerBroadcast', [text])
+                .catch(error => {
+                    /* Format message (for display). */
+                    const formatted = `<code><pre class="text-white">${JSON.stringify(error, null, 4)}</pre></code>`
+
+                    /* Update display. */
+                    displayConsole.innerHTML = formatted
+                })
+
+            /* Validate results. */
+            if (results) {
                 /* Format message (for display). */
                 const formatted = `<code><pre class="text-white">${JSON.stringify(results, null, 4)}</pre></code>`
 
                 /* Update display. */
                 displayConsole.innerHTML = formatted
-            })
+            }
+
+            // this.app.cmd('blockchain', [], (results) => {
+            //     /* Set display object. */
+            //     const displayConsole = document.getElementById('display-console')
+            //
+            //     /* Format message (for display). */
+            //     const formatted = `<code><pre class="text-white">${JSON.stringify(results, null, 4)}</pre></code>`
+            //
+            //     /* Update display. */
+            //     displayConsole.innerHTML = formatted
+            // })
         },
     },
     mounted: function () {
         /* Initialize new zeronet application. */
         this.app = new ZeroApp()
+
+        this.app.onRequest = function (cmd, message) {
+            alert('onRequest')
+            console.log('CMD', cmd)
+            console.log('MESSAGE', message)
+
+            if (cmd === 'peerReceive') {
+                this.app.cmd('peerValid', [message.params.hash]); // This message is valid - broadcast it to other peers
+
+                let text = message.params.message; // Get message itself
+                let identityAddress = message.params.signed_by; // and identity address
+
+                console.log(identityAddress + ":", text); // and print them
+            }
+        }
     }
 }
 </script>
@@ -234,7 +331,7 @@ export default {
 }
 
 #display-console {
-    height: 150px;
+    height: 100px;
     margin: 20px;
 
     font-size: 0.8em;
