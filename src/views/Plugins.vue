@@ -188,6 +188,8 @@ export default {
                 )
             }
 
+            return this.app.cmd('pluginAddRequest', 'plugins/Blockchain')
+
             if (serverInfo.plugins.indexOf('PeerMessage') > -1 && !serverInfo.plugins_rev.PeerMessage) {
                 return this.app.cmd(
                     'wrapperNotification',
@@ -207,7 +209,7 @@ export default {
                 )
             }
 
-            this.app.cmd('pluginAddRequest', 'plugins/PeerMessage')
+            // this.app.cmd('pluginAddRequest', 'plugins/PeerMessage')
         },
         update () {
             this.app.cmd('wrapperNotification', ['error', 'Oops! That feature is NOT available yet.', 5000])
@@ -216,6 +218,18 @@ export default {
             this.app.cmd('wrapperNotification', ['error', 'Oops! That feature is NOT available yet.', 5000])
         },
         async runTest () {
+            this.app.cmd('blockchain', [], (results) => {
+                /* Set display object. */
+                const displayConsole = document.getElementById('display-console')
+
+                /* Format message (for display). */
+                const formatted = `<code><pre class="text-white">${JSON.stringify(results, null, 4)}</pre></code>`
+
+                /* Update display. */
+                displayConsole.innerHTML = formatted
+            })
+        },
+        async runHubTest () {
             /* Initialize hub address. */
             const HUB_ADDRESS = '1LoBBY2nHUfRBdawmMLhHGRnAGVWTxWBjj'
 
@@ -281,17 +295,6 @@ export default {
                 /* Update display. */
                 displayConsole.innerHTML = formatted
             }
-
-            // this.app.cmd('blockchain', [], (results) => {
-            //     /* Set display object. */
-            //     const displayConsole = document.getElementById('display-console')
-            //
-            //     /* Format message (for display). */
-            //     const formatted = `<code><pre class="text-white">${JSON.stringify(results, null, 4)}</pre></code>`
-            //
-            //     /* Update display. */
-            //     displayConsole.innerHTML = formatted
-            // })
         },
     },
     mounted: function () {

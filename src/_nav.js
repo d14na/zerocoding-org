@@ -75,7 +75,7 @@ export default {
             text: 'NEW'
         }
     }, {
-        name: 'Plug-ins',
+        name: 'Plugins',
         url: '/plugins',
         icon: 'icon-pin'
     }, {

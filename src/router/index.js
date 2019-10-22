@@ -81,7 +81,7 @@ export default new Router({
         /* Plugins */
         }, {
             path: 'plugins',
-            name: 'Plug-ins & Add-ons',
+            name: 'Plugins & Add-ons',
             component: Plugins
 
         /* Projects */
