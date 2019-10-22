@@ -1,11 +1,11 @@
 <template>
     <div class="animated fadeIn">
         <b-row>
-            <b-col cols="12" sm="7">
+            <b-col cols="12" sm="5">
                 <b-card v-for="hello of hellos">
                     <b-media>
                         <template v-slot:aside>
-                            <b-img src="https://picsum.photos/64" width="64" alt="Hello"></b-img>
+                            <b-img class="cover-img" :src="hello.coverImg" rounded alt="Hello"></b-img>
                         </template>
 
                         <h5 class="mt-0">{{hello.title}}</h5>
@@ -17,16 +17,19 @@
                 </b-card>
             </b-col>
 
-            <b-col sm="5">
+            <b-col sm="7">
                 <div class="win-preview fixed-top">
                     <div class="card d-none d-lg-flex card-preview">
                         <div class="card-header">
-                            <strong>Hello Preview</strong>
+                            <strong>Show Me The Code</strong>
                         </div>
 
-                        <div class="card-body">
-                            <b-img thumbnail fluid src="https://picsum.photos/600" alt="Hello Preview"></b-img>
-                        </div>
+                        <!-- placeholder for markdown display -->
+                        <b-alert show id="display-console">
+                            <pre id="display-body">
+                                {{preview}}
+                            </pre>
+                        </b-alert>
                     </div>
                 </div>
             </b-col>
@@ -60,66 +63,80 @@ export default {
     },
     data: () => {
         return {
-            tabIndex: 0,
+            preview: `
+<!DOCTYPE html>
+<html>
+<head>
+    <title>[ZITE-TITLE-HERE]</title>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <base href="" target="_top" id="base">
+    <script>base.href = document.location.href.replace("/media", "").replace("index.html", "").replace(/[&?]wrapper=False/, "").replace(/[&?]wrapper_nonce=[A-Za-z0-9]+/, "")</scr\ipt>
+</head>
+<body>
+    Hello, Zero!
+</body>
+</html>
+            `,
+            fullPreview: `
+<!DOCTYPE html>
+<html>
+<head>
+    <title>[ZITE-TITLE-HERE]</title>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <base href="" target="_top" id="base">
+    <script>base.href = document.location.href.replace("/media", "").replace("index.html", "").replace(/[&?]wrapper=False/, "").replace(/[&?]wrapper_nonce=[A-Za-z0-9]+/, "")</scr\ipt>
+</head>
+<body>
+<div id="out"></div>
+<script type="text/javascript" src="js/ZeroFrame.js"></scr\ipt>
+<script>
+class Page extends ZeroFrame {
+	setSiteInfo(site_info) {
+		var out = document.getElementById("out")
+		out.innerHTML =
+			"Page address: " + site_info.address +
+			"<br>- Peers: " + site_info.peers +
+			"<br>- Size: " + site_info.settings.size +
+			"<br>- Modified: " + (new Date(site_info.content.modified*1000))
+	}
+
+	onOpenWebsocket() {
+		this.cmd("siteInfo", [], function(site_info) {
+			page.setSiteInfo(site_info)
+		})
+	}
+
+	onRequest(cmd, message) {
+		if (cmd == "setSiteInfo")
+			this.setSiteInfo(message.params)
+		else
+			this.log("Unknown incoming message:", cmd)
+	}
+}
+page = new Page()
+</scr\ipt>
+</body>
+</html>
+            `,
             hellos: [
                 {
-                    title: 'Hello #1',
-                    body: `Eram vidisse offendit eu duis ab incididunt de quid eu ad illum constias,
-                    voluptate quo export, mentitum non noster offendit sed pariatur eram fore et
-                    aute de esse proident te summis quorum, nisi singulis id efflorescere. Officia
-                    aut iudicem ad velit possumus de eiusmod. Legam excepteur sed ipsum fore. Ea et
-                    coniunctione est admodum qui illum ullamco, est laboris fidelissimae ad ullamco
-                    noster singulis senserit, duis occaecat hic aliqua aute, nulla senserit ea eram
-                    quorum quo nescius cillum vidisse, si nescius praetermissum.Singulis fugiat hic
-                    probant concursionibus, dolor voluptate et reprehenderit. Et quid labore amet
-                    admodum, aute singulis possumus sed in quorum appellat exercitation, commodo
-                    eram tamen nostrud quorum iis consequat ut consequat, incurreret amet probant
-                    commodo ut ullamco culpa sed mandaremus cohaerescant qui te tamen litteris
-                    familiaritatem. Ex id concursionibus, de esse consequat praesentibus qui irure
-                    instituendarum ullamco quid ullamco iis fugiat probant qui incurreret ne esse a
-                    mentitum ne eiusmod sempiternum hic senserit et id sed cohaerescant, possumus
-                    enim voluptate.`
+                    title: 'Just Show Me The Code',
+                    body: `Okay, KISS! Keepin' It Super Simple is not a problem. Hello, Zero! is the simplest baseline of a working Zeronet website (aka Zite).`,
+                    coverImg: 'https://i.imgur.com/3oedvZ6.jpg',
                 }, {
-                    title: 'Hello #2',
-                    body: `Fore qui offendit et enim. Ingeniis cillum export occaecat sint, illum si
-                    cupidatat, consequat te dolor, noster cernantur sed philosophari. Ullamco magna
-                    malis do culpa, pariatur iis veniam senserit, ubi e arbitrantur est se proident
-                    se ingeniis.Quae cernantur aliquip, tempor quamquam id despicationes, o id
-                    imitarentur sed an cillum arbitror reprehenderit a mentitum do duis proident, in
-                    elit in nisi si magna ingeniis ubi praesentibus, laborum ea irure nescius. Nulla
-                    proident eu voluptate ea noster si sed ipsum cernantur, quo cillum graviterque
-                    ad esse mentitum a quibusdam. Iudicem do laborum, qui aute philosophari ex
-                    nostrud multos magna ex nisi, commodo multos cupidatat aliquip ne ex velit
-                    fabulas philosophari, non offendit de fabulas id eu a distinguantur e dolor non
-                    proident.`
+                    title: 'BUIDL Me Something',
+                    body: `Ready to move on to bigger and better things? NOTE: Zites are INSTANTLY seeded from 0net.Dev to support "initial" publishing from behind those pesky firewalls.`,
+                    coverImg: 'https://i.imgur.com/dxRagsI.png',
                 }, {
-                    title: 'Hello #3',
-                    body: `Sed enim vidisse ne proident velit fore sed quem. Ab de consectetur est
-                    incididunt dolore mentitum aliquip non probant ab aute iis eu enim sunt amet
-                    ullamco. Non sint efflorescere, fore transferrem occaecat fugiat vidisse. Ea a
-                    nulla dolor aliqua, consequat multos fabulas, ubi aut quae doctrina, consequat
-                    sed aliqua quamquam.Veniam quamquam hic enim tamen se duis ut nostrud id id
-                    veniam nostrud tractavissent ut hic o consectetur, cernantur si multos, qui eu
-                    sempiternum ad si amet cernantur praesentibus, do in magna tamen magna. Amet
-                    relinqueret incurreret quis arbitror aut aute nam offendit o senserit dolor
-                    nescius proident non e labore quibusdam arbitror. Excepteur nisi quamquam
-                    quibusdam.`
+                    title: 'I Need To Import A Project?',
+                    body: `Bring your ASP & PHP! Our growing community of developers are ready to support your wildest dreams. SPEDN some crypto and discover the power of BOUNTIES!`,
+                    coverImg: 'https://i.imgur.com/tpTrDoG.jpg',
                 }, {
-                    title: 'Hello #4',
-                    body: `Cupidatat legam dolor qui fore se admodum de eiusmod hic ad aut esse arbitror,
-                    aliqua ita e quid quibusdam sed legam voluptate se malis anim do esse fabulas
-                    nam distinguantur, occaecat elit anim mandaremus cillum non nisi est in fore
-                    pariatur. Veniam mentitum de fugiat elit in dolor cupidatat nam fidelissimae,
-                    aliquip qui illum, te tamen ne export. Illum do a dolore ingeniis te ipsum
-                    proident incididunt ex probant reprehenderit non commodo, enim possumus
-                    imitarentur de quo legam occaecat tractavissent, an duis noster aute laborum a
-                    deserunt ea eiusmod, ex cernantur in officia. Ex ad concursionibus.Quid
-                    incurreret possumus, deserunt fore quamquam admodum. Nisi officia e appellat,
-                    mentitum multos nam occaecat efflorescere quo duis do ne ipsum iudicem o nostrud
-                    velit noster ingeniis magna, appellat ita quem occaecat, singulis multos aliqua
-                    an esse, hic nisi occaecat nescius, ad aute nam nisi. Litteris est constias si
-                    quis familiaritatem quamquam quorum mandaremus, expetendis export noster o
-                    dolore, probant nam proident. De nulla dolore in doctrina.`
+                    title: `So What's The Best Zite?`,
+                    body: `We've put together a showcase of the most awesome zites to help get you inspired. Found a winner? Just CLONE it! And NEVER start from scratch again.`,
+                    coverImg: 'https://i.imgur.com/O0w4iDk.jpg',
                 }
             ]
         }
@@ -145,15 +162,37 @@ export default {
 
 .card-preview {
     float: right;
-    width: 30vw;
+    width: 45vw;
+    /* height: 300px; */
 
     margin-top: 125px;
     margin-right: 25px;
 }
 
+#display-console {
+    height: 380px;
+    margin: 20px;
+
+    overflow: auto;
+
+    font-size: 0.8em;
+    background-color: rgba(30, 30, 30, 0.8);
+}
+#display-body {
+    color: rgba(230, 230, 230, 1.0);
+}
+
 .hello {
     display: block;
-    max-height: 65px;
+    max-height: 105px;
     overflow: auto;
+}
+
+.cover-img {
+    width: 125px;
+    height: 125px;
+
+    object-fit: cover;
+    object-position: center;
 }
 </style>

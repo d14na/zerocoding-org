@@ -7,7 +7,6 @@ const DefaultContainer = () => import('@/containers/DefaultContainer')
 // Views
 const Bounties = () => import('@/views/Bounties')
 const Chans = () => import('@/views/Chans')
-const Design = () => import('@/views/Design')
 const HelloZero = () => import('@/views/HelloZero')
 const IpCdn = () => import('@/views/IpCdn')
 const FAQ = () => import('@/views/FAQ')
@@ -16,9 +15,10 @@ const Jobs = () => import('@/views/Jobs')
 const Labs = () => import('@/views/Labs')
 const Plugins = () => import('@/views/Plugins')
 const Projects = () => import('@/views/Projects')
+const Studios = () => import('@/views/Studios')
 const Tutorials = () => import('@/views/Tutorials')
 const Welcome = () => import('@/views/Welcome')
-const Workshop = () => import('@/views/Workshop')
+const Workshops = () => import('@/views/Workshops')
 
 Vue.use(Router)
 
@@ -41,12 +41,6 @@ export default new Router({
             path: 'chans',
             name: 'Chans',
             component: Chans
-
-        /* Design */
-        }, {
-            path: 'design',
-            name: 'Design Studios',
-            component: Design
 
         /* FAQ */
         }, {
@@ -87,7 +81,7 @@ export default new Router({
         /* Plugins */
         }, {
             path: 'plugins',
-            name: 'Plugins & Add-ons',
+            name: 'Plug-ins & Add-ons',
             component: Plugins
 
         /* Projects */
@@ -95,6 +89,12 @@ export default new Router({
             path: 'projects',
             name: 'Projects',
             component: Projects
+
+        /* Studios */
+        }, {
+            path: 'studios',
+            name: 'Studios',
+            component: Studios
 
         /* Tutorials */
         },{
@@ -116,11 +116,11 @@ export default new Router({
             name: '',
             component: Welcome
 
-        /* Workshop */
+        /* Workshops */
         },{
-            path: 'workshop',
+            path: 'workshops',
             name: '',
-            component: Workshop
+            component: Workshops
         }]
     }]
 })

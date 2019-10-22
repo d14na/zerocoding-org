@@ -25,12 +25,12 @@ export default {
             text: 'NEW'
         }
     }, {
-        name: 'Coding Labs',
+        name: 'Labs',
         url: '/labs',
         icon: 'icon-chemistry'
     }, {
-        name: 'Design Studios',
-        url: '/design',
+        name: 'Studios',
+        url: '/studios',
         icon: 'icon-magic-wand',
         badge: {
             variant: 'warning',
@@ -50,7 +50,7 @@ export default {
             text: 'UC'
         }
     }, {
-        name: 'Jobs Board',
+        name: 'Jobs',
         url: '/jobs',
         icon: 'icon-briefcase',
         badge: {
@@ -75,12 +75,12 @@ export default {
             text: 'NEW'
         }
     }, {
-        name: 'Plugins & Add-ons',
+        name: 'Plug-ins',
         url: '/plugins',
         icon: 'icon-pin'
     }, {
-        name: 'Workshop',
-        url: '/workshop',
+        name: 'Workshops',
+        url: '/workshops',
         icon: 'icon-wrench',
         badge: {
             variant: 'warning',
@@ -92,7 +92,7 @@ export default {
         title: true,
         name: 'Looking For Help?'
     }, {
-        name: 'Getting Started',
+        name: 'Get Started!',
         url: '/getting-started',
         icon: 'icon-book-open',
         badge: {

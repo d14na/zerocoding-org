@@ -5,7 +5,7 @@
                 <b-card v-for="workshop of workshops">
                     <b-media>
                         <template v-slot:aside>
-                            <b-img class="cover-img" :src="workshop.img" rounded alt="Workshop"></b-img>
+                            <b-img class="cover-img" :src="workshop.coverImg" rounded alt="Workshop"></b-img>
                         </template>
 
                         <h5 class="mt-0">{{workshop.title}}</h5>
@@ -85,19 +85,19 @@ export default {
             workshops: [{
                 title: 'File Manager',
                 body: `Manage all of your decentralized files, including: users.json, sites.json`,
-                img: 'https://i.imgur.com/gL11cX0.jpg',
+                coverImg: 'https://i.imgur.com/gL11cX0.jpg',
             }, {
                 title: 'Database Manager',
                 body: `Manage your decentralized databases from a simple interface designed to make you an expert dba in no time.`,
-                img: 'https://i.imgur.com/2du2fL1.png',
+                coverImg: 'https://i.imgur.com/2du2fL1.png',
             }, {
                 title: '(Local) Systems Manager',
                 body: `Manage your local system using this convenient toolkit.`,
-                img: 'https://i.imgur.com/VKQMkdl.png',
+                coverImg: 'https://i.imgur.com/VKQMkdl.png',
             }, {
                 title: '(Remote) Systems Manager',
                 body: `Manage all of your remote systems using a secure shell.`,
-                img: 'https://i.imgur.com/J93gHNo.png',
+                coverImg: 'https://i.imgur.com/J93gHNo.png',
             }]
         }
     },

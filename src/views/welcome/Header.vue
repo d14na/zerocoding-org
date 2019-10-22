@@ -159,6 +159,17 @@
                     <b-img src="https://picsum.photos/300/150/?image=41" fluid rounded alt="Fluid image"></b-img>
                 </b-carousel-slide> -->
 
+                <!-- Large Rectable - 336 x 280 -->
+                <!-- Medium Rectable - 300 x 250 -->
+
+                <b-carousel-slide class="ad-slide">
+                    <img slot="img" class="d-block img-fluid img-rounded rounded w-100" width="1024" height="480"
+                    src="https://i.imgur.com/dwgC8XD.png" alt="image slot">
+                </b-carousel-slide>
+                <b-carousel-slide class="ad-slide">
+                    <img slot="img" class="d-block img-fluid img-rounded rounded w-100" width="1024" height="480"
+                    src="https://i.imgur.com/dwgC8XD.png" alt="image slot">
+                </b-carousel-slide>
                 <b-carousel-slide class="ad-slide">
                     <img slot="img" class="d-block img-fluid img-rounded rounded w-100" width="1024" height="480"
                     src="https://i.imgur.com/dwgC8XD.png" alt="image slot">
@@ -166,10 +177,10 @@
 
                 <!-- Slides with img slot -->
                 <!-- Note the classes .d-block and .img-fluid to prevent browser default image alignment -->
-                <b-carousel-slide>
+                <!-- <b-carousel-slide>
                     <img slot="img" class="d-block img-fluid w-100" width="336" height="280"
                     src="https://i.imgur.com/dwgC8XD.png" alt="image slot">
-                </b-carousel-slide>
+                </b-carousel-slide> -->
 
                 <!-- Slide with blank fluid image to maintain slide aspect ratio -->
                 <!-- <b-carousel-slide caption="Blank Image" img-blank img-alt="Blank image">
