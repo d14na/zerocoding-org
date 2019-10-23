@@ -1,6 +1,6 @@
 # Blockchain
 
-TL;DR Add "native" blockchain (Bitcoin, Ethereum, etc) functionality to Zeronet.
+TL;DR Minimal implementations of crypto's most popular blockchains.
 
 ---
 

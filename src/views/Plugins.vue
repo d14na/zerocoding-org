@@ -15,7 +15,7 @@
                                 {{plugin.coverDesc}}
                             </b-card-text>
 
-                            <b-button href="javascript://" variant="primary">View Plugin <i class="fa fa-arrow-right ml-1"></i></b-button>
+                            <b-button @click="loadPlugin(plugin.id)" variant="primary">OPEN {{plugin.title}} <i class="fa fa-arrow-right ml-1"></i></b-button>
                         </b-card>
                     </b-col>
                 </b-row>
@@ -25,21 +25,21 @@
                 <div class="win-summary fixed-top">
                     <div class="card d-none d-lg-flex card-summary">
                         <div class="card-header">
-                            <strong>Plugin Manager</strong>
+                            <strong>{{pluginTitle}} Manager</strong>
                         </div>
 
                         <div class="card-body">
                             <p>
-                                Its easy to <strong>install, update and uninstall</strong> ANY of the plugins listed on this page.
+                                Its easy to <strong>install</strong> ANY of the plugins listed on this page.
                             </p>
 
-                            <b-button block variant="primary" class="mb-3" @click="openHome">Open PeerMessage Home</b-button>
+                            <b-button block variant="primary" class="mb-3" @click="openHome">Open {{pluginTitle}} Home</b-button>
 
                             <hr />
 
-                            <b-button block variant="warning" @click="runTest">Run {{pluginName}} Tests</b-button>
-                            <b-button block variant="outline-danger" @click="install">Install Blockchain</b-button>
-                            <b-button block variant="outline-danger" @click="uninstall">Uninstall Blockchain</b-button>
+                            <b-button block variant="warning" @click="runTest">Run {{pluginTitle}} Tests</b-button>
+                            <b-button block variant="outline-danger" @click="install">Install {{pluginTitle}}</b-button>
+                            <b-button block variant="outline-danger" @click="uninstall">Uninstall {{pluginTitle}}</b-button>
                         </div>
 
                         <!-- placeholder for markdown display -->
@@ -106,6 +106,7 @@ class ZeroApp extends ZeroLib {
 export default {
     data: () => {
         return {
+            activePluginId: 'blockchain',
             preview: '',
             plugins: [{
                 id: 'blockchain',
@@ -132,8 +133,14 @@ export default {
         }
     },
     computed: {
-        pluginName () {
-            return 'PeerMessage'
+        pluginTitle () {
+            for (let plugin of this.plugins) {
+                if (this.activePluginId === plugin.id) {
+                    return plugin.title
+                }
+            }
+
+            return 'Unknown'
         },
     },
     methods: {
@@ -150,84 +157,185 @@ export default {
                 return `https://picsum.photos/id/${rndInt}/600/300`
             }
         },
+        loadPlugin (_pluginId) {
+            /* Set active plugin. */
+            this.activePluginId = _pluginId
+        },
         openHome () {
-            /* Open new window (via Zeronet). */
-            this.app.cmd(
-                'wrapperOpenWindow',
-                ['http://127.0.0.1:43110/1CeEXxqemr5CcVQAAmrW13QYwZV4kAkQz6/',
-                '_blank']
-            )
-
             // FIXME Detect Zeronet client and save to GLOBAL STORE
-            /* Open new window (via Clearnet proxy). */
-            // window.open('https://0net.io/1CeEXxqemr5CcVQAAmrW13QYwZV4kAkQz6/')
+            switch(this.activePluginId) {
+            case 'background':
+                /* Open new window (via Clearnet proxy). */
+                // return window.open('https://github.com/HelloZeroNet/Plugin-BackgroundProcessing')
+
+                /* Open new window (via Zeronet). */
+                return this.app.cmd(
+                    'wrapperOpenWindow',
+                    ['https://github.com/HelloZeroNet/Plugin-BackgroundProcessing']
+                )
+            case 'peer-message':
+                /* Open new window (via Clearnet proxy). */
+                // return window.open('https://0net.io/1CeEXxqemr5CcVQAAmrW13QYwZV4kAkQz6/')
+
+                /* Open new window (via Zeronet). */
+                return this.app.cmd(
+                    'wrapperOpenWindow',
+                    ['http://127.0.0.1:43110/1CeEXxqemr5CcVQAAmrW13QYwZV4kAkQz6/']
+                )
+            default:
+                return this.app.cmd('wrapperNotification', [
+                    'error',
+                    `Oops! Looks like that plugin doesn't have a home :(`,
+                    7000
+                ])
+            }
+
         },
         async install () {
-            // this.app.cmd('wrapperNotification', ['error', 'Oops! That feature is NOT available yet.', 5000])
-
+            /* Request server info. */
             const serverInfo = await this.app.cmd('serverInfo')
+
+            // TODO Display in screen terminal.
             console.log('INSTALL SERVER INFO', serverInfo)
 
+            /* Validate minimum requirement. */
             if (serverInfo.rev < 4000) {
-                return this.app.cmd(
-                    'wrapperNotification',
-                    [
-                        'error',
-                        'You are using an outdated Python 2 ZeroNet.<br>Please download a new bundle from https://zeronet.io.'
-                    ]
-                )
+                return this.app.cmd('wrapperNotification', [
+                    'error',
+                    'You are using an outdated Python 2 ZeroNet.' +
+                    '<br>Please download a new bundle from https://zeronet.io.',
+                    7000
+                ])
             }
 
+            /* Validate minimum requirement. */
             if (serverInfo.rev < 4191) {
-                return this.app.cmd(
-                    'wrapperNotification',
-                    [
+                return this.app.cmd('wrapperNotification', [
+                    'error',
+                    'Your ZeroNet is outdated (rev4191 is required), please update.',
+                    7000
+                ])
+            }
+
+            /* Handle Background Processing. */
+            if (this.activePluginId === 'background') {
+                return this.app.cmd('wrapperNotification', [
+                    'error',
+                    'Sorry, that PLUGIN is currently unavailable.',
+                    7000
+                ])
+            }
+
+            /* Handle Blockchain. */
+            if (this.activePluginId === 'blockchain') {
+                /* Validate current installation. */
+                if (serverInfo.plugins.indexOf('Blockchain') > -1) {
+                    return this.app.cmd('wrapperNotification', [
                         'error',
-                        'Your ZeroNet is outdated (rev4191 is required), please update.'
-                    ]
-                )
+                        'Please update Blockchain from Plugins configuration page.',
+                        7000
+                    ])
+                } else {
+                    /* Request new installation. */
+                    return this.app.cmd('pluginAddRequest', 'plugins/Blockchain')
+                }
             }
 
-            return this.app.cmd('pluginAddRequest', 'plugins/Blockchain')
-
-            if (serverInfo.plugins.indexOf('PeerMessage') > -1 && !serverInfo.plugins_rev.PeerMessage) {
-                return this.app.cmd(
-                    'wrapperNotification',
-                    [
+            /* Handle PeerMessage. */
+            if (this.activePluginId === 'peer-message') {
+                // NOTE: Special handling for OLDER versions.
+                if (serverInfo.plugins.indexOf('PeerMessage') > -1 && !serverInfo.plugins_rev.PeerMessage) {
+                    return this.app.cmd('wrapperNotification', [
                         'error',
-                        'Please delete the old plugin from plugins/PeerMessage<br>first and restart ZeroNet.'
-                    ]
-                )
+                        'Please delete the old plugin from plugins/PeerMessage' +
+                        '<br>first and restart ZeroNet.',
+                        7000
+                    ])
+                }
+
+                if (serverInfo.plugins_rev.PeerMessage) {
+                    return this.app.cmd('wrapperNotification', [
+                        'error',
+                        'Please update PeerMessage from Plugins configuration page.',
+                        7000
+                    ])
+                }
+
+                this.app.cmd('pluginAddRequest', 'plugins/PeerMessage')
             }
 
-            if (serverInfo.plugins_rev.PeerMessage) {
-                return this.app.cmd(
-                    'wrapperNotification',
-                    [
-                        'error', 'Please update PeerMessage from Plugins configuration page.'
-                    ]
-                )
+            /* Handle Superuser. */
+            if (this.activePluginId === 'superuser') {
+                if (serverInfo.plugins.indexOf('Superuser') > -1) {
+                    return this.app.cmd('wrapperNotification', [
+                        'error',
+                        'Please update Superuser from Plugins configuration page.',
+                        7000
+                    ])
+                } else {
+                    /* Request new installation. */
+                    return this.app.cmd('pluginAddRequest', 'plugins/Superuser')
+                }
             }
-
-            // this.app.cmd('pluginAddRequest', 'plugins/PeerMessage')
-        },
-        update () {
-            this.app.cmd('wrapperNotification', ['error', 'Oops! That feature is NOT available yet.', 5000])
         },
         uninstall () {
-            this.app.cmd('wrapperNotification', ['error', 'Oops! That feature is NOT available yet.', 5000])
+            const message = `Please un-install ${this.pluginTitle} from Plugins configuration page.`
+            const buttonTitle = 'Open Plugins?'
+
+            this.app.cmd('wrapperConfirm', [message, buttonTitle], (confirmed) => {
+                /* Validate user selection. */
+                if (confirmed) {
+                    /* Go to plugins. */
+                    this.app.cmd('wrapperOpenWindow', ['/Plugins'])
+                }
+            })
         },
         async runTest () {
-            this.app.cmd('blockchain', [], (results) => {
-                /* Set display object. */
-                const displayConsole = document.getElementById('display-console')
+            /* Handle Background Processing. */
+            if (this.activePluginId === 'background') {
+                return this.app.cmd('wrapperNotification', [
+                    'error',
+                    'Sorry, that TEST is currently unavailable.',
+                    7000
+                ])
+            }
 
-                /* Format message (for display). */
-                const formatted = `<code><pre class="text-white">${JSON.stringify(results, null, 4)}</pre></code>`
+            /* Handle Blockchain. */
+            if (this.activePluginId === 'blockchain') {
+                this.app.cmd('blockchain', [], (results) => {
+                    /* Set display object. */
+                    const displayConsole = document.getElementById('display-console')
 
-                /* Update display. */
-                displayConsole.innerHTML = formatted
-            })
+                    /* Format message (for display). */
+                    const formatted = `<code><pre class="text-white">${JSON.stringify(results, null, 4)}</pre></code>`
+
+                    /* Update display. */
+                    displayConsole.innerHTML = formatted
+                })
+            }
+
+            /* Handle PeerMessage. */
+            if (this.activePluginId === 'peer-message') {
+                return this.app.cmd('wrapperNotification', [
+                    'error',
+                    'Sorry, that TEST is currently unavailable.',
+                    7000
+                ])
+            }
+
+            /* Handle Superuser. */
+            if (this.activePluginId === 'superuser') {
+                this.app.cmd('sudo', [], (results) => {
+                    /* Set display object. */
+                    const displayConsole = document.getElementById('display-console')
+
+                    /* Format message (for display). */
+                    const formatted = `<code><pre class="text-white">${JSON.stringify(results, null, 4)}</pre></code>`
+
+                    /* Update display. */
+                    displayConsole.innerHTML = formatted
+                })
+            }
         },
         async runHubTest () {
             /* Initialize hub address. */
