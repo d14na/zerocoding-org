@@ -21,12 +21,9 @@
                         </b-progress>
                     </b-alert>
 
-                    <p class="log-entry">
-                        <strong>Friday, October 11, 2019</strong><br />
-                        We're excited to start rolling out the newly renovated ZeroCoding portal.
-                        We've obviously got a lot of construction happening.
-                        Please be patient and bear with us for a while, as our team puts in <strong class="text-warning">WORK</strong> to get things in proper order.
-                    </p>
+                    <div class="log-entry" v-html="logDisplay">
+                        <!-- pre-rendered log display -->
+                    </div>
                 </div>
             </b-tab>
 
@@ -152,7 +149,36 @@
 export default {
     data: () => {
         return {
+            logEntries: [{
+                date: 'Thursday, October 24, 2019',
+                body: `
+                The Plugins area has been released with its first installable plugins: (1) PeerMessage, (2) Blockchain, and (3) Superuser; the latter 2 are for __DEMO PURPOSES ONLY__ and are still under initial development.
+                `,
+            }, {
+                date: 'Friday, October 11, 2019',
+                body: `
+                We're excited to start rolling out the newly renovated ZeroCoding portal.
+                We've obviously got a lot of construction happening.
+                Please be patient and bear with us for a while, as our team puts in __WORK__ to get things in proper order.
+                `,
+            }],
             userWish: ''
+        }
+    },
+    computed: {
+        logDisplay () {
+            const logEntries = []
+
+            for (const logEntry of this.logEntries) {
+                logEntries.push(`
+                <strong>${logEntry.date}</strong><br />
+                <p>
+                    ${logEntry.body}
+                </p>
+                `)
+            }
+
+            return logEntries.join('<hr />')
         }
     },
     methods: {

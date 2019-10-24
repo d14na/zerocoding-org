@@ -7,10 +7,11 @@ const DefaultContainer = () => import('@/containers/DefaultContainer')
 // Views
 const Bounties = () => import('@/views/Bounties')
 const Chans = () => import('@/views/Chans')
-const HelloZero = () => import('@/views/HelloZero')
-const IpCdn = () => import('@/views/IpCdn')
 const FAQ = () => import('@/views/FAQ')
 const GettingStarted = () => import('@/views/GettingStarted')
+const HelloZero = () => import('@/views/HelloZero')
+const IpCdn = () => import('@/views/IpCdn')
+const Issues = () => import('@/views/Issues')
 const Jobs = () => import('@/views/Jobs')
 const Labs = () => import('@/views/Labs')
 const Plugins = () => import('@/views/Plugins')
@@ -65,6 +66,12 @@ export default new Router({
             path: 'ipcdn',
             name: 'InterPlanetary Content Delivery Network (IPCDN)',
             component: IpCdn
+
+        /* Issues */
+        }, {
+            path: 'issues',
+            name: 'Issues',
+            component: Issues
 
         /* Jobs */
         }, {

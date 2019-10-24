@@ -32,7 +32,7 @@
 
                             <hr />
 
-                            <b-button block variant="primary" @click="openHome">Open (Local) File Manger</b-button>
+                            <b-button block variant="primary" @click="openFileMgr">Open (Local) File Manger</b-button>
                             <b-button block variant="outline-warning">Connect To Remove Server</b-button>
 
                             <!-- <hr /> -->
@@ -105,6 +105,9 @@ export default {
         closeNotice () {
             /* Go back in history ONE stop. */
             this.$router.go(-1)
+        },
+        openFileMgr () {
+
         },
     },
     mounted: function () {

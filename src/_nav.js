@@ -25,6 +25,14 @@ export default {
             text: 'NEW'
         }
     }, {
+        name: 'Issues',
+        url: '/issues',
+        icon: 'icon-puzzle',
+        badge: {
+            variant: 'warning',
+            text: 'UC'
+        }
+    }, {
         name: 'Labs',
         url: '/labs',
         icon: 'icon-chemistry'
